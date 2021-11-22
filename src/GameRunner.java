@@ -12,7 +12,7 @@ public class GameRunner {
         World w = new World();
         System.out.println("Welcome to the HGP RPG!");
 
-
+// Checking if github is working - Tom
 
 
         // main menu loop
