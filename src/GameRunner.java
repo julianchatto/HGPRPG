@@ -12,11 +12,12 @@ public class GameRunner {
         World w = new World();
         System.out.println("Welcome to the HGP RPG!");
 
-
+// Checking if github is working - Tom
 
 
         // main menu loop
         while (gameOn) {
+            System.out.println("test"); // jchat
             System.out.println("Choose an option (1-5):\n");
             System.out.println("1. Roam the World");
             System.out.println("2. Check hero stats");
