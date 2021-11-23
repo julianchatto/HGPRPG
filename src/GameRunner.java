@@ -23,8 +23,9 @@ public class GameRunner {
             System.out.println("1. Roam the World");
             System.out.println("2. Check hero stats");
             System.out.println("3. Shop");
-            System.out.println("4. Final Boss Battle");
-            System.out.println("5. Quit Game");
+            System.out.println("4. Crafting Table");
+            System.out.println("5. Final Boss Battle");
+            System.out.println("6. Quit Game");
 
             int userInput = scan.nextInt();
 
