@@ -51,11 +51,7 @@ public class Hero {
 
     @Override
     public String toString() {
-        return "Hero{" +
-                "health=" + health +
-                ", name='" + name + '\'' +
-                ", inventory=" + Arrays.toString(inventory) +
-                '}';
+        return "Hero " + name + "; Health: " + health + "; inventory: " + Arrays.toString(inventory);
     }
 }
 
