@@ -10,9 +10,10 @@ public class GameRunner {
         Scanner scan = new Scanner(System.in);
         boolean gameOn = true;
         World w = new World();
-        System.out.println("Welcome to the HGP RPG!");
-
-// Checking if github is working - Tom
+        System.out.println("Welcome to the HGP RPG! What's your name?");
+        String heroName = scan.nextLine();
+        h.setName(heroName);
+        //Allows user to set their name
 
 
         // main menu loop

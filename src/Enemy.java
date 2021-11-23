@@ -52,10 +52,10 @@ public class Enemy {
 
     @Override
     public String toString() {
-        return "Enemy{" +
-                "health=" + health +
-                ", attackPower=" + attackPower +
-                ", type='" + type + '\'' +
+        return "Enemy" +
+                "health:" + health +
+                "Attack Power:" + attackPower +
+                "type: '" + type + '\'' +
                 '}';
     }
 }
