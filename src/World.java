@@ -7,7 +7,6 @@ public class World {
 
 
     World() {
-
     }
 
     // helper methods

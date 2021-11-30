@@ -1,3 +1,3 @@
 public class Shop {
-    private String[] valPink = {"Bagel", "Egg", "Cheese", "Sausage"};
+    private String[] items = {"Bagel", "Egg", "Cheese", "Sausage"};
 }

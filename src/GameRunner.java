@@ -49,6 +49,9 @@ public class GameRunner {
                     gameOn = false;
                     System.out.println("Thanks for playing.");
                     break;
+                case 6:
+                    // Crafting Table
+                    System.out.println("");
                 default:
                     System.out.println("INVALID INPUT. TRY AGAIN." );
                     break;
