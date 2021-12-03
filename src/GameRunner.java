@@ -10,6 +10,7 @@ public class GameRunner {
         Scanner scan = new Scanner(System.in);
         boolean gameOn = true;
         World w = new World();
+        Shop g = new Shop();
         System.out.println("Welcome to the HGP RPG! What's your name?");
         String heroName = scan.nextLine();
         h.setName(heroName);
@@ -18,7 +19,6 @@ public class GameRunner {
 
         // main menu loop
         while (gameOn) {
-            System.out.println("test"); // jchat
             System.out.println("Choose an option (1-5):\n");
             System.out.println("1. Roam the World");
             System.out.println("2. Check hero stats");
@@ -40,6 +40,7 @@ public class GameRunner {
                     break;
                 case 3:
                     //shop
+                    g.goShop();
                     break;
                 case 4:
                     // final boss

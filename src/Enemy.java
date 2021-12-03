@@ -9,7 +9,6 @@ public class Enemy {
         this.health = 50;
         this.attackPower = 10;
         this.type = "fire";
-        System.out.println("JAMES CORBETT ! ! ! ! ! CHANGE ! ! ! ! !");
     }
 
     void attack(Hero h) {

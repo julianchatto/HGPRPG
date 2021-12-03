@@ -1,4 +1,4 @@
 public class CraftingTable {
-    private String[] table = {null, null, null, null, null, null};
+    private String[][] table = {null, null, null, null, null, null};
 
 }
