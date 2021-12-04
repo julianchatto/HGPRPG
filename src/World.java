@@ -156,21 +156,89 @@ public class World {
                 }
             }
         }
+        if (heroCol == 2) {
+            System.out.println("You can not move that way and lost a turn!");
+        } else {
+            // Move location 1 spot right
+            m[heroRow][heroCol+1] = "H";
+
+            // Replace hero with grass
+            m[heroRow][heroCol] = "G";
+        }
+
     }
     public static void moveLeft (String[][] m) {
         int heroRow = 0;
         int heroCol = 0;
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                if (m[row][col].equals("H")) {
+                    heroRow = row;
+                    heroCol = col;
+                    break;
+                }
+            }
+        }
+
+        if (heroCol == 0) {
+            System.out.println("You can not move that way and lost a turn!");
+        } else {
+            // Move location 1 spot left
+            m[heroRow][heroCol-1] = "H";
+
+            // Replace hero with grass
+            m[heroRow][heroCol] = "G";
+        }
+
 
     }
 
     public static void moveDown (String[][] m) {
         int heroRow = 0;
         int heroCol = 0;
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                if (m[row][col].equals("H")) {
+                    heroRow = row;
+                    heroCol = col;
+                    break;
+                }
+            }
+        }
+        if (heroRow == 2) {
+            System.out.println("You can not move that way and lost a turn!");
+        } else {
+            // Move location 1 spot up
+            m[heroRow+1][heroCol] = "H";
+
+            // Replace hero with grass
+            m[heroRow][heroCol] = "G";
+        }
+
     }
 
     public static void moveUp (String[][] m) {
         int heroRow = 0;
         int heroCol = 0;
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                if (m[row][col].equals("H")) {
+                    heroRow = row;
+                    heroCol = col;
+                    break;
+                }
+            }
+        }
+        if (heroRow == 0) {
+            System.out.println("You can not move that way and lost a turn!");
+        } else {
+            // Move location 1 spot up
+            m[heroRow-1][heroCol] = "H";
+
+            // Replace hero with grass
+            m[heroRow][heroCol] = "G";
+        }
+
     }
 
 }
