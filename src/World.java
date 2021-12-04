@@ -1,4 +1,3 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class World {
@@ -14,6 +13,7 @@ public class World {
         boolean battleOn = true;
         Scanner bScan = new Scanner(System.in);
         int userInput;
+        int healCount = 0;
 
         while (battleOn) {
 
@@ -34,7 +34,7 @@ public class World {
                     while (healing) {
                         System.out.println("How would you like to heal?");
                         System.out.println("1. Use a potion.");
-                        System.out.println("2. Search for a hidden breakfast burritos.");
+                        System.out.println("2. Search for a hidden breakfast burrito.");
                         System.out.println("3. Cancel.");
                         userInput = bScan.nextInt();
                         switch (userInput) {
@@ -92,8 +92,13 @@ public class World {
                                 healing = false;
                                 break;
                             case 2:
-                                hiddenBreaky();
-                                healing = false;
+                                if (healCount == 0) {
+                                    hiddenBreaky();
+                                    healing = false;
+                                    healCount++;
+                                } else {
+                                    System.out.println("You already searched for hidden breakfast burritos in this area!");
+                                }
                                 break;
                             case 3:
                                 healing = false;
@@ -119,6 +124,8 @@ public class World {
 
 
     public static void hiddenBreaky() {
+        Scanner bScan = new Scanner(System.in);
+        int moves = 0;
         String[][] map = {{"H", "G", "G"},
                 {"G", "G", "G"},
                 {"G", "G", "G"}};
@@ -133,13 +140,31 @@ public class World {
         }
         System.out.println("You look around the world and need to decide where to look for a heal potion. However," +
                 "you only have 5 moves!\n\n Make sure to choose carefully. ");
-        moveRight(map);
-        for (int row = 0; row < 3; row++) {
-            // For row 0...
-            System.out.println(""); // Hit enter
-            for (int col = 0; col < 3; col++) {
-                // Individual values in 2d Array
-                System.out.print(map[row][col] + " ");
+
+        while (moves < 5) {
+            System.out.println("What direction would you like to move?");
+            System.out.println("1. Left\n2. Right\n3. Up\n4.Down");
+            int userInput = bScan.nextInt();
+            switch (userInput) {
+                case 1: // Left
+                    moveLeft(map);
+                    moves++;
+                    break;
+                case 2: // Right
+                    moveRight(map);
+                    moves++;
+                    break;
+                case 3: // Up
+                    moveUp(map);
+                    moves++;
+                    break;
+                case 4: // Down
+                    moveDown(map);
+                    moves++;
+                    break;
+                default:
+                    System.out.println("Not a valid input, try again");
+                    break;
             }
         }
     }
@@ -165,7 +190,14 @@ public class World {
             // Replace hero with grass
             m[heroRow][heroCol] = "G";
         }
-
+        for (int row = 0; row < 3; row++) {
+            // For row 0...
+            System.out.println(""); // Hit enter
+            for (int col = 0; col < 3; col++) {
+                // Individual values in 2d Array
+                System.out.print(m[row][col] + " ");
+            }
+        }
     }
     public static void moveLeft (String[][] m) {
         int heroRow = 0;
@@ -189,7 +221,14 @@ public class World {
             // Replace hero with grass
             m[heroRow][heroCol] = "G";
         }
-
+        for (int row = 0; row < 3; row++) {
+            // For row 0...
+            System.out.println(""); // Hit enter
+            for (int col = 0; col < 3; col++) {
+                // Individual values in 2d Array
+                System.out.print(m[row][col] + " ");
+            }
+        }
 
     }
 
@@ -214,6 +253,14 @@ public class World {
             // Replace hero with grass
             m[heroRow][heroCol] = "G";
         }
+        for (int row = 0; row < 3; row++) {
+            // For row 0...
+            System.out.println(""); // Hit enter
+            for (int col = 0; col < 3; col++) {
+                // Individual values in 2d Array
+                System.out.print(m[row][col] + " ");
+            }
+        }
 
     }
 
@@ -237,6 +284,14 @@ public class World {
 
             // Replace hero with grass
             m[heroRow][heroCol] = "G";
+        }
+        for (int row = 0; row < 3; row++) {
+            // For row 0...
+            System.out.println(""); // Hit enter
+            for (int col = 0; col < 3; col++) {
+                // Individual values in 2d Array
+                System.out.print(m[row][col] + " ");
+            }
         }
 
     }
