@@ -1,8 +1,5 @@
 import java.util.Scanner;
-
 public class GameRunner {
-
-
     public static void main(String[] args) {
         // Game objects and characters
         Hero h = new Hero();
@@ -14,8 +11,6 @@ public class GameRunner {
         System.out.println("Welcome to the HGP RPG! What's your name?");
         String heroName = scan.nextLine();
         h.setName(heroName);
-        //Allows user to set their name
-
 
         // main menu loop
         while (gameOn) {

@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class World {
@@ -9,13 +10,12 @@ public class World {
 
     // helper methods
     void roamTheWorld(Hero h, Enemy e1) {
-        String[] inventory = h.getInventory();
-        boolean battleOn = true;
         Scanner bScan = new Scanner(System.in);
+        boolean battleOn = true;
         int userInput;
-        int healCount = 0;
 
-        while (battleOn) {
+
+        while (battleOn) { // Main loop while attacking an enemy
 
             System.out.println("An enemy is approaching... ");
             System.out.println("Choose an option(1-3)");
@@ -25,91 +25,13 @@ public class World {
             userInput = bScan.nextInt();
 
             switch (userInput) {
-                case 1:
+                case 1: // attack
                     h.attack(e1);
-
                     break;
-                case 2:
-                    boolean healing = true;
-                    while (healing) {
-                        System.out.println("How would you like to heal?");
-                        System.out.println("1. Use a potion.");
-                        System.out.println("2. Search for a hidden breakfast burrito.");
-                        System.out.println("3. Cancel.");
-                        userInput = bScan.nextInt();
-                        switch (userInput) {
-                            case 1:
-                                boolean healPotionTF = false;
-                                for (int i = 0; i < inventory.length; i++) {
-                                    if (inventory[i].equals("Regular Heal Potion")) {
-                                        healPotionTF = true;
-                                    } else if (inventory[i].equals("OP Heal Potion")) {
-                                        healPotionTF = true;
-                                    }
-                                }
-                                if (healPotionTF) {
-                                    boolean potionHeal = true;
-                                    while (potionHeal) {
-                                        System.out.println("Which heal potion would you like to use?");
-                                        System.out.println("1. Regular Heal Potion.");
-                                        System.out.println("2. OP Heal Potion.");
-                                        System.out.println("3. Cancel");
-                                        userInput = bScan.nextInt();
-                                        switch (userInput) {
-                                            case 1:
-                                                for (int i = 0; i < inventory.length; i++) {
-                                                    if (inventory[i].equals("Regular Heal Potion")) {
-                                                        if (h.getHealth() <= 70) {
-                                                            int tempH = h.getHealth() + 30;
-                                                            h.setHealth(tempH);
-                                                        } else {
-                                                            h.setHealth(100);
-                                                        }
-                                                        //h.setInventory();  needs to be fixed
-                                                    }
-                                                }
-                                                break;
-                                            case 2:
-                                                for (int i = 0; i < inventory.length; i++) {
-                                                    if (inventory[i].equals("OP Heal Potion")) {
-                                                        h.setHealth(100);
-                                                        //h.setInventory();        needs to be fixed
-                                                    }
-                                                }
-                                                break;
-                                            case 3:
-                                                potionHeal = false;
-                                                break;
-                                            default:
-                                                System.out.println("Incorrect Input. Try again");
-                                                break;
-                                        }
-                                    }
-
-                                } else {
-                                    System.out.println("You do not have a Heal Potion!");
-                                }
-                                healing = false;
-                                break;
-                            case 2:
-                                if (healCount == 0) {
-                                    hiddenBreaky();
-                                    healing = false;
-                                    healCount++;
-                                } else {
-                                    System.out.println("You already searched for hidden breakfast burritos in this area!");
-                                }
-                                break;
-                            case 3:
-                                healing = false;
-                                break;
-                            default:
-                                System.out.println("Incorrect Input.");
-                                break;
-                        }
-                    }
+                case 2: // heal
+                    healing(h);
                     break;
-                case 3:
+                case 3: // run away
                     System.out.println("You ran away");
                     battleOn = false;
                     break;
@@ -121,16 +43,136 @@ public class World {
 
         e1.attack(h);
     }
+    // heal function
+    public static void healing(Hero h) {
+        String[] inventory = h.getInventory();
+        Scanner bScan = new Scanner(System.in);
+        boolean healing = true;
+        int healCount = 0;
 
+        while (healing) { // main loop for healing
 
-    public static void hiddenBreaky() {
+            System.out.println("How would you like to heal?");
+            System.out.println("1. Use a potion.");
+            System.out.println("2. Search for a hidden breakfast burrito.");
+            System.out.println("3. Cancel.");
+            int userInput = bScan.nextInt();
+
+            switch (userInput) {
+                case 1: // uses potion in inventory
+
+                    boolean healPotionTF = false;
+
+                    for (int i = 0; i < inventory.length; i++) { // checks if user has heal potion
+                        if (inventory[i].equals("Regular Heal Potion")) {
+                            healPotionTF = true;
+                        } else if (inventory[i].equals("OP Heal Potion")) {
+                            healPotionTF = true;
+                        }
+                    }
+                    if (healPotionTF) {
+                        boolean potionHeal = true;
+
+                        while (potionHeal) { // to choose what potion user wants to use
+
+                            System.out.println("Which heal potion would you like to use?");
+                            System.out.println("1. Regular Heal Potion.");
+                            System.out.println("2. OP Heal Potion.");
+                            System.out.println("3. Cancel");
+                            userInput = bScan.nextInt();
+
+                            switch (userInput) {
+                                case 1: // Regular heal potion
+
+                                    for (int i = 0; i < inventory.length; i++) { // adds health to hero
+                                        if (inventory[i].equals("Regular Heal Potion")) {
+                                            if (h.getHealth() <= 70) {
+                                                int tempH = h.getHealth() + 30;
+                                                h.setHealth(tempH);
+                                            } else {
+                                                h.setHealth(100);
+                                            }
+                                            //h.setInventory();  needs to be fixed
+                                        }
+                                    }
+                                    break;
+                                case 2: // OP heal potion
+                                    for (int i = 0; i < inventory.length; i++) { // sets health to 100
+                                        if (inventory[i].equals("OP Heal Potion")) {
+                                            h.setHealth(100);
+
+                                            //h.setInventory();        needs to be fixed
+                                        }
+                                    }
+                                    break;
+                                case 3:
+                                    potionHeal = false;
+                                    break;
+                                default:
+                                    System.out.println("Incorrect Input. Try again");
+                                    break;
+                            }
+                        }
+
+                    } else {
+                        System.out.println("You do not have a Heal Potion!");
+                    }
+                    healing = false;
+                    break;
+                case 2: // Search for heal potion
+                    if (healCount == 0) {
+                        hiddenBreaky(h);
+                        healing = false;
+                        healCount++;
+                    } else {
+                        System.out.println("You already searched for hidden breakfast burritos in this area!");
+                    }
+                    break;
+                case 3: // cancels
+                    healing = false;
+                    break;
+                default:
+                    System.out.println("Incorrect Input.");
+                    break;
+            }
+        }
+    }
+    // search feature for a hidden breakfast sandwich
+    public static void hiddenBreaky(Hero h) {
         Scanner bScan = new Scanner(System.in);
         int moves = 0;
+        int potionFound = 0;
+        int potionLocCol = 0;
+        int potionLocRow = 0;
+
         String[][] map = {{"H", "G", "G"},
                 {"G", "G", "G"},
                 {"G", "G", "G"}};
 
-        for (int row = 0; row < 3; row++) {
+        Random c = new Random();
+        Random r = new Random();
+        int mapColumn = c.nextInt(50);
+        int mapRow = r.nextInt(50);
+
+        // sets location for hidden potion in the column
+        if (mapColumn>30) {
+            potionLocCol = 2;
+        } else if (mapColumn <= 30 && mapColumn > 5) {
+            potionLocCol = 1;
+        }
+        // sets location for hidden potion in the row
+        if (mapRow>30) {
+            potionLocRow = 2;
+        } else if (mapRow <= 30 && mapRow > 5) {
+            potionLocRow = 1;
+        }
+        // sets location to 2,2 if both are originaly 0,0
+        if (potionLocCol == 0 && potionLocRow == 0) {
+            potionLocCol = 2;
+            potionLocRow = 2;
+        }
+
+        for (int row = 0; row < 3; row++) { // prints map
             // For row 0...
             System.out.println(""); // Hit enter
             for (int col = 0; col < 3; col++) {
@@ -142,9 +184,11 @@ public class World {
                 "you only have 5 moves!\n\n Make sure to choose carefully. ");
 
         while (moves < 5) {
+
             System.out.println("What direction would you like to move?");
             System.out.println("1. Left\n2. Right\n3. Up\n4.Down");
             int userInput = bScan.nextInt();
+
             switch (userInput) {
                 case 1: // Left
                     moveLeft(map);
@@ -166,12 +210,23 @@ public class World {
                     System.out.println("Not a valid input, try again");
                     break;
             }
+
+            if (map[potionLocCol][potionLocRow].equals("H")) { // checks if hero is on potion
+                //h.setInventory(); // THIS NEEDS TO BE FIXED
+                System.out.println("You found the hidden breakfast sandwich! Head back to the heal menu if you'd like to use it now.");
+                potionFound++;
+            }
+            if (potionFound == 1) { // breaks out of while loop
+                moves = 5;
+            }
         }
     }
-
+    // moves right
     public static void moveRight(String[][] m) {
         int heroRow = 0;
         int heroCol = 0;
+
+        // Finds hero
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 if (m[row][col].equals("H")) {
@@ -181,7 +236,8 @@ public class World {
                 }
             }
         }
-        if (heroCol == 2) {
+
+        if (heroCol == 2) { // restricts movement
             System.out.println("You can not move that way and lost a turn!");
         } else {
             // Move location 1 spot right
@@ -190,7 +246,8 @@ public class World {
             // Replace hero with grass
             m[heroRow][heroCol] = "G";
         }
-        for (int row = 0; row < 3; row++) {
+
+        for (int row = 0; row < 3; row++) { // prints map
             // For row 0...
             System.out.println(""); // Hit enter
             for (int col = 0; col < 3; col++) {
@@ -199,9 +256,11 @@ public class World {
             }
         }
     }
+    // moves left
     public static void moveLeft (String[][] m) {
         int heroRow = 0;
         int heroCol = 0;
+        // Finds hero
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 if (m[row][col].equals("H")) {
@@ -212,7 +271,7 @@ public class World {
             }
         }
 
-        if (heroCol == 0) {
+        if (heroCol == 0) { // restricts movement
             System.out.println("You can not move that way and lost a turn!");
         } else {
             // Move location 1 spot left
@@ -221,7 +280,7 @@ public class World {
             // Replace hero with grass
             m[heroRow][heroCol] = "G";
         }
-        for (int row = 0; row < 3; row++) {
+        for (int row = 0; row < 3; row++) { // prints map
             // For row 0...
             System.out.println(""); // Hit enter
             for (int col = 0; col < 3; col++) {
@@ -231,10 +290,11 @@ public class World {
         }
 
     }
-
+    // moves down
     public static void moveDown (String[][] m) {
         int heroRow = 0;
         int heroCol = 0;
+        // finds hero
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 if (m[row][col].equals("H")) {
@@ -244,7 +304,7 @@ public class World {
                 }
             }
         }
-        if (heroRow == 2) {
+        if (heroRow == 2) { // restricts movement
             System.out.println("You can not move that way and lost a turn!");
         } else {
             // Move location 1 spot up
@@ -253,7 +313,7 @@ public class World {
             // Replace hero with grass
             m[heroRow][heroCol] = "G";
         }
-        for (int row = 0; row < 3; row++) {
+        for (int row = 0; row < 3; row++) {  // prints map
             // For row 0...
             System.out.println(""); // Hit enter
             for (int col = 0; col < 3; col++) {
@@ -263,10 +323,11 @@ public class World {
         }
 
     }
-
+    // moves up
     public static void moveUp (String[][] m) {
         int heroRow = 0;
         int heroCol = 0;
+        // Finds hero
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 if (m[row][col].equals("H")) {
@@ -276,7 +337,7 @@ public class World {
                 }
             }
         }
-        if (heroRow == 0) {
+        if (heroRow == 0) { // restricts movement
             System.out.println("You can not move that way and lost a turn!");
         } else {
             // Move location 1 spot up
@@ -285,7 +346,7 @@ public class World {
             // Replace hero with grass
             m[heroRow][heroCol] = "G";
         }
-        for (int row = 0; row < 3; row++) {
+        for (int row = 0; row < 3; row++) { // pritns map
             // For row 0...
             System.out.println(""); // Hit enter
             for (int col = 0; col < 3; col++) {
@@ -295,6 +356,5 @@ public class World {
         }
 
     }
-
 }
 
