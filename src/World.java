@@ -120,10 +120,10 @@ public class World {
                     if (healCount == 0) {
                         hiddenBreaky(h);
                         healing = false;
-                        healCount++;
                     } else {
                         System.out.println("You already searched for hidden breakfast burritos in this area!");
                     }
+                    healCount++;
                     break;
                 case 3: // cancels
                     healing = false;
