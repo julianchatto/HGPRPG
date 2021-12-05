@@ -4,10 +4,12 @@ public class GameRunner {
         // Game objects and characters
         Hero h = new Hero();
         Enemy e1 = new Enemy();
-        Scanner scan = new Scanner(System.in);
-        boolean gameOn = true;
+        FinalBoss fB = new FinalBoss();
         World w = new World();
         Shop g = new Shop();
+        CraftingTable cT = new CraftingTable();
+        Scanner scan = new Scanner(System.in);
+        boolean gameOn = true;
         System.out.println("Welcome to the HGP RPG! What's your name?");
         String heroName = scan.nextLine();
         h.setName(heroName);
@@ -31,23 +33,25 @@ public class GameRunner {
                     break;
                 case 2:
                     // check stats
-                    System.out.println(h.toString());
+                    System.out.println(h);
                     break;
                 case 3:
                     //shop
-                    g.goShop();
+                    g.goShop(h);
                     break;
                 case 4:
-                    // final boss
+                    // Crafting Table
+                    cT.crafting(h);
                     break;
                 case 5:
-                   // end game
+                    // final boss
+                    fB.bossing();
+                    break;
+                case 6:
+                    // end game
                     gameOn = false;
                     System.out.println("Thanks for playing.");
                     break;
-                case 6:
-                    // Crafting Table
-                    System.out.println("");
                 default:
                     System.out.println("INVALID INPUT. TRY AGAIN." );
                     break;

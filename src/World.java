@@ -3,10 +3,7 @@ import java.util.Scanner;
 
 public class World {
     // Attributes
-
-
-    World() {
-    }
+    World() {}
 
     // helper methods
     void roamTheWorld(Hero h, Enemy e1) {

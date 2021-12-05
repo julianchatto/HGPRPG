@@ -5,6 +5,7 @@ public class Hero {
     private int health;
     private String name;
     private String[] inventory = new String[5];
+    private int coins;
 
 
     // Constructor
@@ -12,7 +13,7 @@ public class Hero {
         this.health = 100;
         this.name = "Petcaugh";
         this.inventory[0] = "Potion";
-
+        this.coins = 1000;
     }
 
     //Helper Method
@@ -47,11 +48,17 @@ public class Hero {
         this.inventory = inventory;
     }
 
+    public int getCoins() {
+        return coins;
+    }
 
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
 
     @Override
     public String toString() {
-        return "Hero " + name + "; Health: " + health + "; inventory: " + Arrays.toString(inventory);
+        return "Hero " + name + "; Health: " + health + "Coins: " + coins + "; inventory: " + Arrays.toString(inventory);
     }
 }
 
