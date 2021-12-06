@@ -20,7 +20,7 @@ public class Hero {
 
     //Helper Method
     void attack(Enemy e) { // e becomes e1, or e2, or e3
-        int tempH = e.getHealth() - 10;
+        int tempH = e.getHealth() - 10*getLevel();
         e.setHealth(tempH);
     }
 
