@@ -2,8 +2,19 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class World {
+    private int healCount = 0;
+
+
     // Attributes
     World() {}
+
+    public int getHealCount() {
+        return healCount;
+    }
+
+    public void setHealCount(int healCount) {
+        this.healCount = healCount;
+    }
 
     // helper methods
     void roamTheWorld(Hero h, Enemy e1) {
@@ -41,11 +52,14 @@ public class World {
         e1.attack(h);
     }
     // heal function
+
     public static void healing(Hero h) {
+        World healCount = new World();
         String[] inventory = h.getInventory();
         Scanner bScan = new Scanner(System.in);
         boolean healing = true;
-        int healCount = 0;
+        int healCounter = healCount.getHealCount();
+
 
         while (healing) { // main loop for healing
 
@@ -117,13 +131,14 @@ public class World {
                     healing = false;
                     break;
                 case 2: // Search for heal potion
-                    if (healCount == 0) {
+                    if (healCounter == 0) {
                         hiddenBreaky(h);
                         healing = false;
+                        healCount.setHealCount(healCounter+1);
                     } else {
                         System.out.println("You already searched for hidden breakfast burritos in this area!");
                     }
-                    healCount++;
+
                     break;
                 case 3: // cancels
                     healing = false;

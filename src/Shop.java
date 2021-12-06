@@ -87,7 +87,7 @@ public class Shop {
 
                             int currentCoins = h.getCoins();
                             if ((userInput <= stock[item2]) && (userInput > 0)) { // enough in stock
-                                if ((prices[item2]*userInput) >= h.getCoins()) { // checks if user has enough coins
+                                if ((prices[item2]*userInput) >= currentCoins) { // checks if user has enough coins
                                     // changes value of hero
                                     // h.setInventory(); this needs to be fixed
                                     h.setCoins(h.getCoins()-prices[item2]);
@@ -130,7 +130,7 @@ public class Shop {
                             userInput = bScan.nextInt();
                             int currentCoins = h.getCoins();
                             if ((userInput <= stock[item3]) && (userInput > 0)) { // enough in stock
-                                if ((prices[item3]*userInput) >= h.getCoins()) { // checks if user has enough coins
+                                if ((prices[item3]*userInput) >= currentCoins) { // checks if user has enough coins
                                     // changes value of hero
                                     // h.setInventory(); this needs to be fixed
                                     h.setCoins(h.getCoins()-prices[item3]);
