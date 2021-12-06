@@ -41,9 +41,9 @@ public class Shop {
                         while (outStock) {
                             System.out.println("How many " + items[item1] + "'s would you like to buy?");
                             userInput = bScan.nextInt();
-
+                            int currentCoins = h.getCoins();
                             if ((userInput <= stock[item1]) && (userInput > 0)) { // enough in stock
-                                if ((prices[item1]*userInput) >= h.getCoins()) { // checks if user has enough coins
+                                if ((prices[item1]*userInput) <= currentCoins) { // checks if user has enough coins
                                     // changes value of hero
                                     // h.setInventory(); this needs to be fixed
                                     h.setCoins(h.getCoins()-prices[item1]);
@@ -85,6 +85,7 @@ public class Shop {
                             System.out.println("How many " + items[item2] + "'s would you like to buy?");
                             userInput = bScan.nextInt();
 
+                            int currentCoins = h.getCoins();
                             if ((userInput <= stock[item2]) && (userInput > 0)) { // enough in stock
                                 if ((prices[item2]*userInput) >= h.getCoins()) { // checks if user has enough coins
                                     // changes value of hero
@@ -127,7 +128,7 @@ public class Shop {
                         while (outStock) {
                             System.out.println("How many " + items[item3] + "'s would you like to buy?");
                             userInput = bScan.nextInt();
-
+                            int currentCoins = h.getCoins();
                             if ((userInput <= stock[item3]) && (userInput > 0)) { // enough in stock
                                 if ((prices[item3]*userInput) >= h.getCoins()) { // checks if user has enough coins
                                     // changes value of hero
