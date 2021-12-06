@@ -52,6 +52,7 @@ public class World {
         e1.attack(h);
     }
     // heal function
+
     public static void healing(Hero h) {
         World healCount = new World();
         String[] inventory = h.getInventory();
