@@ -50,7 +50,7 @@ public class GameRunner {
                 case 6:
                     // end game
                     gameOn = false;
-                    System.out.println("Thanks for playing.");
+                    System.out.println("Thanks for playing. You get no brekkys.");
                     break;
                 default:
                     System.out.println("INVALID INPUT. TRY AGAIN." );
