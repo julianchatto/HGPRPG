@@ -14,10 +14,11 @@ public class Enemy {
         this.health = 50;
         this.attackPower = 10;
         this.type = "fire";
-        this.coindrop = 100;
     }
-
-
+//    public class Enemy1{
+//        private int health;
+//        private int attackPower
+//    }
     void attack(Hero h) {    //did this in hero class line 21. idk if this should still be here or not - james
         Random r = new Random();
         // 20% of the time it is a CRITICAL HIT, 2 * AP
@@ -55,13 +56,6 @@ public class Enemy {
         this.type = type;
     }
 
-    public int getCoindrop() {
-        return coindrop;
-    }
-
-    public void setCoindrop(int coindrop) {
-        this.coindrop = coindrop;
-    }
 
     @Override
     public String toString() {
@@ -71,6 +65,4 @@ public class Enemy {
                 "type: '" + type + '\'' +
                 '}';
     }
-
-
 }
