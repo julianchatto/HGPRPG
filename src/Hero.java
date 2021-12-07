@@ -29,6 +29,7 @@ public class Hero {
             int tempH = e.getHealth() - 10;
             e.setHealth(tempH);
         }
+
     }
 
     // Methods
