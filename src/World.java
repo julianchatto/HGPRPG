@@ -35,6 +35,7 @@ public class World {
             switch (userInput) {
                 case 1: // attack
                     h.attack(e1);
+
                     break;
                 case 2: // heal
                     healing(h);

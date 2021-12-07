@@ -13,21 +13,20 @@ public class Enemy {
     Enemy() {
         this.health = 50;
         this.attackPower = 10;
-        this.type = "brek";
+        this.type = "fire";
     }
 //    public class Enemy1{
 //        private int health;
 //        private int attackPower
 //    }
     void attack(Hero h) {    //did this in hero class line 21. idk if this should still be here or not - james
-
         Random r = new Random();
         // 20% of the time it is a CRITICAL HIT, 2 * AP
         int rand = r.nextInt(10)+1;
         if (rand <= 8) { // normal
-            h.setHealth(h.getHealth() - attackPower*h.getLevel());
+            h.setHealth(h.getHealth() - attackPower);
         } else {  // critical strike
-            h.setHealth(h.getHealth() - (attackPower*5*h.getLevel()));
+            h.setHealth(h.getHealth() - attackPower*5);
             System.out.println("Critical Strike!!");
         }
 
@@ -56,7 +55,13 @@ public class Enemy {
     public void setType(String type) {
         this.type = type;
     }
+    public int getCoindrop() {
+        return coindrop;
+    }
 
+    public void setCoindrop(int coindrop) {
+        this.coindrop = coindrop;
+    }
 
     @Override
     public String toString() {
@@ -66,4 +71,6 @@ public class Enemy {
                 "type: '" + type + '\'' +
                 '}';
     }
+
+
 }
