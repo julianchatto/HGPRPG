@@ -24,9 +24,9 @@ public class Enemy {
         // 20% of the time it is a CRITICAL HIT, 2 * AP
         int rand = r.nextInt(10)+1;
         if (rand <= 8) { // normal
-            h.setHealth(h.getHealth() - attackPower);
+            h.setHealth(h.getHealth() - attackPower*h.getLevel());
         } else {  // critical strike
-            h.setHealth(h.getHealth() - attackPower*5);
+            h.setHealth(h.getHealth() - (attackPower*5*h.getLevel()));
             System.out.println("Critical Strike!!");
         }
 
