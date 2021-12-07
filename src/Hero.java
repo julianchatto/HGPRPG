@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Random;
 
 public class Hero {
     // Attributes
@@ -18,8 +19,16 @@ public class Hero {
 
     //Helper Method
     void attack(Enemy e) { // e becomes e1, or e2, or e3
-        int tempH = e.getHealth() - 10;
-        e.setHealth(tempH);
+        Random r =  new Random();
+        int strike = r.nextInt(20);
+        if (strike <= 10) {
+            System.out.println("Critical Strike!!!");
+            int tempH = e.getHealth() - 50;                 //Critical Hit attack power*5????
+            e.setHealth(tempH);
+        } else   {
+            int tempH = e.getHealth() - 10;
+            e.setHealth(tempH);
+        }
     }
 
     // Methods
