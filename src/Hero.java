@@ -4,7 +4,7 @@ public class Hero {
     // Attributes
     private int health;
     private String name;
-    private String[] inventory = new String[5];
+    private String[] inventory = new String[8];
     private int coins;
     private int level;
 
@@ -14,6 +14,7 @@ public class Hero {
         this.health = 100;
         this.name = "Petcaugh";
         this.inventory[0] = "Potion";
+        this.inventory[1] = "Sausage";
         this.coins = 1000;
         this.level = 1;
     }
