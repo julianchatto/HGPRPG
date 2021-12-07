@@ -5,7 +5,7 @@ public class Hero {
     // Attributes
     private int health;
     private String name;
-    private String[] inventory = new String[5];
+    private String[] inventory = new String[10];
     private int coins;
 
 
@@ -19,13 +19,13 @@ public class Hero {
 
     //Helper Method
     void attack(Enemy e) { // e becomes e1, or e2, or e3
-        Random r =  new Random();
+        Random r = new Random();
         int strike = r.nextInt(20);
         if (strike <= 10) {
             System.out.println("Critical Strike!!!");
             int tempH = e.getHealth() - 50;                 //Critical Hit attack power*5????
             e.setHealth(tempH);
-        } else   {
+        } else {
             int tempH = e.getHealth() - 10;
             e.setHealth(tempH);
         }
@@ -65,9 +65,13 @@ public class Hero {
         this.coins = coins;
     }
 
+
     @Override
     public String toString() {
         return "Hero " + name + "; Health: " + health + "Coins: " + coins + "; inventory: " + Arrays.toString(inventory);
     }
 }
+
+
+
 
