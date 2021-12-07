@@ -20,7 +20,7 @@ public class Hero {
     //Helper Method
     void attack(Enemy e) { // e becomes e1, or e2, or e3
         Random r = new Random();
-        int strike = r.nextInt(20);
+        int strike = r.nextInt(20)+1;
         if (strike <= 10) {
             System.out.println("Critical Strike!!!");
             int tempH = e.getHealth() - 50;                 //Critical Hit attack power*5????

@@ -55,7 +55,13 @@ public class Enemy {
     public void setType(String type) {
         this.type = type;
     }
+    public int getCoindrop() {
+        return coindrop;
+    }
 
+    public void setCoindrop(int coindrop) {
+        this.coindrop = coindrop;
+    }
 
     @Override
     public String toString() {
@@ -65,4 +71,6 @@ public class Enemy {
                 "type: '" + type + '\'' +
                 '}';
     }
+
+
 }
