@@ -35,6 +35,7 @@ public class World {
             switch (userInput) {
                 case 1: // attack
                     h.attack(e1);
+                    System.out.println("Enemy health:"+ e1.getHealth());
 
                     break;
                 case 2: // heal
