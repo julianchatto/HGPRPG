@@ -15,10 +15,9 @@ public class Enemy {
         this.attackPower = 10;
         this.type = "fire";
     }
-//    public class Enemy1{
-//        private int health;
-//        private int attackPower
-//    }
+
+
+
     void attack(Hero h) {    //did this in hero class line 21. idk if this should still be here or not - james
         Random r = new Random();
         // 20% of the time it is a CRITICAL HIT, 2 * AP
@@ -29,6 +28,8 @@ public class Enemy {
             h.setHealth(h.getHealth() - attackPower*5);
             System.out.println("Critical Strike!!");
         }
+
+
 
     }
 
