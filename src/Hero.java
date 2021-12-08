@@ -32,6 +32,18 @@ public class Hero {
             System.out.println("YOU HIT A CRITICAL STRIKE!!");
         }
     }
+    //helper method for attacking final boss
+    void attack(FinalBoss fB){ //what is good w this???
+        Random r = new Random();
+        // 20% of the time it is a CRITICAL HIT, 2 * AP
+        int rand = r.nextInt(10)+1;
+        if (rand <= 8) { // normal
+            fB.setHealth(fB.getHealth() - 25*level);
+        } else {  // critical strike
+            fB.setHealth(fB.getHealth() - 25+level*5);
+            System.out.println("YOU HIT A CRITICAL STRIKE!!");
+        }
+    }
 
     // Methods
 

@@ -45,7 +45,8 @@ public class GameRunner {
                     break;
                 case 5:
                     // final boss
-                    fB.bossing();
+                    System.out.println("You are fighting the final brekky boss. Good Luck. You'll need it.");
+                    //fB.bossing(h);
                     break;
                 case 6:
                     // end game

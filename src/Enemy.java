@@ -7,7 +7,7 @@ public class Enemy {
     private int health;
     private int attackPower;
     private String type;
-    private int coindrop; //make coin drop getter and setter????????
+    private int coindrop;
 
     // Constructor
     Enemy() {
