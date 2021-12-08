@@ -21,10 +21,26 @@ public class World {
         Scanner bScan = new Scanner(System.in);
         boolean battleOn = true;
         int userInput;
-        boolean alive = true;
 
 
         while (battleOn) { // Main loop while attacking an enemy
+
+            if (h.getHealth()>0 && e1.getHealth()>0) { //checking if hero and enemy are alive
+                battleOn = true;
+            } else if (h.getHealth()<=0) {
+                System.out.println("you died");
+                battleOn = false;
+            } else if(e1.getHealth()<=0){
+                System.out.println("You won!");
+                System.out.println("That enemy dropped some righteous loot");
+                h.setCoins(h.getCoins()+(h.getLevel()*20));
+                System.out.println("You now have "+h.getCoins()+" dabloons...CHA CHING $$$");
+                h.setLevel(h.getLevel()+1);
+                System.out.println("You also leveled up! level: "+h.getLevel());
+                battleOn = false;
+            }
+
+
 
             System.out.println("An enemy is approaching... ");
             System.out.println("Choose an option(1-3)");
@@ -35,26 +51,13 @@ public class World {
 
             switch (userInput) {
                 case 1: // attack
-                    if (h.getHealth()>0 && e1.getHealth()>0) {
-                        h.attack(e1);
-                        System.out.println("You attacked the enemy");
-                        System.out.println("Enemy health:" + e1.getHealth());
-                        System.out.println("Now the enemy is attacking you!");
-                        e1.attack(h);
-                        System.out.println("your health:" + h.getHealth());
-                    } else if(h.getHealth()<=0){
-                        System.out.println("you died :(");
-                        battleOn = false;
-                        break;
-                    } else if(e1.getHealth()<=0){
-                        System.out.println("You won!");
-                        System.out.println("That enemy dropped some righteous loot");
-                        h.setCoins(h.getCoins()+(h.getLevel()*20));
-                        System.out.println("You now have "+h.getCoins()+" dabloons...CHA CHING $$$");
-                        h.setLevel(h.getLevel()+1);
-                        System.out.println("You also leveled up!");
-                        break;
-                    }
+                    h.attack(e1);
+                    System.out.println("You attacked the enemy");
+                    System.out.println("Enemy health:" + e1.getHealth());
+                    System.out.println("Now the enemy is attacking you!");
+                    e1.attack(h);
+                    System.out.println("your health:" + h.getHealth());
+                    break;
 
                 case 2: // heal
                     healing(h);
@@ -68,8 +71,6 @@ public class World {
 
             }
         }
-
-        e1.attack(h);
     }
     // heal function
 
@@ -86,7 +87,7 @@ public class World {
             System.out.println("How would you like to heal?");
             System.out.println("1. Use a potion.");
             System.out.println("2. Search for a hidden breakfast burrito.");
-            System.out.println("3. Cancel.");
+            System.out.println("3. No");
             int userInput = bScan.nextInt();
 
             switch (userInput) {
