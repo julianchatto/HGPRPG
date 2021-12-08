@@ -25,14 +25,14 @@ public class World {
 
         while (battleOn) { // Main loop while attacking an enemy
 
-            if (h.getHealth()>0 && e1.getHealth()>0) { //checking if hero and enemy are alive
-                battleOn = true;
-            } else if (h.getHealth()<=0) { //dead
+            //checking if hero and enemy are alive
+
+            if (h.getHealth()<=0) {
                 System.out.println("you died :(");
-                h.setHealth(100);
+                h.setHealth(0);
+                healing(h);
                 battleOn = false;
-                break;
-            } else if(e1.getHealth()<=0){ //won battle
+            } else if(e1.getHealth()<=0){
                 System.out.println("You won!");
                 System.out.println("That enemy dropped some righteous loot");
                 h.setCoins(h.getCoins()+(h.getLevel()*100));
@@ -41,7 +41,6 @@ public class World {
                 System.out.println("You also leveled up! level: "+h.getLevel());
                 battleOn=false;
                 e1.setHealth(50*h.getLevel());//next enemy will have more health based on level
-                break;
             }
 
 
@@ -57,12 +56,23 @@ public class World {
                 case 1: // attack
                     h.attack(e1);
                     System.out.println("You attacked the enemy");
-                    System.out.println("Enemy health:" + e1.getHealth());
-                    System.out.println("Now the enemy is attacking you!");
-                    e1.attack(h);
-                    System.out.println("your health:" + h.getHealth());
-                    break;
-
+                    if (e1.getHealth() <= 0) {
+                        System.out.println("Enemy health: 0");
+                        System.out.println("You won!");
+                        System.out.println("That enemy dropped some righteous loot");
+                        h.setCoins(h.getCoins()+(h.getLevel()*100));
+                        System.out.println("You now have "+h.getCoins()+" dabloons...CHA CHING $$$");
+                        h.setLevel(h.getLevel()+1);
+                        System.out.println("You also leveled up! level: "+h.getLevel());
+                        battleOn=false;
+                        e1.setHealth(50*h.getLevel());
+                    } else {
+                        System.out.println("Enemy health:" + e1.getHealth());
+                        System.out.println("Now the enemy is attacking you!");
+                        e1.attack(h);
+                        System.out.println("your health:" + h.getHealth());
+                        break;
+                    }
                 case 2: // heal
                     healing(h);
                     break;
