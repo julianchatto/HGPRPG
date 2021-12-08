@@ -29,7 +29,7 @@ public class GameRunner {
                 h.setMagicPowerType("Wind");
                 magicPowering = false;
             } else if (magicPower == 1 ) {
-                h.setMagicPowerType("File");
+                h.setMagicPowerType("Fire");
                 magicPowering = false;
             } else {
                 System.out.println("Incorrect input, try again!");
