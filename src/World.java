@@ -51,6 +51,7 @@ public class World {
                     System.out.println("1. Normal\n2. Magic power (can only be used once per enemy!");
                     userInput = bScan.nextInt();
 
+
                     if (h.getHealth()<=0) {
                         System.out.println("You are already dead. You must heal first!");
                         battleOn = false;

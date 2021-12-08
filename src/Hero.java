@@ -15,9 +15,7 @@ public class Hero {
     Hero() {
         this.health = 100;
         this.name = "Petcaugh";
-        this.inventory[0] = "Potion";
-        this.inventory[1] = "Sausage";
-        this.coins = 1000;
+        this.coins = 0;
         this.level = 1;
         this.magicPowerType = "Fire";
     }
@@ -26,26 +24,32 @@ public class Hero {
     void attack(Enemy e) { // e becomes e1, or e2, or e3
         Random r = new Random();
         // 20% of the time it is a CRITICAL HIT, 2 * AP
-        int rand = r.nextInt(10)+1;
-        if (rand <= 8) { // normal
+        int rand = r.nextInt(15)+1;
+        if (rand <= 9) { // normal
             e.setHealth(e.getHealth() - 25*level);
             System.out.println("You hit a normal strike");
-        } else {  // critical strike
+        } else if (rand >= 13) {  // critical strike
             e.setHealth(e.getHealth() - 25+level*5);
             System.out.println("Critical Strike!!");
+        } else {
+            e.setHealth(e.getHealth() - 40 + level);
+            System.out.println("Magic Power!!");
         }
     }
 
     void attackFB(FinalBoss fB) { // e becomes e1, or e2, or e3
         Random r = new Random();
         // 20% of the time it is a CRITICAL HIT, 2 * AP
-        int rand = r.nextInt(10)+1;
-        if (rand <= 8) { // normal
+        int rand = r.nextInt(15)+1;
+        if (rand <= 9) { // normal
             fB.setHealth(fB.getHealth() - 25*level);
             System.out.println("You hit a normal strike");
-        } else {  // critical strike
+        } else if (rand >= 13) {  // critical strike
             fB.setHealth(fB.getHealth() - 25+level*5);
             System.out.println("Critical Strike!!");
+        } else {
+            fB.setHealth(fB.getHealth() - 40 + level);
+            System.out.println("Magic Power!!");
         }
     }
 
