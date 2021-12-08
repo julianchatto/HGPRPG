@@ -25,6 +25,7 @@ public class Enemy {
         int rand = r.nextInt(10)+1;
         if (rand <= 8) { // normal
             h.setHealth(h.getHealth() - (attackPower*h.getLevel()));
+            System.out.println("Normal Strike");
         } else {  // critical strike
             h.setHealth(h.getHealth() - (attackPower*5*h.getLevel()));
             System.out.println("THEY HIT A CRITICAL STRIKE!!...darn");

@@ -14,6 +14,7 @@ public class GameRunner {
         String heroName = scan.nextLine();
         h.setName(heroName);
 
+
         // main menu loop
         while (gameOn) {
             System.out.println("Choose an option (1-5):\n");
@@ -23,6 +24,7 @@ public class GameRunner {
             System.out.println("4. Crafting Table");
             System.out.println("5. Final Boss Battle");
             System.out.println("6. Quit Game");
+            System.out.println("7. View Inventory");
 
             int userInput = scan.nextInt();
 
@@ -52,6 +54,10 @@ public class GameRunner {
                     // end game
                     gameOn = false;
                     System.out.println("Thanks for playing. You get no brekkys.");
+                    break;
+                case 7:
+                    // View Inventory
+                    //System.out.println(h.toStringInventory());
                     break;
                 default:
                     System.out.println("INVALID INPUT. TRY AGAIN." );

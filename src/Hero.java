@@ -14,7 +14,7 @@ public class Hero {
     Hero() {
         this.health = 100;
         this.name = "Petcaugh";
-        this.inventory[0] = "Regular Heal Potion";
+        this.inventory[0] = "Potion";
         this.inventory[1] = "Sausage";
         this.coins = 1000;
         this.level = 1;
@@ -27,9 +27,10 @@ public class Hero {
         int rand = r.nextInt(10)+1;
         if (rand <= 8) { // normal
             e.setHealth(e.getHealth() - 25*level);
+            System.out.println("You hit a normal strike");
         } else {  // critical strike
             e.setHealth(e.getHealth() - 25+level*5);
-            System.out.println("YOU HIT A CRITICAL STRIKE!!");
+            System.out.println("Critical Strike!!");
         }
     }
     //helper method for attacking final boss
