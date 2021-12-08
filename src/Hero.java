@@ -27,6 +27,7 @@ public class Hero {
         int rand = r.nextInt(10)+1;
         if (rand <= 8) { // normal
             e.setHealth(e.getHealth() - 25*level);
+            System.out.println("You hit a normal strike");
         } else {  // critical strike
             e.setHealth(e.getHealth() - 25+level*5);
             System.out.println("Critical Strike!!");
