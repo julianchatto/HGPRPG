@@ -28,21 +28,26 @@ public class World {
             if (h.getHealth()>0 && e1.getHealth()>0) { //checking if hero and enemy are alive
                 battleOn = true;
             } else if (h.getHealth()<=0) {
-                System.out.println("you died");
+                System.out.println("you died :(");
+                h.setHealth(0);
+                healing(h);
                 battleOn = false;
+                break;
             } else if(e1.getHealth()<=0){
                 System.out.println("You won!");
                 System.out.println("That enemy dropped some righteous loot");
-                h.setCoins(h.getCoins()+(h.getLevel()*20));
+                h.setCoins(h.getCoins()+(h.getLevel()*100));
                 System.out.println("You now have "+h.getCoins()+" dabloons...CHA CHING $$$");
                 h.setLevel(h.getLevel()+1);
                 System.out.println("You also leveled up! level: "+h.getLevel());
-                battleOn = false;
+                battleOn=false;
+                e1.setHealth(50*h.getLevel());//next enemy will have more health based on level
+                break;
             }
 
 
 
-            System.out.println("An enemy is approaching... ");
+            System.out.println("An evil breakfast gremlin is approaching... ");
             System.out.println("Choose an option(1-3)");
             System.out.println("1. Attack");
             System.out.println("2. Heal");
