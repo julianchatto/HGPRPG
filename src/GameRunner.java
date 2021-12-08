@@ -71,7 +71,7 @@ public class GameRunner {
                 case 5:
                     // final boss
                     if (h.getLevel() < 5) {
-                        System.out.println("YOu are not a high enough level yet!");
+                        System.out.println("The Aramark CEO is no joke! Come back again when you level up.");
                     } else {
                         fB.bossing(h);
                         System.out.println("You are fighting the final brekky boss. Good Luck. You'll need it.");

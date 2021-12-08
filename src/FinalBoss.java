@@ -13,16 +13,18 @@ public class FinalBoss {
     }
 
     void bossing (Hero h) {
-
-        Random r = new Random();
-        // 20% of the time it is a CRITICAL HIT, 5 * AP
-        int rand = r.nextInt(10)+1;
-        if (rand <= 8) { // normal
-            h.setHealth(h.getHealth() - (attackPower*h.getLevel()));
-
-        } else {  // critical strike
-            h.setHealth(h.getHealth() - (attackPower*5*h.getLevel()));
-            System.out.println("THEY HIT A CRITICAL STRIKE!!...darn");
+        boolean bossing = true;
+        while (bossing) {
+            Random r = new Random();
+            // 20% of the time it is a CRITICAL HIT, 5 * AP
+            int rand = r.nextInt(10) + 1;
+            if (rand <= 8) { // normal
+                h.setHealth(h.getHealth() - (attackPower * h.getLevel()));
+                System.out.println("Normal Strike bozo.");
+            } else {  // critical strike
+                h.setHealth(h.getHealth() - (attackPower * 5 * h.getLevel()));
+                System.out.println("THEY HIT A CRITICAL STRIKE!!...darn");
+            }
         }
     }
 
