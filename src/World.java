@@ -27,13 +27,12 @@ public class World {
 
             if (h.getHealth()>0 && e1.getHealth()>0) { //checking if hero and enemy are alive
                 battleOn = true;
-            } else if (h.getHealth()<=0) {
+            } else if (h.getHealth()<=0) { //dead
                 System.out.println("you died :(");
-                h.setHealth(0);
-                healing(h);
+                h.setHealth(100);
                 battleOn = false;
                 break;
-            } else if(e1.getHealth()<=0){
+            } else if(e1.getHealth()<=0){ //won battle
                 System.out.println("You won!");
                 System.out.println("That enemy dropped some righteous loot");
                 h.setCoins(h.getCoins()+(h.getLevel()*100));
