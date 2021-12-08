@@ -47,10 +47,6 @@ public class World {
             switch (userInput) {
                 case 1: // attack
                     //attacking(h,e1);
-                    System.out.println("How would you like to attack the enemy!");
-                    System.out.println("1. Normal\n2. Magic power (can only be used once per enemy!");
-                    userInput = bScan.nextInt();
-
 
                     if (h.getHealth()<=0) {
                         System.out.println("You are already dead. You must heal first!");
