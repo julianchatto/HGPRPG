@@ -13,6 +13,23 @@ public class GameRunner {
         System.out.println("Welcome to the HGP RPG! What's your name?");
         String heroName = scan.nextLine();
         h.setName(heroName);
+        boolean magicPowering = true;
+
+        while (magicPowering) {
+            System.out.println("What would you like your magic power to be?");
+            System.out.println("1. Fire\n2. Water\n3. Wind");
+            int magicPower = scan.nextInt();
+            if (magicPower == 2) {
+                h.setMagicPowerType("Water");
+                magicPowering = false;
+            } else if (magicPower == 3) {
+                h.setMagicPowerType("Wind");
+                magicPowering = false;
+            } else {
+                System.out.println("Incorrect input, try again!");
+            }
+        }
+
 
 
         // main menu loop
@@ -47,8 +64,12 @@ public class GameRunner {
                     break;
                 case 5:
                     // final boss
-                    System.out.println("You are fighting the final brekky boss. Good Luck. You'll need it.");
-                    fB.bossing(h);
+                    if (h.getLevel() < 5) {
+                        System.out.println("YOu are not a high enough level yet!");
+                    } else {
+                        fB.bossing(h);
+                        System.out.println("You are fighting the final brekky boss. Good Luck. You'll need it.");
+                    }
                     break;
                 case 6:
                     // end game
@@ -57,7 +78,7 @@ public class GameRunner {
                     break;
                 case 7:
                     // View Inventory
-                    //System.out.println(h.toStringInventory());
+                    System.out.println(h.toStringInventory());
                     break;
                 default:
                     System.out.println("INVALID INPUT. TRY AGAIN." );

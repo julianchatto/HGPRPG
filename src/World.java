@@ -27,9 +27,9 @@ public class World {
 
             //checking if hero is alive
 
+            String[] enemyTypes = e1.getEnemyType();
 
-
-            System.out.println("An evil breakfast gremlin is approaching... ");
+            System.out.println("An evil breakfast gremlin of type " + enemyTypes + " is approaching... ");
             System.out.println("Choose an option(1-3)");
             System.out.println("1. Attack");
             System.out.println("2. Heal");
@@ -38,6 +38,15 @@ public class World {
 
             switch (userInput) {
                 case 1: // attack
+                    //attacking(h,e1);
+                    System.out.println("How would you like to attack the enemy!");
+                    System.out.println("1. Normal\n2. Magic power (can only be used once per enemy!");
+                    userInput = bScan.nextInt();
+
+                    if (h.getHealth()<=0) {
+                        System.out.println("You are already dead. You must heal first!");
+                        battleOn = false;
+                    }
                     h.attack(e1);
                     System.out.println("You attacked the enemy");
                     if (e1.getHealth() <= 0) {
@@ -57,7 +66,6 @@ public class World {
                         System.out.println("your health:" + h.getHealth());
                         if (h.getHealth()<=0) {
                             System.out.println("you died :(");
-                            h.setHealth(100);
                             battleOn = false;
                         }
                     }
@@ -83,6 +91,32 @@ public class World {
             }
         }
     }
+
+//    public static void attacking(Hero h, Enemy e1) {
+//        h.attack(e1);
+//        System.out.println("You attacked the enemy");
+//        if (e1.getHealth() <= 0) {
+//            System.out.println("Enemy health: 0");
+//            System.out.println("You won!");
+//            System.out.println("That enemy dropped some righteous loot");
+//            h.setCoins(h.getCoins()+(h.getLevel()*100));
+//            System.out.println("You now have "+h.getCoins()+" dabloons...CHA CHING $$$");
+//            h.setLevel(h.getLevel()+1);
+//            System.out.println("You also leveled up! level: " + h.getLevel());
+//            battleOn = false;
+//            e1.setHealth(50*h.getLevel());
+//        } else {
+//            System.out.println("Enemy health:" + e1.getHealth());
+//            System.out.println("Now the enemy is attacking you!");
+//            e1.attack(h);
+//            System.out.println("your health:" + h.getHealth());
+//            if (h.getHealth()<=0) {
+//                System.out.println("you died :(");
+//                h.setHealth(100);
+//                battleOn = false;
+//            }
+//        }
+//    }
     // heal function
 
     public static void healing(Hero h) {

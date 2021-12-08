@@ -8,6 +8,7 @@ public class Hero {
     private String[] inventory = new String[8];
     private int coins;
     private int level;
+    private String magicPowerType;
 
 
     // Constructor
@@ -17,7 +18,8 @@ public class Hero {
         this.inventory[0] = "Potion";
         this.inventory[1] = "Sausage";
         this.coins = 1000;
-        this.level = 1;
+        this.level = 10;
+        this.magicPowerType = "Fire";
     }
 
     //Helper Method
@@ -89,6 +91,14 @@ public class Hero {
         this.level = level;
     }
 
+    public String getMagicPowerType() {
+        return magicPowerType;
+    }
+
+    public void setMagicPowerType(String magicPowerType) {
+        this.magicPowerType = magicPowerType;
+    }
+
     @Override
     public String toString() {
         return "Hero{" +
@@ -98,6 +108,10 @@ public class Hero {
                 ", coins=" + coins +
                 ", level=" + level +
                 '}';
+    }
+
+    public String toStringInventory() {
+        return "Your inventory: " + Arrays.toString(inventory);
     }
 }
 

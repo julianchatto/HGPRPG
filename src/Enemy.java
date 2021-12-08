@@ -1,24 +1,28 @@
 import java.util.Random;
-//30 points is stage 1, and the fighting mechanics
-//shop,world, enemies, encounters, 2 other interesting things is monday.
-//3:30 on thursday
 
 public class Enemy {
     private int health;
     private int attackPower;
     private String type;
     private int coindrop;
+    private String[] enemyType = new String[3];
+
 
     // Constructor
     Enemy() {
         this.health = 50;
         this.attackPower = 10;
         this.type = "fire";
+        this.enemyType[0] = "Pork roll";
+        this.enemyType[1] = "Sausage";
+        this.enemyType[2] = "Bacon";
     }
-//    public class Enemy1{
-//        private int health;
-//        private int attackPower
-//    }
+    void getEnemyType(int i, String s) {
+        Random i1 = new Random();
+        i = i1.nextInt(3);
+        enemyType[i] = s;
+    }
+
     void attack(Hero h) {
         Random r = new Random();
         // 20% of the time it is a CRITICAL HIT, 2 * AP
@@ -62,6 +66,14 @@ public class Enemy {
 
     public void setCoindrop(int coindrop) {
         this.coindrop = coindrop;
+    }
+
+    public String[] getEnemyType() {
+        return enemyType;
+    }
+
+    public void setEnemyType(String[] enemyType) {
+        this.enemyType = enemyType;
     }
 
     @Override
