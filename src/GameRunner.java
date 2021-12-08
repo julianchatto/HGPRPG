@@ -45,7 +45,7 @@ public class GameRunner {
                     break;
                 case 5:
                     // final boss
-                    fB.bossing(h,fB);
+                    fB.bossing();
                     break;
                 case 6:
                     // end game

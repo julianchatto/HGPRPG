@@ -14,7 +14,7 @@ public class Hero {
     Hero() {
         this.health = 100;
         this.name = "Petcaugh";
-        this.inventory[0] = "Regular Heal Potion";
+        this.inventory[0] = "Potion";
         this.inventory[1] = "Sausage";
         this.coins = 1000;
         this.level = 1;
@@ -22,13 +22,26 @@ public class Hero {
 
     //Helper Method
     void attack(Enemy e) { // e becomes e1, or e2, or e3
-        Random r = new Random();
+            Random r = new Random();
         // 20% of the time it is a CRITICAL HIT, 2 * AP
         int rand = r.nextInt(10)+1;
         if (rand <= 8) { // normal
             e.setHealth(e.getHealth() - 25*level);
+            System.out.println("You hit a normal strike");
         } else {  // critical strike
             e.setHealth(e.getHealth() - 25+level*5);
+            System.out.println("Critical Strike!!");
+        }
+    }
+    //helper method for attacking final boss
+    void attack(FinalBoss fB){ //what is good w this???
+        Random r = new Random();
+        // 20% of the time it is a CRITICAL HIT, 2 * AP
+        int rand = r.nextInt(10)+1;
+        if (rand <= 8) { // normal
+            fB.setHealth(fB.getHealth() - 25*level);
+        } else {  // critical strike
+            fB.setHealth(fB.getHealth() - 25+level*5);
             System.out.println("YOU HIT A CRITICAL STRIKE!!");
         }
     }
