@@ -67,9 +67,17 @@ public class World {
                     healing(h);
                     break;
                 case 3: // run away
-                    System.out.println("You ran away");
-                    battleOn = false;
-                    break;
+                    Random r = new Random();//40% you cannot get away and the gremlin attacks you
+                    int esc = r.nextInt(10)+1;
+                    if (esc<=4){
+                        System.out.println("the gremlin wont stop chasing you");
+                        e1.attack(h);
+                        System.out.println("your health:" + h.getHealth());
+                    }else{
+                        System.out.println("You ran away...phew");
+                        battleOn = false;
+                        break;
+                    }
                 default:
                     System.out.println("Wrong Input");
 
