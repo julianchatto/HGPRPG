@@ -12,17 +12,17 @@ public class FinalBoss {     //NOT SURE IF ANY OF THIS IS RIGHT BUT HERE IT IS. 
         this.attackPower = 30;
     }
 
-//   void bossing (Hero h) {
-//        Random r = new Random();
-//        // 20% of the time it is a CRITICAL HIT, 5 * AP
-//        int rand = r.nextInt(10)+1;
-//        if (rand <= 8) { // normal
-//            h.setHealth(h.getHealth() - (attackPower*h.getLevel()));
-//        } else {  // critical strike
-//            h.setHealth(h.getHealth() - (attackPower*5*h.getLevel()));
-//            System.out.println("THEY HIT A CRITICAL STRIKE!!...darn");
-//        }
-//    }
+    void bossing (Hero h) {
+        Random r = new Random();
+        // 20% of the time it is a CRITICAL HIT, 5 * AP
+        int rand = r.nextInt(10)+1;
+        if (rand <= 8) { // normal
+            h.setHealth(h.getHealth() - (attackPower*h.getLevel()));
+        } else {  // critical strike
+            h.setHealth(h.getHealth() - (attackPower*5*h.getLevel()));
+            System.out.println("THEY HIT A CRITICAL STRIKE!!...darn");
+        }
+    }
 
     public int getHealth() {
         return health;
