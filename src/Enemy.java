@@ -19,15 +19,15 @@ public class Enemy {
 //        private int health;
 //        private int attackPower
 //    }
-    void attack(Hero h) {    //did this in hero class line 21. idk if this should still be here or not - james
+    void attack(Hero h) {
         Random r = new Random();
         // 20% of the time it is a CRITICAL HIT, 2 * AP
         int rand = r.nextInt(10)+1;
         if (rand <= 8) { // normal
-            h.setHealth(h.getHealth() - attackPower);
+            h.setHealth(h.getHealth() - (attackPower*h.getLevel()));
         } else {  // critical strike
-            h.setHealth(h.getHealth() - attackPower*5);
-            System.out.println("Critical Strike!!");
+            h.setHealth(h.getHealth() - (attackPower*5*h.getLevel()));
+            System.out.println("THEY HIT A CRITICAL STRIKE!!...darn");
         }
 
     }
