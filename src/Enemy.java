@@ -5,7 +5,6 @@ public class Enemy {
     private int attackPower;
     private String type;
     private int coindrop;
-    private String[] enemyType = new String[3];
 
 
     // Constructor
@@ -13,14 +12,6 @@ public class Enemy {
         this.health = 50;
         this.attackPower = 10;
         this.type = "fire";
-        this.enemyType[0] = "Pork roll";
-        this.enemyType[1] = "Sausage";
-        this.enemyType[2] = "Bacon";
-    }
-    void getEnemyType(int i, String s) {
-        Random i1 = new Random();
-        i = i1.nextInt(3);
-        enemyType[i] = s;
     }
 
     void attack(Hero h) {
@@ -66,14 +57,6 @@ public class Enemy {
 
     public void setCoindrop(int coindrop) {
         this.coindrop = coindrop;
-    }
-
-    public String[] getEnemyType() {
-        return enemyType;
-    }
-
-    public void setEnemyType(String[] enemyType) {
-        this.enemyType = enemyType;
     }
 
     @Override

@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 public class GameRunner {
     public static void main(String[] args) {
@@ -14,6 +15,8 @@ public class GameRunner {
         String heroName = scan.nextLine();
         h.setName(heroName);
         boolean magicPowering = true;
+
+
 
         while (magicPowering) {
             System.out.println("What would you like your magic power to be?");

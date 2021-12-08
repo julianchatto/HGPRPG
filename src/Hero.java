@@ -18,7 +18,7 @@ public class Hero {
         this.inventory[0] = "Potion";
         this.inventory[1] = "Sausage";
         this.coins = 1000;
-        this.level = 10;
+        this.level = 1;
         this.magicPowerType = "Fire";
     }
 

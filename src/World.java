@@ -21,15 +21,23 @@ public class World {
         Scanner bScan = new Scanner(System.in);
         boolean battleOn = true;
         int userInput;
+        Random q = new Random();
+        int typeR = q.nextInt(3) + 1;
+        if (typeR == 1) {
+            e1.setType("Sausage");
+        } else if (typeR == 2) {
+            e1.setType("Pork Roll");
+        } else {
+            e1.setType("Bacon");
+        }
 
 
         while (battleOn) { // Main loop while attacking an enemy
 
             //checking if hero is alive
 
-            String[] enemyTypes = e1.getEnemyType();
 
-            System.out.println("An evil breakfast gremlin of type " + enemyTypes + " is approaching... ");
+            System.out.println("An evil breakfast gremlin of type " + e1.getType() + " is approaching... ");
             System.out.println("Choose an option(1-3)");
             System.out.println("1. Attack");
             System.out.println("2. Heal");
@@ -49,7 +57,7 @@ public class World {
                     }
                     h.attack(e1);
                     System.out.println("You attacked the enemy");
-                    if (e1.getHealth() <= 0) {
+                    if (e1.getHealth() <= 0) { //enemy dies
                         System.out.println("Enemy health: 0");
                         System.out.println("You won!");
                         System.out.println("That enemy dropped some righteous loot");
