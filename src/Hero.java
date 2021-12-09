@@ -107,7 +107,7 @@ public class Hero {
     public String toString() {
         return "Hero{" +
                 "health=" + health +
-                ", name='" + name + '\'' +
+                ", name='" + name + '\'' + ", magic power: " + magicPowerType +
                 ", inventory=" + Arrays.toString(inventory) +
                 ", coins=" + coins +
                 ", level=" + level +

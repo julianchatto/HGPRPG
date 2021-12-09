@@ -71,6 +71,7 @@ public class World {
                         System.out.println("your health:" + h.getHealth());
                         if (h.getHealth()<=0) {
                             System.out.println("you died :(");
+                            h.setHealth(100);
                             battleOn = false;
                         }
                     }
