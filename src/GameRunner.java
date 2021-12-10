@@ -20,16 +20,18 @@ public class GameRunner {
 
         while (magicPowering) {
             System.out.println("What would you like your magic power to be?");
-            System.out.println("1. Fire\n2. Water\n3. Wind");
+            System.out.println("1.Sausage Slammer- Strong against sausage type gremlins but weak against Pork Roll");
+            System.out.println("2. Pork Roll Pounder- Strong against Pork Roll gremlins but weak against Bacon");
+            System.out.println("3. Bacon Beast- Strong against Bacon but weak against Sausage");
             int magicPower = scan.nextInt();
             if (magicPower == 2) {
-                h.setMagicPowerType("Water");
+                h.setMagicPowerType("PRP");
                 magicPowering = false;
             } else if (magicPower == 3) {
-                h.setMagicPowerType("Wind");
+                h.setMagicPowerType("BB");
                 magicPowering = false;
             } else if (magicPower == 1 ) {
-                h.setMagicPowerType("Fire");
+                h.setMagicPowerType("SS");
                 magicPowering = false;
             } else {
                 System.out.println("Incorrect input, try again!");
