@@ -2,6 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Shop {
+    private int[] stock = {9, 9, 9, 9};
     Shop() {}
 
     void goShop(Hero h) {
@@ -9,7 +10,7 @@ public class Shop {
         int userInput;
         String[] items = {"Bagel", "Egg", "Cheese", "Sausage"};
         int[] prices = {10, 5, 3, 7};
-        int[] stock = {9, 9, 9, 9};
+
         int item1 = 0; int item2 = 0; int item3 = 0;
         boolean shopping = true;
 
@@ -28,8 +29,8 @@ public class Shop {
             System.out.println("Welcome to the shop!");
             System.out.println("\n\nWhat would you like to buy?\n");
             System.out.println("1. " + items[item1] + ". Price: " + prices[item1] + ". Stock: " + stock[item1] + ".");
-            System.out.println("2. " + items[item2] + ". Price: " + prices[item2] + ". Stock: " + stock[item1] + ".");
-            System.out.println("3. " + items[item3] + ". Price: " + prices[item3] + ". Stock: " + stock[item1] + ".");
+            System.out.println("2. " + items[item2] + ". Price: " + prices[item2] + ". Stock: " + stock[item2] + ".");
+            System.out.println("3. " + items[item3] + ". Price: " + prices[item3] + ". Stock: " + stock[item3] + ".");
             System.out.println("4. Cancel.");
             userInput = bScan.nextInt();
 
