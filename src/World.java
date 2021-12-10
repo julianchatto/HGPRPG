@@ -82,13 +82,20 @@ public class World {
                     break;
                 case 3: // run away
                     Random r = new Random();//40% you cannot get away and the gremlin attacks you
-                    int esc = r.nextInt(10)+1;
-                    if (esc<=4){
-                        System.out.println("the gremlin wont stop chasing you");
-                        e1.attack(h);
-                        System.out.println("your health:" + h.getHealth());
+                    if (h.getHealth()>10) { //can't die while running away bc that's lame
+                        int esc = r.nextInt(10) + 1;
+                        if (esc <= 4) {
+                            System.out.println("the gremlin wont stop chasing you");
+                            h.setHealth(h.getHealth() - 10);
+                            System.out.println("your health:" + h.getHealth());
+                            break;
+                        } else {
+                            System.out.println("You ran away...phew");
+                            battleOn = false;
+                            break;
+                        }
                     }else{
-                        System.out.println("You ran away...phew");
+                        System.out.println("You ran away");
                         battleOn = false;
                         break;
                     }

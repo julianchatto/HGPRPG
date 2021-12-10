@@ -28,12 +28,23 @@ public class Hero {
         if (rand <= 9) { // normal
             e.setHealth(e.getHealth() - 25*level);
             System.out.println("You hit a normal strike");
-        } else if (rand >= 13) {  // critical strike
-            e.setHealth(e.getHealth() - 25+level*5);
+        } else if (rand >= 14) {  // critical strike
+            e.setHealth(e.getHealth() - 25+level*2);
             System.out.println("Critical Strike!!");
         } else {
-            e.setHealth(e.getHealth() - 40 + level);
-            System.out.println("Magic Power!!");
+            if (e.getType().equals("Sausage")&& magicPowerType.equals("Sausage Slammer")){
+                System.out.println("YOU USED YOUR MAGIC POWER TO HIT A SAUSAGE SLAM!! SUPER EFFECTIVE!!");
+                e.setHealth(e.getHealth() - 40*level*2);
+            }else if (e.getType().equals("Pork Roll")&& magicPowerType.equals("Pork Roll Pounder")){
+                System.out.println("YOU USED YOUR MAGIC POWER TO ABSOLUTELY POUND THAT PORK ROLL GREMLIN!! SUPER EFFECTIVE!");
+                e.setHealth(e.getHealth() - 40*level*2);
+            }else if (e.getType().equals("Bacon")&& magicPowerType.equals("Bacon Beast")){
+                System.out.println("YOU ARE A BACON BEAST SO YOUR MAGIC POWER ATTACK WAS SUPER EFFECTIVE!");
+                e.setHealth(e.getHealth() - 40*level*2);
+            }else{
+                e.setHealth(e.getHealth() - 40*level);
+                System.out.println("Magic Power!!");
+            }
         }
     }
 
@@ -105,13 +116,13 @@ public class Hero {
 
     @Override
     public String toString() {
-        return "Hero{" +
-                "health=" + health +
-                ", name='" + name + '\'' + ", magic power: " + magicPowerType +
-                ", inventory=" + Arrays.toString(inventory) +
-                ", coins=" + coins +
-                ", level=" + level +
-                '}';
+        return name+"'s Stats:" +
+                "\nHP:" + health +
+                 "\nmagic power: " + magicPowerType +
+                "\ninventory:" + Arrays.toString(inventory) +
+                "\ncoins:" + coins +
+                "\nlevel:" + level
+                ;
     }
 
     public String toStringInventory() {
