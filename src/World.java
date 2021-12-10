@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class World {
     private int healCount = 0;
 
-
+//merge check
     // Attributes
     World() {}
 
@@ -22,6 +22,7 @@ public class World {
         boolean battleOn = true;
         int userInput;
         Random q = new Random();
+       //Randomizes enemy type
         int typeR = q.nextInt(3) + 1;
         if (typeR == 1) {
             e1.setType("Sausage");
@@ -37,7 +38,7 @@ public class World {
             //checking if hero is alive
 
 
-            System.out.println("An evil breakfast gremlin of type " + e1.getType() + " is approaching... ");
+            System.out.println("An evil breakfast gremlin of type " + e1.getType() + " is attacking... ");
             System.out.println("Choose an option(1-3)");
             System.out.println("1. Attack");
             System.out.println("2. Heal");
