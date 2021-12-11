@@ -10,7 +10,6 @@ public class Hero {
     private int level;
     private String magicPowerType;
 
-
     // Constructor
     Hero() {
         this.health = 100;
