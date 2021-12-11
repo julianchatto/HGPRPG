@@ -15,7 +15,7 @@ public class Hero {
     Hero() {
         this.health = 100;
         this.name = "Petcaugh";
-        this.coins = 01;
+        this.coins = 0;
         this.level = 1;
         this.magicPowerType = "Fire";
         this.inventory[0] = "Empty";
