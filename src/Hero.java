@@ -5,8 +5,8 @@ public class Hero {
     // Attributes
     private int health;
     private String name;
-    private String[] inventory = new String[8];
-    private int[] inventoryCount = new int[8];
+    private String[] inventory = new String[12];
+    private int[] inventoryCount = new int[12];
     private int coins;
     private int level;
     private String magicPowerType;
@@ -26,6 +26,10 @@ public class Hero {
         this.inventory[5] = "Empty";
         this.inventory[6] = "Empty";
         this.inventory[7] = "Empty";
+        this.inventory[8] = "Empty";
+        this.inventory[9] = "Empty";
+        this.inventory[10] = "Empty";
+        this.inventory[11] = "Empty";
         this.inventoryCount[0] = 0;
         this.inventoryCount[1] = 0;
         this.inventoryCount[2] = 0;
@@ -34,6 +38,11 @@ public class Hero {
         this.inventoryCount[5] = 0;
         this.inventoryCount[6] = 0;
         this.inventoryCount[7] = 0;
+        this.inventoryCount[8] = 0;
+        this.inventoryCount[9] = 0;
+        this.inventoryCount[10] = 0;
+        this.inventoryCount[11] = 0;
+
 
     }
     // Allows for interactions with inventory

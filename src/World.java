@@ -23,7 +23,7 @@ public class World {
         boolean battleOn = true;
         int userInput;
         int help;
-        boolean haveBrekky = true;
+        boolean haveBrekky = false;
         int counter = 0;
         //Check for sausage egg and cheese in inventory and if they have it set haveBrekky to true
         for (int i = 0; i < 8; i++) {
@@ -132,7 +132,7 @@ public class World {
                     System.out.println("You gave the student a brekky.");
                     //Sausage Egg and Cheese is deleted from your inventory
                     for (int i = 0; i < 8; i++) {
-                        if ((h.getInvItem(i) == "Sausage") || (h.getInvItem(i) == "Egg") || (h.getInvItem(i) == "Egg")) {
+                        if ((h.getInvItem(i) == "Sausage") || (h.getInvItem(i) == "Cheese") || (h.getInvItem(i) == "Egg")) {
                             if (h.getInvCount(i) == 1) {
                                 h.replaceInvItem(i, "Empty");
                                 h.replaceInvCount(i, 0);
@@ -182,7 +182,7 @@ public class World {
 
                     boolean healPotionTF = false;
 
-                    for (int i = 0; i < 8; i++) { // checks if user has heal potion
+                    for (int i = 0; i < 12; i++) { // checks if user has heal potion
                         if (h.getInvItem(i).equals("Regular Heal Potion")) {
                             healPotionTF = true;
                         } else if (h.getInvItem(i).equals("OP Heal Potion")) {
@@ -203,7 +203,7 @@ public class World {
                             switch (userInput) {
                                 case 1: // Regular heal potion
                                     int oPCount = 0;
-                                    for (int i = 0; i < 8; i++) { // adds health to hero
+                                    for (int i = 0; i < 12; i++) { // adds health to hero
                                         if (h.getInvItem(i).equals("Regular Heal Potion")) {
                                             if (h.getHealth() < 70) {
                                                 int tempH = h.getHealth() + 30;
@@ -227,7 +227,7 @@ public class World {
                                             if (userInput == 1) {
                                                 i = 0;
                                             } else {
-                                                i = 9;
+                                                i = 13;
                                             }
 
                                         }
@@ -239,13 +239,13 @@ public class World {
                                     break;
                                 case 2: // OP heal potion
                                     int oPCount2 = 0;
-                                    for (int i = 0; i < 8; i++) {
+                                    for (int i = 0; i < 12; i++) {
                                         if (h.getInvItem(i).equals("OP Heal Potion")) {
                                             h.setHealth(100);
                                             if (h.getInvCount(i) == 1) { // changes inventory
                                                 h.replaceInvItem(i, "Empty");
                                                 h.replaceInvCount(i, 0);
-                                                i = 9;
+                                                i = 13;
                                             } else {
                                                 int tempCount = h.getInvCount(i) - 1;
                                                 h.replaceInvCount(i, tempCount);
@@ -368,20 +368,20 @@ public class World {
 
             if (map[potionLocCol][potionLocRow].equals("H")) { // checks if hero is on potion
                 int potionReplace = 0;
-                for (int i = 0; i < 8; i++) {
+                for (int i = 0; i < 12; i++) {
                     if (h.getInvItem(i).equals("Regular Heal Potion")) {
                         int tempCount = h.getInvCount(i) + 1;
                         h.replaceInvCount(i, tempCount);
-                        i = 9;
+                        i = 13;
                         potionReplace++;
                     }
                 }
                 if (potionReplace == 0) {
-                    for (int j = 0; j < 8; j++) {
+                    for (int j = 0; j < 12; j++) {
                         if (h.getInvItem(j).equals("Empty")) {
                             h.replaceInvCount(j, 1);
                             h.replaceInvItem(j, "Regular Heal Potion");
-                            j = 9;
+                            j = 13;
 
                         }
                     }

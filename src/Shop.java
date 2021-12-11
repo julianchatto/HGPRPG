@@ -2,14 +2,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Shop {
-    private int[] stock = {9, 9, 9, 9, 9, 9};
+    private int[] stock = {9, 9, 9, 9, 9, 9, 9, 9};
     Shop() {}
 
     void goShop(Hero h) {
         Scanner bScan = new Scanner(System.in);
         int userInput;
-        String[] items = {"Bagel", "Egg", "Cheese", "Sausage", "OP Heal Potion", "Regular Heal Potion"};
-        int[] prices = {10, 5, 3, 7, 1000, 100};
+        String[] items = {"Bagel", "Egg", "Cheese", "Sausage", "OP Heal Potion", "Regular Heal Potion", "Bacon", "Pork Roll"};
+        int[] prices = {10, 5, 3, 7, 1000, 100, 7, 7};
 
         int item1 = 0; int item2 = 0; int item3 = 0;
         boolean shopping = true;
@@ -19,9 +19,9 @@ public class Shop {
             Random i1 = new Random();
             Random i2 = new Random();
             Random i3 = new Random();
-            item1 = i1.nextInt(5);
-            item2 = i2.nextInt(5);
-            item3 = i3.nextInt(5);
+            item1 = i1.nextInt(8);
+            item2 = i2.nextInt(8);
+            item3 = i3.nextInt(8);
         }
 
         System.out.println("\nWelcome to the shop!");
@@ -47,20 +47,20 @@ public class Shop {
                                 if ((prices[item1]*userInput) <= currentCoins) { // checks if user has enough coins
                                     // changes value of hero
                                     int potionCount1 = 0;
-                                    for (int i = 0; i < 8; i++) { // adds item to inventory
+                                    for (int i = 0; i < 12; i++) { // adds item to inventory
                                         if (h.getInvItem(i).equals(items[item1])) {
                                             int tempCount = h.getInvCount(i) + 1;
                                             h.replaceInvCount(i, tempCount);
                                             potionCount1 = 1;
-                                            i=9;
+                                            i=13;
                                         }
                                     }
                                     if (potionCount1 == 0) {
-                                        for (int i = 0; i < 8; i++) { // adds item to inventory
+                                        for (int i = 0; i < 12; i++) { // adds item to inventory
                                             if (h.getInvItem(i).equals(items[item1])) {
                                                 h.replaceInvItem(i, items[item1]);
                                                 h.replaceInvCount(i, 1);
-                                                i=9;
+                                                i=13;
                                             }
                                         }
                                     }
@@ -108,20 +108,20 @@ public class Shop {
                                 if ((prices[item2]*userInput) <= currentCoins) { // checks if user has enough coins
                                     // changes value of hero
                                     int potionCount1 = 0;
-                                    for (int i = 0; i < 8; i++) { // adds item to inventory
+                                    for (int i = 0; i < 12; i++) { // adds item to inventory
                                         if (h.getInvItem(i).equals(items[item2])) {
                                             int tempCount = h.getInvCount(i) + 1;
                                             h.replaceInvCount(i, tempCount);
                                             potionCount1 = 1;
-                                            i=9;
+                                            i=13;
                                         }
                                     }
                                     if (potionCount1 == 0) {
-                                        for (int i = 0; i < 8; i++) { // adds item to inventory
+                                        for (int i = 0; i < 12; i++) { // adds item to inventory
                                             if (h.getInvItem(i).equals(items[item2])) {
                                                 h.replaceInvItem(i, items[item2]);
                                                 h.replaceInvCount(i, 1);
-                                                i=9;
+                                                i=13;
                                             }
                                         }
                                     }
@@ -168,7 +168,7 @@ public class Shop {
                                 if ((prices[item3]*userInput) <= currentCoins) { // checks if user has enough coins
                                     // changes value of hero
                                     int potionCount1 = 0;
-                                    for (int i = 0; i < 8; i++) { // adds item to inventory
+                                    for (int i = 0; i < 12; i++) { // adds item to inventory
                                         if (h.getInvItem(i).equals(items[item3])) {
                                             int tempCount = h.getInvCount(i) + 1;
                                             h.replaceInvCount(i, tempCount);
@@ -177,7 +177,7 @@ public class Shop {
                                         }
                                     }
                                     if (potionCount1 == 0) {
-                                        for (int i = 0; i < 8; i++) { // adds item to inventory
+                                        for (int i = 0; i < 13; i++) { // adds item to inventory
                                             if (h.getInvItem(i).equals(items[item3])) {
                                                 h.replaceInvItem(i, items[item3]);
                                                 h.replaceInvCount(i, 1);
