@@ -21,6 +21,9 @@ public class World {
         Scanner bScan = new Scanner(System.in);
         boolean battleOn = true;
         int userInput;
+        int help;
+        boolean haveBrekky = true;
+        //Check for sausage egg and cheese in inventory and if they have it set haveBrekky to true
         Random q = new Random();
        //Randomizes enemy type
         int typeR = q.nextInt(3) + 1;
@@ -103,6 +106,32 @@ public class World {
                 }
             }//Gremlin Encounter
         }else{
+            if (haveBrekky){
+                System.out.println("A student is snoring loudly and blocking your way");
+                System.out.println("He looks like he needs a sausage egg anc cheese, maybe if you give him one he will help you out");
+                System.out.println("Would you like to help him?");
+                System.out.println("1. Yes\n2. No");
+                help = bScan.nextInt();
+                if (help==1){//Helping the student
+                    System.out.println("zzzzzzzzzzz...I really need a brekky...zzzzzzzzzzzzz");
+                    System.out.println("You gave the student a brekky.");
+                    //Susage Egg and Cheese is deleted from your inventory
+                    System.out.println("*student wakes up* Good looks Brotendo. Take this");
+                    h.setCoins(h.getCoins()+1000);
+                    System.out.println("He gave you 1000 big ones $$$");
+                    System.out.println("He also gave you a scroll that says recipe for mega brekky:");
+                    System.out.println("1 Bagel + 1 Cheese + Every Meat makes a great breakfast for taking down CEOs");
+
+                }else{
+                    System.out.println("That student seemed wise. Maybe he had some valuable information about how to beat the game");
+                    System.out.println("Oh well, hopefully you seem him again");
+                }
+            } else {
+                System.out.println("You found a mysterious room with a healing aura called the LONE RANGER");
+                System.out.println("It gave you +50 health");
+                h.setHealth(h.getHealth()+50);
+            }
+
 
         }
     }
