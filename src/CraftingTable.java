@@ -1,3 +1,5 @@
+import jdk.swing.interop.SwingInterOpUtils;
+
 import java.util.Scanner;
 
 public class CraftingTable {
@@ -13,51 +15,69 @@ public class CraftingTable {
                             {"|  |  ", "|  |  ", "|  |  "}};
 
         printTable(table);
-        if (w1.isStudented() == false)
-        System.out.println("What would you like to craft?\n1. Bacon Egg N'Cheese\n2. Sausage Egg N'Cheese\n3. Pork Roll Egg N'Cheese");
-        while (craftInProg) {
-            System.out.println("What would you like to place in the inventory?\nBagel");
-            String userInput = bScan.next();
-            boolean craftInProgCol = true;
-            boolean craftInProgRow = true;
-            int craftCol = 0;
-            int craftRow = 0;
-            if ((userInput != "Bagel") || (userInput != "Egg")  || (userInput != "Sausage") || (userInput != "Egg")) {
-                System.out.println("That cannot be placed in the crafting table!");
-            } else {
-                for (int i = 0; i < 8; i++) {
-                    if (h.getInvItem(i).equals(userInput)) {
-                        while (craftInProgCol) {
-                            System.out.println("Where would you like to place the " + userInput + " (x-coordinate)?");
-                            craftCol = bScan.nextInt();
-                            if ((craftCol != 0) || (craftCol != 1) || (craftCol != 2)){
-                                System.out.println("Not a correct input. Try again.");
-                            } else {
-                                craftInProgCol = false;
-                            }
-                        }
-                        while (craftInProgRow) {
-                            System.out.println("Where would you like to place the " + userInput + " (y-coordinate)?");
-                            craftRow = bScan.nextInt();
-                            if ((craftRow != 0) || (craftRow != 1) || (craftRow != 2) || (craftRow != 3) || (craftRow != 4)){
-                                System.out.println("Not a correct input. Try again.");
-                            } else {
-                                craftInProgRow = false;
-                            }
-                        }
-                    }
-                    int tempCount = h.getInvCount(i) - 1;
-                    h.replaceInvCount(i, tempCount);
-                    if (tempCount == 0) {
-                        h.replaceInvItem(i, "Empty");
-                    }
-                    i = 9;
-                }
-                table[craftRow][craftCol] = userInput;
-                printTable(table);
-            }
-            crafted(h);
+        if (w1.isStudented()) {
+            System.out.println("What would you like to craft?\n1. Bacon Egg N'Cheese\n2. Sausage Egg N'Cheese\n3. Pork Roll Egg N'Cheese\n4. Mega Breaky");
+        } else {
+            System.out.println("What would you like to craft?\n1. Bacon Egg N'Cheese\n2. Sausage Egg N'Cheese\n3. Pork Roll Egg N'Cheese");
         }
+        int userInput = bScan.nextInt();
+        switch (userInput) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
+
+
+//        while (craftInProg) {
+//            System.out.println("What would you like to place in the inventory?\nBagel");
+//            String userInput = bScan.next();
+//            boolean craftInProgCol = true;
+//            boolean craftInProgRow = true;
+//            int craftCol = 0;
+//            int craftRow = 0;
+//            if ((userInput != "Bagel") || (userInput != "Egg")  || (userInput != "Sausage") || (userInput != "Egg")) {
+//                System.out.println("That cannot be placed in the crafting table!");
+//            } else {
+//                for (int i = 0; i < 8; i++) {
+//                    if (h.getInvItem(i).equals(userInput)) {
+//                        while (craftInProgCol) {
+//                            System.out.println("Where would you like to place the " + userInput + " (x-coordinate)?");
+//                            craftCol = bScan.nextInt();
+//                            if ((craftCol != 0) || (craftCol != 1) || (craftCol != 2)){
+//                                System.out.println("Not a correct input. Try again.");
+//                            } else {
+//                                craftInProgCol = false;
+//                            }
+//                        }
+//                        while (craftInProgRow) {
+//                            System.out.println("Where would you like to place the " + userInput + " (y-coordinate)?");
+//                            craftRow = bScan.nextInt();
+//                            if ((craftRow != 0) || (craftRow != 1) || (craftRow != 2) || (craftRow != 3) || (craftRow != 4)){
+//                                System.out.println("Not a correct input. Try again.");
+//                            } else {
+//                                craftInProgRow = false;
+//                            }
+//                        }
+//                    }
+//                    int tempCount = h.getInvCount(i) - 1;
+//                    h.replaceInvCount(i, tempCount);
+//                    if (tempCount == 0) {
+//                        h.replaceInvItem(i, "Empty");
+//                    }
+//                    i = 9;
+//                }
+//                table[craftRow][craftCol] = userInput;
+//                printTable(table);
+//            }
+//            crafted(h);
+//        }
 
 
 

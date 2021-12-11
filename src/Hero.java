@@ -175,7 +175,12 @@ public class Hero {
     }
 
     public String toStringInventory() {
-        return "Your inventory: " + Arrays.toString(inventory);
+        System.out.println("Your inventory: " + Arrays.toString(inventory));
+        System.out.print(inventory[0] + " count: " + inventoryCount[0]);
+        for (int i = 1; i < 12; i++) {
+            System.out.print("; " + inventory[i] + " count: " + inventoryCount[i]);
+        }
+        return "";
     }
 }
 
