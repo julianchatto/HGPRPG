@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class World {
     private int healCount = 0;
+    private boolean studented = true;
 
 //merge check
     // Attributes
@@ -23,7 +24,21 @@ public class World {
         int userInput;
         int help;
         boolean haveBrekky = true;
+        int counter = 0;
         //Check for sausage egg and cheese in inventory and if they have it set haveBrekky to true
+        for (int i = 0; i < 8; i++) {
+            if (h.getInvItem(i) == "Sausage") {
+                counter++;
+            } else if (h.getInvItem(i) == "Egg") {
+                counter++;
+
+            } else if (h.getInvItem(i) == "Cheese") {
+                counter++;
+            }
+        }
+        if (counter == 3) {
+            haveBrekky = true;
+        }
         Random q = new Random();
        //Randomizes enemy type
         int typeR = q.nextInt(3) + 1;
@@ -106,62 +121,46 @@ public class World {
                 }
             }//Gremlin Encounter
         }else{
-            if (haveBrekky){
+            if (haveBrekky && studented){
                 System.out.println("A student is snoring loudly and blocking your way");
-                System.out.println("He looks like he needs a sausage egg anc cheese, maybe if you give him one he will help you out");
+                System.out.println("He looks like he needs the ingredients Sausage, Egg, and Cheese breaky, maybe if you give him one he will help you out");
                 System.out.println("Would you like to help him?");
                 System.out.println("1. Yes\n2. No");
                 help = bScan.nextInt();
                 if (help==1){//Helping the student
                     System.out.println("zzzzzzzzzzz...I really need a brekky...zzzzzzzzzzzzz");
                     System.out.println("You gave the student a brekky.");
-                    //Susage Egg and Cheese is deleted from your inventory
+                    //Sausage Egg and Cheese is deleted from your inventory
+                    for (int i = 0; i < 8; i++) {
+                        if ((h.getInvItem(i) == "Sausage") || (h.getInvItem(i) == "Egg") || (h.getInvItem(i) == "Egg")) {
+                            if (h.getInvCount(i) == 1) {
+                                h.replaceInvItem(i, "Empty");
+                                h.replaceInvCount(i, 0);
+                            } else {
+                                int tempCount = h.getInvCount(i) - 1;
+                                h.replaceInvCount(i, tempCount);
+                            }
+                        }
+                    }
                     System.out.println("*student wakes up* Good looks Brotendo. Take this");
                     h.setCoins(h.getCoins()+1000);
                     System.out.println("He gave you 1000 big ones $$$");
                     System.out.println("He also gave you a scroll that says recipe for mega brekky:");
-                    System.out.println("1 Bagel + 1 Cheese + Every Meat makes a great breakfast for taking down CEOs");
+                    System.out.println("3 Bagels + 3 Cheese + Every Meat makes a great breakfast for taking down CEOs");
 
                 }else{
                     System.out.println("That student seemed wise. Maybe he had some valuable information about how to beat the game");
                     System.out.println("Oh well, hopefully you seem him again");
                 }
+                studented = false;
             } else {
                 System.out.println("You found a mysterious room with a healing aura called the LONE RANGER");
                 System.out.println("It gave you +50 health");
                 h.setHealth(h.getHealth()+50);
             }
-
-
         }
     }
 
-//    public static void attacking(Hero h, Enemy e1) {
-//        h.attack(e1);
-//        System.out.println("You attacked the enemy");
-//        if (e1.getHealth() <= 0) {
-//            System.out.println("Enemy health: 0");
-//            System.out.println("You won!");
-//            System.out.println("That enemy dropped some righteous loot");
-//            h.setCoins(h.getCoins()+(h.getLevel()*100));
-//            System.out.println("You now have "+h.getCoins()+" dabloons...CHA CHING $$$");
-//            h.setLevel(h.getLevel()+1);
-//            System.out.println("You also leveled up! level: " + h.getLevel());
-//            battleOn = false;
-//            e1.setHealth(50*h.getLevel());
-//        } else {
-//            System.out.println("Enemy health:" + e1.getHealth());
-//            System.out.println("Now the enemy is attacking you!");
-//            e1.attack(h);
-//            System.out.println("your health:" + h.getHealth());
-//            if (h.getHealth()<=0) {
-//                System.out.println("you died :(");
-//                h.setHealth(100);
-//                battleOn = false;
-//            }
-//        }
-//    }
-    // heal function
 
     public static void healing(Hero h) {
         World w1 = new World();

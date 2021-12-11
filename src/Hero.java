@@ -26,12 +26,12 @@ public class Hero {
         this.inventory[5] = "Empty";
         this.inventory[6] = "Empty";
         this.inventory[7] = "Empty";
-        this.inventoryCount[0] = 2;
+        this.inventoryCount[0] = 0;
         this.inventoryCount[1] = 0;
         this.inventoryCount[2] = 0;
         this.inventoryCount[3] = 0;
         this.inventoryCount[4] = 0;
-        this.inventoryCount[5] = 2;
+        this.inventoryCount[5] = 0;
         this.inventoryCount[6] = 0;
         this.inventoryCount[7] = 0;
 
