@@ -56,8 +56,8 @@ public class World {
         } else {
             e1.setType("Bacon");
         }
-        int encounterR = q.nextInt(20)+1;
-        if (encounterR<=15) {
+        int encounterR = q.nextInt(10)+1;
+        if (encounterR<=9) {
             while (battleOn) { // Main loop while attacking an enemy
 
                 System.out.println("An evil breakfast gremlin of type " + e1.getType() + " is attacking... ");
