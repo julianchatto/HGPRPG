@@ -5,7 +5,7 @@ public class World {
     private int healCount = 0;
     private boolean studented = true;
 
-//merge check
+
     // Attributes
     World() {}
 
@@ -50,7 +50,7 @@ public class World {
             e1.setType("Bacon");
         }
         int encounterR = q.nextInt(20)+1;
-        if (encounterR<=15) {
+        if (encounterR<=1) {
             while (battleOn) { // Main loop while attacking an enemy
 
                 System.out.println("An evil breakfast gremlin of type " + e1.getType() + " is attacking... ");
@@ -78,6 +78,20 @@ public class World {
                                 h.setLevel(h.getLevel() + 1);
                                 System.out.println("You also leveled up! level: " + h.getLevel());
                                 battleOn = false;
+                                int drop = q.nextInt(4)+1;
+                                if (drop==1){
+                                    if (e1.getType().equals("Sausage")){
+                                        System.out.println("The enemy dropped some Sausage!!");
+                                        //add sausage to inventory
+                                    } else if (e1.getType().equals("Pork Roll")){
+                                        //add pork roll to inventory
+                                        System.out.println("The enemy dropped some Pork Roll!!");
+                                    }else if (e1.getType().equals("Bacon")){
+                                        System.out.println("The enemy dropped some Bacon!!");
+                                        //add bacon to your inventory
+                                    }
+                                }
+
                                 e1.setHealth(50 * h.getLevel());
                             } else {
                                 System.out.println("Enemy health:" + e1.getHealth());
@@ -241,7 +255,7 @@ public class World {
                                     int oPCount2 = 0;
                                     for (int i = 0; i < 12; i++) {
                                         if (h.getInvItem(i).equals("OP Heal Potion")) {
-                                            h.setHealth(100);
+                                            h.setHealth(h.getLevel()*100);
                                             if (h.getInvCount(i) == 1) { // changes inventory
                                                 h.replaceInvItem(i, "Empty");
                                                 h.replaceInvCount(i, 0);
