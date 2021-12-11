@@ -99,7 +99,7 @@ public class Hero {
             fB.setHealth(fB.getHealth() - 25+level*5);
             System.out.println("Critical Strike!!");
         } else {
-            fB.setHealth(fB.getHealth() - 40 + level);
+            fB.setHealth(fB.getHealth() - 40*level);
             System.out.println("Magic Power!!");
         }
     }
