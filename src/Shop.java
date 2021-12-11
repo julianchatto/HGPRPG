@@ -2,14 +2,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Shop {
-    private int[] stock = {9, 9, 9, 9};
+    private int[] stock = {9, 9, 9, 9, 9, 9};
     Shop() {}
 
     void goShop(Hero h) {
         Scanner bScan = new Scanner(System.in);
         int userInput;
-        String[] items = {"Bagel", "Egg", "Cheese", "Sausage"};
-        int[] prices = {10, 5, 3, 7};
+        String[] items = {"Bagel", "Egg", "Cheese", "Sausage", "OP Heal Potion", "Regular Heal Potion"};
+        int[] prices = {10, 5, 3, 7, 1000, 100};
 
         int item1 = 0; int item2 = 0; int item3 = 0;
         boolean shopping = true;
@@ -19,19 +19,19 @@ public class Shop {
             Random i1 = new Random();
             Random i2 = new Random();
             Random i3 = new Random();
-            item1 = i1.nextInt(4);
-            item2 = i2.nextInt(4);
-            item3 = i3.nextInt(4);
+            item1 = i1.nextInt(5);
+            item2 = i2.nextInt(5);
+            item3 = i3.nextInt(5);
         }
 
+        System.out.println("\nWelcome to the shop!");
         // Shop
         while (shopping) {
-            System.out.println("Welcome to the shop!");
-            System.out.println("\n\nWhat would you like to buy?\n");
+            System.out.println("\nWhat would you like to buy?\n");
             System.out.println("1. " + items[item1] + ". Price: " + prices[item1] + ". Stock: " + stock[item1] + ".");
             System.out.println("2. " + items[item2] + ". Price: " + prices[item2] + ". Stock: " + stock[item2] + ".");
             System.out.println("3. " + items[item3] + ". Price: " + prices[item3] + ". Stock: " + stock[item3] + ".");
-            System.out.println("4. Cancel.");
+            System.out.println("4. Nothing.");
             userInput = bScan.nextInt();
 
             switch (userInput) {
@@ -46,13 +46,26 @@ public class Shop {
                             if ((userInput <= stock[item1]) && (userInput > 0)) { // enough in stock
                                 if ((prices[item1]*userInput) <= currentCoins) { // checks if user has enough coins
                                     // changes value of hero
-                                    // h.setInventory(); this needs to be fixed
+                                    for (int i = 0; i < 8; i++) { // adds item to inventory
+                                        if (h.getInvItem(i).equals(items[item1])) {
+                                            if (h.getInvCount(i) == 1) {
+                                                h.replaceInvItem(i, items[item1]);
+                                                h.replaceInvCount(i, 1);
+                                            } else {
+                                                int tempCount = h.getInvCount(i) + 1;
+                                                h.replaceInvCount(i, tempCount);
+                                            }
+                                        } else{
+                                            h.replaceInvItem(i, items[item1]);
+                                            h.replaceInvCount(i, 1);
+                                        }
+                                    }
                                     h.setCoins(h.getCoins()-prices[item1]);
                                     stock[item1] = stock[item1] - userInput;
                                     outStock = false;
 
                                     if (userInput > 1) { // more than one item
-                                        System.out.println(userInput + items[item1] + "'s have been added to your inventory.");
+                                        System.out.println(userInput + " " +  items[item1] + "'s have been added to your inventory.");
                                     } else { // one item
                                         System.out.println("A " + items[item1] + "has been added to your inventory.");
                                     }
@@ -90,7 +103,20 @@ public class Shop {
                             if ((userInput <= stock[item2]) && (userInput > 0)) { // enough in stock
                                 if ((prices[item2]*userInput) <= currentCoins) { // checks if user has enough coins
                                     // changes value of hero
-                                    // h.setInventory(); this needs to be fixed
+                                    for (int i = 0; i < 8; i++) { // adds item to inventory
+                                        if (h.getInvItem(i).equals(items[item1])) {
+                                            if (h.getInvCount(i) == 1) {
+                                                h.replaceInvItem(i, items[item1]);
+                                                h.replaceInvCount(i, 1);
+                                            } else {
+                                                int tempCount = h.getInvCount(i) + 1;
+                                                h.replaceInvCount(i, tempCount);
+                                            }
+                                        } else{
+                                            h.replaceInvItem(i, items[item1]);
+                                            h.replaceInvCount(i, 1);
+                                        }
+                                    }
                                     h.setCoins(h.getCoins()-prices[item2]);
                                     stock[item2] = stock[item2] - userInput;
                                     outStock = false;
@@ -133,13 +159,26 @@ public class Shop {
                             if ((userInput <= stock[item3]) && (userInput > 0)) { // enough in stock
                                 if ((prices[item3]*userInput) <= currentCoins) { // checks if user has enough coins
                                     // changes value of hero
-                                    // h.setInventory(); this needs to be fixed
+                                    for (int i = 0; i < 8; i++) { // adds item to inventory
+                                        if (h.getInvItem(i).equals(items[item1])) {
+                                            if (h.getInvCount(i) == 1) {
+                                                h.replaceInvItem(i, items[item1]);
+                                                h.replaceInvCount(i, 1);
+                                            } else {
+                                                int tempCount = h.getInvCount(i) + 1;
+                                                h.replaceInvCount(i, tempCount);
+                                            }
+                                        } else{
+                                            h.replaceInvItem(i, items[item1]);
+                                            h.replaceInvCount(i, 1);
+                                        }
+                                    }
                                     h.setCoins(h.getCoins()-prices[item3]);
                                     stock[item3] = stock[item3] - userInput;
                                     outStock = false;
 
                                     if (userInput > 1) { // more than one item
-                                        System.out.println(userInput + items[item3] + "'s have been added to your inventory.");
+                                        System.out.println(userInput + " " +  items[item3] + "'s have been added to your inventory.");
                                     } else { // one item
                                         System.out.println("A " + items[item3] + "has been added to your inventory.");
                                     }

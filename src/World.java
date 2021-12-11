@@ -35,9 +35,6 @@ public class World {
 
         while (battleOn) { // Main loop while attacking an enemy
 
-            //checking if hero is alive
-
-
             System.out.println("An evil breakfast gremlin of type " + e1.getType() + " is attacking... ");
             System.out.println("Choose an option(1-3)");
             System.out.println("1. Attack");
@@ -48,32 +45,31 @@ public class World {
             switch (userInput) {
                 case 1: // attack
                     //attacking(h,e1);
-
                     if (h.getHealth()<=0) {
                         System.out.println("You are already dead. You must heal first!");
                         battleOn = false;
-                    }
-                    h.attack(e1);
-                    System.out.println("You attacked the enemy");
-                    if (e1.getHealth() <= 0) { //enemy dies
-                        System.out.println("Enemy health: 0");
-                        System.out.println("You won!");
-                        System.out.println("That enemy dropped some righteous loot");
-                        h.setCoins(h.getCoins()+(h.getLevel()*100));
-                        System.out.println("You now have "+h.getCoins()+" dabloons...CHA CHING $$$");
-                        h.setLevel(h.getLevel()+1);
-                        System.out.println("You also leveled up! level: " + h.getLevel());
-                        battleOn = false;
-                        e1.setHealth(50*h.getLevel());
                     } else {
-                        System.out.println("Enemy health:" + e1.getHealth());
-                        System.out.println("Now the enemy is attacking you!");
-                        e1.attack(h);
-                        System.out.println("your health:" + h.getHealth());
-                        if (h.getHealth()<=0) {
-                            System.out.println("you died :(");
-                            h.setHealth(100);
+                        h.attack(e1);
+                        System.out.println("You attacked the enemy");
+                        if (e1.getHealth() <= 0) { //enemy dies
+                            System.out.println("Enemy health: 0");
+                            System.out.println("You won!");
+                            System.out.println("That enemy dropped some righteous loot");
+                            h.setCoins(h.getCoins()+(h.getLevel()*100));
+                            System.out.println("You now have "+h.getCoins()+" dabloons...CHA CHING $$$");
+                            h.setLevel(h.getLevel()+1);
+                            System.out.println("You also leveled up! level: " + h.getLevel());
                             battleOn = false;
+                            e1.setHealth(50*h.getLevel());
+                        } else {
+                            System.out.println("Enemy health:" + e1.getHealth());
+                            System.out.println("Now the enemy is attacking you!");
+                            e1.attack(h);
+                            if (h.getHealth()<=0) {
+                                System.out.println("you died :(");
+                                h.setHealth(100);
+                                battleOn = false;
+                            }
                         }
                     }
                     break;
@@ -135,7 +131,6 @@ public class World {
 
     public static void healing(Hero h) {
         World healCount = new World();
-        String[] inventory = h.getInventory();
         Scanner bScan = new Scanner(System.in);
         boolean healing = true;
         int healCounter = healCount.getHealCount();
@@ -145,7 +140,7 @@ public class World {
 
             System.out.println("How would you like to heal?");
             System.out.println("1. Use a potion.");
-            System.out.println("2. Search for a hidden breakfast burrito.");
+            System.out.println("2. Search for a hidden heal potion.");
             System.out.println("3. No");
             int userInput = bScan.nextInt();
 
@@ -154,10 +149,10 @@ public class World {
 
                     boolean healPotionTF = false;
 
-                    for (int i = 0; i < inventory.length; i++) { // checks if user has heal potion
-                        if (inventory[i].equals("Regular Heal Potion")) {
+                    for (int i = 0; i < 8; i++) { // checks if user has heal potion
+                        if (h.getInvItem(i).equals("Regular Heal Potion")) {
                             healPotionTF = true;
-                        } else if (inventory[i].equals("OP Heal Potion")) {
+                        } else if (h.getInvItem(i).equals("OP Heal Potion")) {
                             healPotionTF = true;
                         }
                     }
@@ -174,27 +169,63 @@ public class World {
 
                             switch (userInput) {
                                 case 1: // Regular heal potion
-
-                                    for (int i = 0; i < inventory.length; i++) { // adds health to hero
-                                        if (inventory[i].equals("Regular Heal Potion")) {
-                                            if (h.getHealth() <= 70) {
+                                    int oPCount = 0;
+                                    for (int i = 0; i < 8; i++) { // adds health to hero
+                                        if (h.getInvItem(i).equals("Regular Heal Potion")) {
+                                            if (h.getHealth() < 70) {
                                                 int tempH = h.getHealth() + 30;
                                                 h.setHealth(tempH);
                                             } else {
                                                 h.setHealth(100);
                                             }
-                                            //h.setInventory();  needs to be fixed
+                                            if (h.getInvCount(i) == 1) {
+                                                h.replaceInvItem(i, "Empty");
+                                                h.replaceInvCount(i,0);
+                                            } else {
+                                                int tempCount = h.getInvCount(i) - 1;
+                                                h.replaceInvCount(i, tempCount);
+                                            }
+                                            oPCount++;
+                                            System.out.println("Regular Heal Potion used!\n");
+                                            System.out.println("Your current health is: " + h.getHealth());
+                                            System.out.println("Would you like to use another one?\n1. Yes\n2. No");
+                                            userInput = bScan.nextInt();
+
+                                            if (userInput == 1) {
+                                                i = 0;
+                                            } else {
+                                                i = 9;
+                                            }
+
                                         }
                                     }
+                                    if (oPCount == 0) {
+                                        System.out.println("You do not have a Regular Heal Potion");
+                                    }
+                                    potionHeal = false;
                                     break;
                                 case 2: // OP heal potion
-                                    for (int i = 0; i < inventory.length; i++) { // sets health to 100
-                                        if (inventory[i].equals("OP Heal Potion")) {
+                                    int oPCount2 = 0;
+                                    for (int i = 0; i < 8; i++) {
+                                        if (h.getInvItem(i).equals("OP Heal Potion")) {
                                             h.setHealth(100);
-
-                                            //h.setInventory();        needs to be fixed
+                                            if (h.getInvCount(i) == 1) { // changes inventory
+                                                h.replaceInvItem(i, "Empty");
+                                                h.replaceInvCount(i, 0);
+                                                i = 9;
+                                            } else {
+                                                int tempCount = h.getInvCount(i) - 1;
+                                                h.replaceInvCount(i, tempCount);
+                                            }
+                                            oPCount2++;
+                                            System.out.println("OP Heal Potion used");
                                         }
+
                                     }
+                                    if (oPCount2 == 0) {
+                                        System.out.println("You do not have an OP Heal Potion");
+                                    }
+                                    potionHeal = false;
                                     break;
                                 case 3:
                                     potionHeal = false;
@@ -216,7 +247,7 @@ public class World {
                         healing = false;
                         healCount.setHealCount(healCounter+1);
                     } else {
-                        System.out.println("You already searched for hidden breakfast burritos in this area!");
+                        System.out.println("You already searched for hidden heal potion in this area!");
                     }
 
                     break;
@@ -233,7 +264,7 @@ public class World {
     public static void hiddenBreaky(Hero h) {
         Scanner bScan = new Scanner(System.in);
         int moves = 0;
-        int potionFound = 0;
+//        int potionFound = 0;
         int potionLocCol = 0;
         int potionLocRow = 0;
 
@@ -258,7 +289,7 @@ public class World {
         } else if (mapRow <= 30 && mapRow > 5) {
             potionLocRow = 1;
         }
-        // sets location to 2,2 if both are originaly 0,0
+        // sets location to 2,2 if both are originally 0,0
         if (potionLocCol == 0 && potionLocRow == 0) {
             potionLocCol = 2;
             potionLocRow = 2;
@@ -304,13 +335,31 @@ public class World {
             }
 
             if (map[potionLocCol][potionLocRow].equals("H")) { // checks if hero is on potion
-                //h.setInventory(); // THIS NEEDS TO BE FIXED
-                System.out.println("You found the hidden breakfast sandwich! Head back to the heal menu if you'd like to use it now.");
-                potionFound++;
-            }
-            if (potionFound == 1) { // breaks out of while loop
+                for (int i = 0; i < 8; i++) {
+                    if (h.getInvItem(i).equals("Regular Heal Potion")) {
+                        int tempCount = h.getInvCount(i) + 1;
+                        h.replaceInvCount(i, tempCount);
+                        i = 9;
+                    } else {
+                        for (int j = 0; j < 8; j++) {
+                            if (h.getInvItem(j).equals("Empty")) {
+                                h.replaceInvCount(j, 1);
+                                j = 9;
+                                h.replaceInvItem(j, "Regular Heal Potion");
+                            }
+                        }
+                    }
+
+                }
+
+                System.out.println("You found the hidden heal potion! Head back to the heal menu if you'd like to use it now.");
+//                potionFound++;
                 moves = 5;
+
             }
+//            if (potionFound == 1) { // breaks out of while loop
+//
+//            }
         }
     }
     // moves right

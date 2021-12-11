@@ -6,6 +6,7 @@ public class Hero {
     private int health;
     private String name;
     private String[] inventory = new String[8];
+    private int[] inventoryCount = new int[8];
     private int coins;
     private int level;
     private String magicPowerType;
@@ -17,6 +18,36 @@ public class Hero {
         this.coins = 0;
         this.level = 1;
         this.magicPowerType = "Fire";
+        this.inventory[0] = "Empty";
+        this.inventory[1] = "Empty";
+        this.inventory[2] = "Empty";
+        this.inventory[3] = "Empty";
+        this.inventory[4] = "Empty";
+        this.inventory[5] = "Empty";
+        this.inventory[6] = "Empty";
+        this.inventory[7] = "Empty";
+        this.inventoryCount[0] = 2;
+        this.inventoryCount[1] = 0;
+        this.inventoryCount[2] = 0;
+        this.inventoryCount[3] = 0;
+        this.inventoryCount[4] = 0;
+        this.inventoryCount[5] = 2;
+        this.inventoryCount[6] = 0;
+        this.inventoryCount[7] = 0;
+
+    }
+    void replaceInvItem(int i, String s) {
+        inventory[i] = s;
+
+    }
+    String getInvItem(int i) {
+        return inventory[i];
+    }
+    void replaceInvCount(int i, int s) {
+        inventoryCount[i] = s;
+    }
+    int getInvCount(int i) {
+        return inventoryCount[i];
     }
 
     //Helper Method
@@ -81,7 +112,7 @@ public class Hero {
         this.name = name;
     }
 
-    public String[] getInventory() {
+    public String[] getInventory(int i) {
         return inventory;
     }
 
@@ -113,10 +144,19 @@ public class Hero {
         this.magicPowerType = magicPowerType;
     }
 
+    public int[] getInventoryCount() {
+        return inventoryCount;
+    }
+
+    public void setInventoryCount(int[] inventoryCount) {
+        this.inventoryCount = inventoryCount;
+    }
+
     @Override
     public String toString() {
         return name+"'s Stats:" +
-                "\nHP:" + health +
+                "\nName: " + getName() +
+                "\nHP: " + health +
                  "\nmagic power: " + magicPowerType +
                 "\ninventory:" + Arrays.toString(inventory) +
                 "\ncoins:" + coins +
