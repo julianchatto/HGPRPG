@@ -10,7 +10,7 @@ public class Enemy {
     // Constructor
     Enemy() {
         this.health = 50;
-        this.attackPower = 15;
+        this.attackPower = 10;
         this.type = "fire";
     }
 
