@@ -36,6 +36,7 @@ public class Hero {
         this.inventoryCount[7] = 0;
 
     }
+    // Allows for interactions with inventory
     void replaceInvItem(int i, String s) {
         inventory[i] = s;
 
