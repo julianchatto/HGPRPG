@@ -31,74 +31,79 @@ public class World {
         } else {
             e1.setType("Bacon");
         }
+        int encounterR = q.nextInt(20)+1;
+        if (encounterR<=15) {
+            while (battleOn) { // Main loop while attacking an enemy
 
+                System.out.println("An evil breakfast gremlin of type " + e1.getType() + " is attacking... ");
+                System.out.println("Choose an option(1-3)");
+                System.out.println("1. Attack");
+                System.out.println("2. Heal");
+                System.out.println("3. Run Away");
+                userInput = bScan.nextInt();
 
-        while (battleOn) { // Main loop while attacking an enemy
-
-            System.out.println("An evil breakfast gremlin of type " + e1.getType() + " is attacking... ");
-            System.out.println("Choose an option(1-3)");
-            System.out.println("1. Attack");
-            System.out.println("2. Heal");
-            System.out.println("3. Run Away");
-            userInput = bScan.nextInt();
-
-            switch (userInput) {
-                case 1: // attack
-                    //attacking(h,e1);
-                    if (h.getHealth()<=0) {
-                        System.out.println("You are already dead. You must heal first!");
-                        battleOn = false;
-                    } else {
-                        h.attack(e1);
-                        System.out.println("You attacked the enemy");
-                        if (e1.getHealth() <= 0) { //enemy dies
-                            System.out.println("Enemy health: 0");
-                            System.out.println("You won!");
-                            System.out.println("That enemy dropped some righteous loot");
-                            h.setCoins(h.getCoins()+(h.getLevel()*100));
-                            System.out.println("You now have "+h.getCoins()+" dabloons...CHA CHING $$$");
-                            h.setLevel(h.getLevel()+1);
-                            System.out.println("You also leveled up! level: " + h.getLevel());
+                switch (userInput) {
+                    case 1: // attack
+                        //attacking(h,e1);
+                        if (h.getHealth() <= 0) {
+                            System.out.println("You are already dead. You must heal first!");
                             battleOn = false;
-                            e1.setHealth(50*h.getLevel());
                         } else {
-                            System.out.println("Enemy health:" + e1.getHealth());
-                            System.out.println("Now the enemy is attacking you!");
-                            e1.attack(h);
-                            if (h.getHealth()<=0) {
-                                System.out.println("you died :(");
-                                h.setHealth(100);
+                            h.attack(e1);
+                            System.out.println("You attacked the enemy");
+                            if (e1.getHealth() <= 0) { //enemy dies
+                                System.out.println("Enemy health: 0");
+                                System.out.println("You won!");
+                                System.out.println("That enemy dropped some righteous loot");
+                                h.setCoins(h.getCoins() + (h.getLevel() * 100));
+                                System.out.println("You now have " + h.getCoins() + " dabloons...CHA CHING $$$");
+                                h.setLevel(h.getLevel() + 1);
+                                System.out.println("You also leveled up! level: " + h.getLevel());
                                 battleOn = false;
+                                e1.setHealth(50 * h.getLevel());
+                            } else {
+                                System.out.println("Enemy health:" + e1.getHealth());
+                                System.out.println("Now the enemy is attacking you!");
+                                e1.attack(h);
+                                if (h.getHealth() <= 0) {
+                                    System.out.println("you died :(");
+                                    h.setHealth(100);
+                                    battleOn = false;
+                                } else {
+                                    System.out.println("Your health: " + h.getHealth());
+                                }
                             }
                         }
-                    }
-                    break;
-                case 2: // heal
-                    healing(h);
-                    break;
-                case 3: // run away
-                    Random r = new Random();//40% you cannot get away and the gremlin attacks you
-                    if (h.getHealth()>10) { //can't die while running away bc that's lame
-                        int esc = r.nextInt(10) + 1;
-                        if (esc <= 4) {
-                            System.out.println("the gremlin wont stop chasing you");
-                            h.setHealth(h.getHealth() - 10);
-                            System.out.println("your health:" + h.getHealth());
-                            break;
+                        break;
+                    case 2: // heal
+                        healing(h);
+                        break;
+                    case 3: // run away
+                        Random r = new Random();//40% you cannot get away and the gremlin attacks you
+                        if (h.getHealth() > 10) { //can't die while running away bc that's lame
+                            int esc = r.nextInt(10) + 1;
+                            if (esc <= 4) {
+                                System.out.println("the gremlin wont stop chasing you");
+                                h.setHealth(h.getHealth() - 10);
+                                System.out.println("your health:" + h.getHealth());
+                                break;
+                            } else {
+                                System.out.println("You ran away...phew");
+                                battleOn = false;
+                                break;
+                            }
                         } else {
-                            System.out.println("You ran away...phew");
+                            System.out.println("You ran away");
                             battleOn = false;
                             break;
                         }
-                    }else{
-                        System.out.println("You ran away");
-                        battleOn = false;
-                        break;
-                    }
-                default:
-                    System.out.println("Wrong Input");
+                    default:
+                        System.out.println("Wrong Input");
 
-            }
+                }
+            }//Gremlin Encounter
+        }else{
+
         }
     }
 
