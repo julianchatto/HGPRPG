@@ -135,10 +135,10 @@ public class World {
     // heal function
 
     public static void healing(Hero h) {
-        World healCount = new World();
+        World w1 = new World();
         Scanner bScan = new Scanner(System.in);
         boolean healing = true;
-        int healCounter = healCount.getHealCount();
+        int healCounter = w1.getHealCount();
 
 
         while (healing) { // main loop for healing
@@ -250,7 +250,7 @@ public class World {
                     if (healCounter == 0) {
                         hiddenBreaky(h);
                         healing = false;
-                        healCount.setHealCount(healCounter+1);
+                        w1.setHealCount(1);
                     } else {
                         System.out.println("You already searched for hidden heal potion in this area!");
                     }
@@ -269,7 +269,6 @@ public class World {
     public static void hiddenBreaky(Hero h) {
         Scanner bScan = new Scanner(System.in);
         int moves = 0;
-//        int potionFound = 0;
         int potionLocCol = 0;
         int potionLocRow = 0;
 
@@ -340,31 +339,31 @@ public class World {
             }
 
             if (map[potionLocCol][potionLocRow].equals("H")) { // checks if hero is on potion
+                int potionReplace = 0;
                 for (int i = 0; i < 8; i++) {
                     if (h.getInvItem(i).equals("Regular Heal Potion")) {
                         int tempCount = h.getInvCount(i) + 1;
                         h.replaceInvCount(i, tempCount);
                         i = 9;
-                    } else {
-                        for (int j = 0; j < 8; j++) {
-                            if (h.getInvItem(j).equals("Empty")) {
-                                h.replaceInvCount(j, 1);
-                                j = 9;
-                                h.replaceInvItem(j, "Regular Heal Potion");
-                            }
+                        potionReplace++;
+                    }
+                }
+                if (potionReplace == 0) {
+                    for (int j = 0; j < 8; j++) {
+                        if (h.getInvItem(j).equals("Empty")) {
+                            h.replaceInvCount(j, 1);
+                            h.replaceInvItem(j, "Regular Heal Potion");
+                            j = 9;
+
                         }
                     }
-
                 }
 
                 System.out.println("You found the hidden heal potion! Head back to the heal menu if you'd like to use it now.");
-//                potionFound++;
                 moves = 5;
 
             }
-//            if (potionFound == 1) { // breaks out of while loop
-//
-//            }
+
         }
     }
     // moves right

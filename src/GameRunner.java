@@ -45,11 +45,12 @@ public class GameRunner {
             System.out.println("Choose an option (1-5):\n");
             System.out.println("1. Roam the World");
             System.out.println("2. Check hero stats");
-            System.out.println("3. Shop");
-            System.out.println("4. Crafting Table");
-            System.out.println("5. Final Boss Battle");
-            System.out.println("6. Quit Game");
-            System.out.println("7. View Inventory");
+            System.out.println("3. View Inventory");
+            System.out.println("4. Shop");
+            System.out.println("5. Crafting Table");
+            System.out.println("6. Final Boss Battle");
+            System.out.println("7. Quit Game");
+
 
             int userInput = scan.nextInt();
 
@@ -63,14 +64,18 @@ public class GameRunner {
                     System.out.println(h);
                     break;
                 case 3:
+                    // View Inventory
+                    System.out.println(h.toStringInventory());
+                    break;
+                case 4:
                     //shop
                     g.goShop(h);
                     break;
-                case 4:
+                case 5:
                     // Crafting Table
                     cT.crafting(h);
                     break;
-                case 5:
+                case 6:
                     // final boss
                     if (h.getLevel() < 5) {
                         System.out.println("The Aramark CEO is no joke! Come back again when you level up.");
@@ -79,14 +84,10 @@ public class GameRunner {
                         System.out.println("You are fighting the final brekky boss. Good Luck. You'll need it.");
                     }
                     break;
-                case 6:
+                case 7:
                     // end game
                     gameOn = false;
                     System.out.println("Thanks for playing. You get no brekkys.");
-                    break;
-                case 7:
-                    // View Inventory
-                    System.out.println(h.toStringInventory());
                     break;
                 default:
                     System.out.println("INVALID INPUT. TRY AGAIN." );
