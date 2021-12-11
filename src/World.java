@@ -22,7 +22,7 @@ public class World {
         boolean battleOn = true;
         int userInput;
         int help;
-        boolean haveBrekky = false;
+        boolean haveBrekky = true;
         //Check for sausage egg and cheese in inventory and if they have it set haveBrekky to true
         Random q = new Random();
        //Randomizes enemy type
@@ -116,14 +116,15 @@ public class World {
                     System.out.println("zzzzzzzzzzz...I really need a brekky...zzzzzzzzzzzzz");
                     System.out.println("You gave the student a brekky.");
                     //Susage Egg and Cheese is deleted from your inventory
-                    System.out.println("Thank you kind traveler. Take this");
+                    System.out.println("*student wakes up* Good looks Brotendo. Take this");
                     h.setCoins(h.getCoins()+1000);
                     System.out.println("He gave you 1000 big ones $$$");
                     System.out.println("He also gave you a scroll that says recipe for mega brekky:");
                     System.out.println("1 Bagel + 1 Cheese + Every Meat makes a great breakfast for taking down CEOs");
 
                 }else{
-                    System.out.println("Ok, he really needed a brekky tho");
+                    System.out.println("That student seemed wise. Maybe he had some valuable information about how to beat the game");
+                    System.out.println("Oh well, hopefully you seem him again");
                 }
             } else {
                 System.out.println("You found a mysterious room with a healing aura called the LONE RANGER");
