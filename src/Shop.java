@@ -57,7 +57,7 @@ public class Shop {
                                     }
                                     if (potionCount1 == 0) {
                                         for (int i = 0; i < 12; i++) { // adds item to inventory
-                                            if (h.getInvItem(i).equals(items[item1])) {
+                                            if (h.getInvItem(i).equals("Empty")) {
                                                 h.replaceInvItem(i, items[item1]);
                                                 h.replaceInvCount(i, 1);
                                                 i=13;
@@ -118,7 +118,7 @@ public class Shop {
                                     }
                                     if (potionCount1 == 0) {
                                         for (int i = 0; i < 12; i++) { // adds item to inventory
-                                            if (h.getInvItem(i).equals(items[item2])) {
+                                            if (h.getInvItem(i).equals("Empty")) {
                                                 h.replaceInvItem(i, items[item2]);
                                                 h.replaceInvCount(i, 1);
                                                 i=13;
@@ -178,7 +178,7 @@ public class Shop {
                                     }
                                     if (potionCount1 == 0) {
                                         for (int i = 0; i < 13; i++) { // adds item to inventory
-                                            if (h.getInvItem(i).equals(items[item3])) {
+                                            if (h.getInvItem(i).equals("Empty")) {
                                                 h.replaceInvItem(i, items[item3]);
                                                 h.replaceInvCount(i, 1);
                                                 i=9;
