@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class CraftingTable {
     void crafting (Hero h){
+        World w1 = new World();
         Scanner bScan = new Scanner(System.in);
         boolean craftInProg = true;
 
@@ -12,7 +13,8 @@ public class CraftingTable {
                             {"|  |  ", "|  |  ", "|  |  "}};
 
         printTable(table);
-
+        if (w1.isStudented() == false)
+        System.out.println("What would you like to craft?\n1. Bacon Egg N'Cheese\n2. Sausage Egg N'Cheese\n3. Pork Roll Egg N'Cheese");
         while (craftInProg) {
             System.out.println("What would you like to place in the inventory?\nBagel");
             String userInput = bScan.next();

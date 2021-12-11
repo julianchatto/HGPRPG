@@ -9,6 +9,14 @@ public class World {
     // Attributes
     World() {}
 
+    public boolean isStudented() {
+        return studented;
+    }
+
+    public void setStudented(boolean studented) {
+        this.studented = studented;
+    }
+
     public int getHealCount() {
         return healCount;
     }
@@ -31,7 +39,6 @@ public class World {
                 counter++;
             } else if (h.getInvItem(i) == "Egg") {
                 counter++;
-
             } else if (h.getInvItem(i) == "Cheese") {
                 counter++;
             }
@@ -82,6 +89,7 @@ public class World {
                                 if (drop==1){
                                     if (e1.getType().equals("Sausage")){
                                         System.out.println("The enemy dropped some Sausage!!");
+
                                         //add sausage to inventory
                                     } else if (e1.getType().equals("Pork Roll")){
                                         //add pork roll to inventory
@@ -161,12 +169,13 @@ public class World {
                     System.out.println("He gave you 1000 big ones $$$");
                     System.out.println("He also gave you a scroll that says recipe for mega brekky:");
                     System.out.println("3 Bagels + 3 Cheese + Every Meat makes a great breakfast for taking down CEOs");
+                    studented = false;
 
                 }else{
                     System.out.println("That student seemed wise. Maybe he had some valuable information about how to beat the game");
                     System.out.println("Oh well, hopefully you seem him again");
                 }
-                studented = false;
+
             } else {
                 System.out.println("You found a mysterious room with a healing aura called the LONE RANGER");
                 System.out.println("It gave you +50 health");
