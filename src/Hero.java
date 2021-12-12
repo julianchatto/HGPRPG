@@ -13,10 +13,10 @@ public class Hero {
 
     // Constructor
     Hero() {
-        this.health = 1000;
+        this.health = 100;
         this.name = "Petcaugh";
         this.coins = 0;
-        this.level = 6;
+        this.level = 1;
         this.magicPowerType = "Fire";
         this.inventory[0] = "Empty";
         this.inventory[1] = "Empty";
@@ -60,51 +60,53 @@ public class Hero {
         return inventoryCount[i];
     }
 
-    //Helper Method
-    void attack(Enemy e) { // e becomes e1, or e2, or e3
+    // hero attack enemy
+    void attack(Enemy e) {
         Random r = new Random();
-        // 20% of the time it is a CRITICAL HIT, 2 * AP
         int rand = r.nextInt(15)+1;
+
         if (rand <= 9) { // normal
             e.setHealth(e.getHealth() - 25*level);
             System.out.println("You hit a normal strike");
         } else if (rand >= 14) {  // critical strike
             e.setHealth(e.getHealth() - 25+level*2);
             System.out.println("Critical Strike!!");
-        } else {
-            if (e.getType().equals("Sausage")&& magicPowerType.equals("Sausage Slammer")){
+        } else { // magic power
+
+            if (e.getType().equals("Sausage") && magicPowerType.equals("Sausage Slammer")) { // sausage
                 System.out.println("YOU USED YOUR MAGIC POWER TO HIT A SAUSAGE SLAM!! SUPER EFFECTIVE!!");
                 e.setHealth(e.getHealth() - 40*level*2);
-            }else if (e.getType().equals("Pork Roll")&& magicPowerType.equals("Pork Roll Pounder")){
+            } else if (e.getType().equals("Pork Roll") && magicPowerType.equals("Pork Roll Pounder")) { // pork roll
                 System.out.println("YOU USED YOUR MAGIC POWER TO ABSOLUTELY POUND THAT PORK ROLL GREMLIN!! SUPER EFFECTIVE!");
                 e.setHealth(e.getHealth() - 40*level*2);
-            }else if (e.getType().equals("Bacon")&& magicPowerType.equals("Bacon Beast")){
+            } else if (e.getType().equals("Bacon") && magicPowerType.equals("Bacon Beast")) { // bacon
                 System.out.println("YOU ARE A BACON BEAST SO YOUR MAGIC POWER ATTACK WAS SUPER EFFECTIVE!");
                 e.setHealth(e.getHealth() - 40*level*2);
-            }else{
+            } else { // basic magic power
                 e.setHealth(e.getHealth() - 40*level);
                 System.out.println("Magic Power!!");
             }
         }
     }
 
-    void attackFB(FBcharacteristics fB) { // e becomes e1, or e2, or e3
+    // hero attack final boss
+    void attackFB(FBcharacteristics fB) {
         Random r = new Random();
-        // 20% of the time it is a CRITICAL HIT, 2 * AP
         int rand = r.nextInt(15)+1;
+
         if (rand <= 9) { // normal
             fB.setHealth(fB.getHealth() - 25*level);
             System.out.println("You hit a normal strike");
         } else if (rand >= 13) {  // critical strike
             fB.setHealth(fB.getHealth() - 25+level*5);
             System.out.println("Critical Strike!!");
-        } else {
+        } else { // Magic power
             fB.setHealth(fB.getHealth() - 40*level);
             System.out.println("Magic Power!!");
         }
     }
 
-    // Methods
+    // getters/setters
 
     public int getHealth() {
         return health;
@@ -146,6 +148,7 @@ public class Hero {
         this.magicPowerType = magicPowerType;
     }
 
+    // hero stats
     @Override
     public String toString() {
         return name+"'s Stats:" +
@@ -157,7 +160,7 @@ public class Hero {
                 "\nLevel:" + level;
     }
 
-    public String toStringInventory() {
+    public String toStringInventory() { // prints just inventory
         System.out.println("\n");
         for (int i = 0; i < 12; i++) {
             System.out.println(i+1 + ": " + inventory[i] + ", Count: " + inventoryCount[i]);

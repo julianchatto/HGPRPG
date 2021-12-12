@@ -76,20 +76,19 @@ public class World {
                                         battleOn = false;
                                     } else {
                                         h.attack(e1);
-                                        System.out.println("You attacked the enemy");
                                         if (e1.getHealth() <= 0) { //enemy dies
-                                            System.out.println("Enemy health: 0");
-                                            System.out.println("You won!");
-                                            System.out.println("That enemy dropped some righteous loot");
+                                            System.out.println("\nEnemy health: 0");
+                                            System.out.println("\n\nYou won!");
+                                            System.out.println("\nThat enemy dropped some righteous loot:");
                                             h.setCoins(h.getCoins() + (h.getLevel() * 100));
                                             System.out.println("You now have " + h.getCoins() + " dabloons...CHA CHING $$$");
                                             h.setLevel(h.getLevel() + 1);
                                             System.out.println("You also leveled up! level: " + h.getLevel());
                                             battleOn = false;
                                             int drop = q.nextInt(4) + 1;
-                                            if (drop == 1) {
+                                            if (drop <= 2) {
                                                 if (e1.getType().equals("Sausage")) {
-                                                    System.out.println("The enemy dropped some Sausage!!");
+                                                    System.out.println("The enemy also dropped some Sausage!!");
                                                     int counts = 0;
                                                     for (int i = 0; i < 12; i++) {
                                                         if (h.getInvItem(i).equals("Sausage")) {
@@ -107,9 +106,9 @@ public class World {
                                                             }
                                                         }
                                                     }
-                                                    //add sausage to inventory
+
                                                 } else if (e1.getType().equals("Pork Roll")) {
-                                                    System.out.println("The enemy dropped some Pork Roll!!");
+                                                    System.out.println("The enemy also dropped some Pork Roll!!");
                                                     //add pork roll to inventory
                                                     int counts = 0;
                                                     for (int i = 0; i < 12; i++) {
@@ -130,7 +129,7 @@ public class World {
                                                     }
 
                                                 } else if (e1.getType().equals("Bacon")) {
-                                                    System.out.println("The enemy dropped some Bacon!!");
+                                                    System.out.println("The enemy also dropped some Bacon!!");
                                                     //add bacon to your inventory
                                                     int counts = 0;
                                                     for (int i = 0; i < 12; i++) {
@@ -420,11 +419,11 @@ public class World {
                         if (h.getHealth() > 10) { //can't die while running away bc that's lame
                             int esc = r.nextInt(10) + 1;
                             if (esc <= 4) {
-                                System.out.println("the gremlin wont stop chasing you");
+                                System.out.println("The evil gremlin wont stop chasing you!");
                                 h.setHealth(h.getHealth() - 10);
-                                System.out.println("your health:" + h.getHealth());
+                                System.out.println("\nYour health:" + h.getHealth()+ "\n");
                             } else {
-                                System.out.println("You ran away...phew");
+                                System.out.println("You ran away...phew\n");
                                 battleOn = false;
                             }
                         } else {

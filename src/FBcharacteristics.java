@@ -9,7 +9,7 @@ public class FBcharacteristics {
         this.health = 800;
         this.attackPower = 100;
     }
-
+    // getter/setter
     public int getHealth() {
         return health;
     }
@@ -18,10 +18,11 @@ public class FBcharacteristics {
         this.health = health;
     }
 
+    // final boss attacks hero
     void attackFB (Hero h) {
         Random r = new Random();
-        // 20% of the time it is a CRITICAL HIT, 5 * AP
         int rand = r.nextInt(10) + 1;
+
         if (rand <= 8) { // normal
             h.setHealth(h.getHealth() - (attackPower));
             System.out.println("Normal Strike bozo.");

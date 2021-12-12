@@ -17,20 +17,20 @@ public class GameRunner {
         boolean magicPowering = true;
 
 
-
+        // sets users magic type
         while (magicPowering) {
             System.out.println("What would you like your magic power to be?");
             System.out.println("1. Sausage Slammer- Strong against sausage type gremlins but weak against Pork Roll");
             System.out.println("2. Pork Roll Pounder- Strong against Pork Roll gremlins but weak against Bacon");
             System.out.println("3. Bacon Beast- Strong against Bacon but weak against Sausage");
             int magicPower = scan.nextInt();
-            if (magicPower == 2) {
+            if (magicPower == 2) { // pork roll
                 h.setMagicPowerType("Pork Roll Pounder");
                 magicPowering = false;
-            } else if (magicPower == 3) {
+            } else if (magicPower == 3) { // bacon
                 h.setMagicPowerType("Bacon Beast");
                 magicPowering = false;
-            } else if (magicPower == 1 ) {
+            } else if (magicPower == 1 ) { // sausage
                 h.setMagicPowerType("Sausage Slammer");
                 magicPowering = false;
             } else {
@@ -50,8 +50,6 @@ public class GameRunner {
             System.out.println("5. Crafting Table");
             System.out.println("6. Final Boss Battle");
             System.out.println("7. Quit Game");
-
-
             int userInput = scan.nextInt();
 
             switch(userInput) {

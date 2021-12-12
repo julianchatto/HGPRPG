@@ -1,5 +1,3 @@
-
-
 import java.util.Scanner;
 
 public class CraftingTable {
@@ -19,8 +17,9 @@ public class CraftingTable {
 
             int userInput = bScan.nextInt();
             switch (userInput) {
-                case 1:
+                case 1: // Bacon
                     int counter = 0;
+                    // checks for materials
                     for (int i = 0; i < 12; i++) {
                         if (h.getInvItem(i).equals("Bacon")) {
                             counter++;
@@ -34,6 +33,7 @@ public class CraftingTable {
                             }
                         }
                     }
+                    // removes materials and changes values
                     if (counter == 4) {
                         for (int i = 0; i < 12; i++) {
                             if (h.getInvItem(i).equals("Bacon")) {
@@ -70,14 +70,16 @@ public class CraftingTable {
                                 }
                             }
                         }
+                        // prints table
                         table[0][1] = "| Bagel |  ";
                         table[1][1] = "| Bacon |  ";
                         table[2][1] = "| Egg |  ";
                         table[3][1] = "| Cheese |  ";
                         table[4][1] = "| Bagel |  ";
                         printTable(table);
+
                         int test = 0;
-                        for (int i = 0; i < 12; i++) {
+                        for (int i = 0; i < 12; i++) { // changes inventory count
                             if (h.getInvItem(i).equals("Bacon Egg N'Cheese")) {
                                 int tcount = h.getInvCount(i) + 1;
                                 h.replaceInvCount(i,tcount);
@@ -85,7 +87,7 @@ public class CraftingTable {
                             }
                         }
                         if (test == 0) {
-                            for (int i = 0; i < 12; i++) {
+                            for (int i = 0; i < 12; i++) { // adds to inventory
                                 if (h.getInvItem(i).equals("Empty")) {
                                     h.replaceInvItem(i,"Bacon Egg N'Cheese");
                                     h.replaceInvCount(i,1);
@@ -101,7 +103,7 @@ public class CraftingTable {
                     break;
                 case 2:
                     int counter2 = 0;
-                    for (int i = 0; i < 8; i++) {
+                    for (int i = 0; i < 8; i++) { // checks for materials
                         if (h.getInvItem(i).equals("Sausage")) {
                             counter2++;
                         } else if (h.getInvItem(i).equals("Egg")) {
@@ -114,6 +116,7 @@ public class CraftingTable {
                             }
                         }
                     }
+                    // removes materials and changes values
                     if (counter2 == 4) {
                         for (int i = 0; i < 12; i++) {
                             if (h.getInvItem(i).equals("Sausage")) {
@@ -150,14 +153,16 @@ public class CraftingTable {
                                 }
                             }
                         }
+                        //prints table
                         table[0][1] = "| Bagel |  ";
                         table[1][1] = "| Sausage |  ";
                         table[2][1] = "| Egg |  ";
                         table[3][1] = "| Cheese |  ";
                         table[4][1] = "| Bagel |  ";
                         printTable(table);
+
                         int test = 0;
-                        for (int i = 0; i < 12; i++) {
+                        for (int i = 0; i < 12; i++) { // changes inventory count
                             if (h.getInvItem(i).equals("Sausage Egg N'Cheese")) {
                                 int tCount = h.getInvCount(i) + 1;
                                 h.replaceInvCount(i,tCount);
@@ -165,7 +170,7 @@ public class CraftingTable {
                             }
                         }
                         if (test == 0) {
-                            for (int i = 0; i < 12; i++) {
+                            for (int i = 0; i < 12; i++) { // adds to inventory
                                 if (h.getInvItem(i).equals("Empty")) {
                                     h.replaceInvItem(i,"Sausage Egg N'Cheese");
                                     h.replaceInvCount(i,1);
@@ -181,7 +186,7 @@ public class CraftingTable {
                     break;
                 case 3:
                     int counter3 = 0;
-                    for (int i = 0; i < 8; i++) {
+                    for (int i = 0; i < 8; i++) { // checks for materials
                         if (h.getInvItem(i).equals("Pork Roll")) {
                             counter3++;
                         } else if (h.getInvItem(i).equals("Egg")) {
@@ -194,6 +199,7 @@ public class CraftingTable {
                             }
                         }
                     }
+                    // removes materials and changes values
                     if (counter3 == 4) {
                         for (int i = 0; i < 12; i++) {
                             if (h.getInvItem(i).equals("Pork Roll")) {
@@ -230,14 +236,16 @@ public class CraftingTable {
                                 }
                             }
                         }
+                        //prints table
                         table[0][1] = "| Bagel |  ";
                         table[1][1] = "| Pork Roll |  ";
                         table[2][1] = "| Egg |  ";
                         table[3][1] = "| Cheese |  ";
                         table[4][1] = "| Bagel |  ";
                         printTable(table);
+
                         int test = 0;
-                        for (int i = 0; i < 12; i++) {
+                        for (int i = 0; i < 12; i++) { // changes count
                             if (h.getInvItem(i).equals("Pork Roll Egg N'Cheese")) {
                                 int tCount = h.getInvCount(i) + 1;
                                 h.replaceInvCount(i,tCount);
@@ -245,7 +253,7 @@ public class CraftingTable {
                             }
                         }
                         if (test == 0) {
-                            for (int i = 0; i < 12; i++) {
+                            for (int i = 0; i < 12; i++) { // adds to inventory
                                 if (h.getInvItem(i).equals("Empty")) {
                                     h.replaceInvItem(i,"Pork Roll Egg N'Cheese");
                                     h.replaceInvCount(i,1);
@@ -264,7 +272,7 @@ public class CraftingTable {
                     break;
                 case 7: // Mega brek
                     int counter4 = 0;
-                    for (int i = 0; i < 8; i++) {
+                    for (int i = 0; i < 8; i++) { // checks for materials
                         if (h.getInvItem(i).equals("Pork Roll")) {
                             counter4++;
                         } else if (h.getInvItem(i).equals("Egg")) {
@@ -285,6 +293,7 @@ public class CraftingTable {
                             counter4++;
                         }
                     }
+                    // removes materials and changes values
                     if (counter4 == 6) {
                         for (int i = 0; i < 12; i++) {
                             if (h.getInvItem(i).equals("Pork Roll")) {
@@ -351,14 +360,15 @@ public class CraftingTable {
                         table[3][0] = "|  |  "; table[3][2] = "|  |  ";
                         table[4][0] = "|  |  "; table[4][2] = "|  |  ";
                         int test = 0;
-                        for (int i = 0; i < 12; i++) {
+
+                        for (int i = 0; i < 12; i++) { // changes count
                             if (h.getInvItem(i).equals("Mega Brekky")) {
                                 int tCount = h.getInvCount(i) + 1;
                                 h.replaceInvCount(i,tCount);
                                 test++;
                             }
                         }
-                        if (test == 0) {
+                        if (test == 0) { // adds to inventory
                             for (int i = 0; i < 12; i++) {
                                 if (h.getInvItem(i).equals("Empty")) {
                                     h.replaceInvItem(i,"Mega Brekky");
@@ -381,6 +391,7 @@ public class CraftingTable {
         }
     }
 
+    //prints table
     public static void printTable(String[][] table) {
         System.out.println("\nCrafting table:");
         for (int row = 0; row < 5; row++) { // prints  crafting table

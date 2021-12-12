@@ -10,7 +10,6 @@ public class Shop {
         int userInput;
         String[] items = {"Bagel", "Egg", "Cheese", "Sausage", "OP Heal Potion", "Regular Heal Potion", "Bacon", "Pork Roll"};
         int[] prices = {10, 5, 3, 7, 1000, 100, 7, 7};
-
         int item1 = 0; int item2 = 0; int item3 = 0;
         boolean shopping = true;
 
@@ -64,6 +63,7 @@ public class Shop {
                                             }
                                         }
                                     }
+                                    // changes hero/shop values
                                     h.setCoins(h.getCoins()-prices[item1]);
                                     stock[item1] = stock[item1] - userInput;
                                     outStock = false;
@@ -125,12 +125,13 @@ public class Shop {
                                             }
                                         }
                                     }
+                                    // changes hero/shop values
                                     h.setCoins(h.getCoins()-prices[item2]);
                                     stock[item2] = stock[item2] - userInput;
                                     outStock = false;
 
                                     if (userInput > 1) { // more than one item
-                                        System.out.println(userInput + items[item2] + "'s have been added to your inventory.");
+                                        System.out.println(userInput  + " " + items[item2] + "'s have been added to your inventory.");
                                     } else { // one item
                                         System.out.println("A " + items[item2] + "has been added to your inventory.");
                                     }
@@ -185,6 +186,7 @@ public class Shop {
                                             }
                                         }
                                     }
+                                    // changes hero/shop values
                                     h.setCoins(h.getCoins()-prices[item3]);
                                     stock[item3] = stock[item3] - userInput;
                                     outStock = false;

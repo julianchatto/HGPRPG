@@ -5,8 +5,6 @@ public class Enemy {
     private int attackPower;
     private String type;
 
-
-
     // Constructor
     Enemy() {
         this.health = 50;
@@ -14,34 +12,36 @@ public class Enemy {
         this.type = "fire";
     }
 
+    // enemy attack hero
     void attack(Hero h) {
         Random r = new Random();
-        // 20% of the time it is a CRITICAL HIT, 2 * AP
         int rand = r.nextInt(15)+1;
+
         if (rand <= 9) { // normal
             h.setHealth(h.getHealth() - (attackPower*h.getLevel()));
             System.out.println("They hit a Normal Strike");
-        } else if (rand>=14){  // critical strike
+        } else if (rand>=14) {  // critical strike
             h.setHealth(h.getHealth() - (attackPower*2*h.getLevel()));
             System.out.println("THEY HIT A CRITICAL STRIKE!!...darn");
-        }else{
-            if (type.equals("Sausage") && h.getMagicPowerType().equals("Bacon Beast")){
+        } else { // magic
+
+            if (type.equals("Sausage") && h.getMagicPowerType().equals("Bacon Beast")) { // sausage w/ bacon
                 System.out.println("The Gremlin hit a super effective Magic Strike");
                 h.setHealth(h.getHealth()-((attackPower+30)*h.getLevel()*2));
-            }else if (type.equals("Pork Roll") && h.getMagicPowerType().equals("Sausage Slammer")){
+            } else if (type.equals("Pork Roll") && h.getMagicPowerType().equals("Sausage Slammer")) { // pork roll w/ bacon
                 System.out.println("The Gremlin hit a super effective Magic Strike");
                 h.setHealth(h.getHealth()-((attackPower+30)*h.getLevel()*2));
-            }else if (type.equals("Bacon") && h.getMagicPowerType().equals("Pork Roll Pounder")){
+            } else if (type.equals("Bacon") && h.getMagicPowerType().equals("Pork Roll Pounder")) { // bacon w/ pork roll
                 System.out.println("The Gremlin hit a super effective Magic Strike");
                 h.setHealth(h.getHealth()-((attackPower+30)*h.getLevel()*2));
-            }else{
+            } else { // regular magic
                 h.setHealth(h.getHealth()-((attackPower+20)*h.getLevel()));
                 System.out.println("They hit a Magic Strike!");
             }
         }
 
     }
-
+    // getters/setters
     public int getHealth() {
         return health;
     }
@@ -65,15 +65,5 @@ public class Enemy {
     public void setType(String type) {
         this.type = type;
     }
-
-    @Override
-    public String toString() {
-        return "Enemy" +
-                "health:" + health +
-                "Attack Power:" + attackPower +
-                "type: '" + type + '\'' +
-                '}';
-    }
-
 
 }

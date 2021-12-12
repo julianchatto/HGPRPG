@@ -11,7 +11,7 @@ public class FinalBoss {
         int userInput;
         Scanner s = new Scanner(System.in);
         while(bossing){
-            System.out.println("The CEO stands in your path...");
+            System.out.println("\nThe CEO stands in your path...");
             System.out.println("Choose an option(1-3)");
             System.out.println("1. Attack");
             System.out.println("2. Heal");
@@ -30,15 +30,15 @@ public class FinalBoss {
                                     bossing = false;
                                 } else {
                                     h.attackFB(fB1);
-                                    System.out.println("You attacked the enemy");
                                     if (fB1.getHealth() <= 0) { //enemy dies
-                                        System.out.println("Enemy health: 0");
-                                        System.out.println("You won!");
-                                        System.out.println("That Aramark CEO dropped some righteous loot");
+                                        System.out.println("\nAramark CEO health: 0");
+                                        System.out.println("\nYou won!");
+                                        System.out.println("\n\nThat Aramark CEO dropped some righteous loot:");
                                         h.setCoins(2147483647);
                                         System.out.println("You now have " + h.getCoins() + " dabloons...CHA CHING $$$");
-                                        h.setLevel(h.getLevel() + 1);
+                                        h.setLevel(2147483647);
                                         System.out.println("You also leveled up! level: " + h.getLevel());
+                                        h.setHealth(2147483647);
                                         bossing = false;
                                     } else {
                                         System.out.println("\nAramark CEO Health: " + fB1.getHealth());
@@ -191,22 +191,23 @@ public class FinalBoss {
                                     }
                                     if (fB1.getHealth() <= 0) { //enemy dies
                                         System.out.println("Aramark CEO health: 0");
-                                        System.out.println("You won!");
-                                        System.out.println("That enemy dropped some righteous loot");
+                                        System.out.println("\nYou won!\n");
+                                        System.out.println("\nThe Aramark CEO dropped some righteous loot:");
                                         h.setCoins(2147483647);
                                         System.out.println("You now have " + h.getCoins() + " dabloons...CHA CHING $$$");
-                                        h.setLevel(h.getLevel() + 1);
+                                        h.setLevel(2147483647);
                                         System.out.println("You also leveled up! level: " + h.getLevel());
+                                        h.setHealth(2147483647);
                                         bossing = false;
                                     } else {
                                         System.out.println("Now the Aramark CEO is attacking you!");
                                         fB1.attackFB(h);
                                         if (h.getHealth() <= 0) {
-                                            System.out.println("you died :(");
+                                            System.out.println("\nyou died :(");
                                             h.setHealth(100);
                                             bossing = false;
                                         } else {
-                                            System.out.println("Your health: " + h.getHealth());
+                                            System.out.println("\nYour health: " + h.getHealth());
                                         }
                                     }
                                 } else {
@@ -225,23 +226,23 @@ public class FinalBoss {
                     break;
                 case 3: // run away
                     Random r = new Random();//40% you cannot get away and the gremlin attacks you
-                    if (h.getHealth() > 10) { //can't die while running away bc that's lame
+                    if (h.getHealth() > 100) { //can't die while running away bc that's lame
                         int esc = r.nextInt(10) + 1;
                         if (esc <= 4) {
-                            System.out.println("the Aramark CEO wont stop chasing you");
+                            System.out.println("The Aramark CEO wont stop chasing you");
                             h.setHealth(h.getHealth() - 10);
-                            System.out.println("your health:" + h.getHealth());
+                            System.out.println("Your health:" + h.getHealth());
                         } else {
-                            System.out.println("You ran away...phew");
+                            System.out.println("\nYou ran away...phew");
                             bossing = false;
                         }
                     } else {
-                        System.out.println("You ran away");
+                        System.out.println("\nYou ran away");
                         bossing = false;
                     }
                     break;
                 default:
-                    System.out.println("Wrong Input, try again");
+                    System.out.println("\nWrong Input, try again");
                     break;
             }
         }
