@@ -189,7 +189,7 @@ public class World {
     }
 
 
-    public static void healing(Hero h) {
+    void healing(Hero h) {
         World w1 = new World();
         Scanner bScan = new Scanner(System.in);
         boolean healing = true;

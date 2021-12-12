@@ -80,8 +80,8 @@ public class GameRunner {
                     if (h.getLevel() < 5) {
                         System.out.println("The Aramark CEO is no joke! Come back again when you level up.");
                     } else {
-                        fB.bossing(h);
-                        System.out.println("You are fighting the final brekky boss. Good Luck. You'll need it.");
+                        fB.bossFight(h,w);
+                        System.out.println("You are fighting the final brekky boss- THE CEO OF ARAMARK. Good Luck. You'll need it.");
                     }
                     break;
                 case 7:
