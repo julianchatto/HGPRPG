@@ -4,10 +4,8 @@ import java.util.Scanner;
 
 public class CraftingTable {
     void crafting (Hero h){
-        World w1 = new World();
         Scanner bScan = new Scanner(System.in);
         boolean craftInProg = true;
-        boolean isStud = w1.isStudented();
 
         String[][] table = {{"|  |  ", "|  |  ", "|  |  "},
                             {"|  |  ", "|  |  ", "|  |  "},
@@ -44,6 +42,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Egg")) {
                                 if (h.getInvCount(i) == 1) {
@@ -51,6 +50,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Cheese")) {
                                 if (h.getInvCount(i) == 1) {
@@ -58,6 +58,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Bagel")) {
                                 if (h.getInvCount(i) == 2) {
@@ -65,6 +66,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 2;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             }
                         }
@@ -120,6 +122,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Egg")) {
                                 if (h.getInvCount(i) == 1) {
@@ -127,6 +130,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Cheese")) {
                                 if (h.getInvCount(i) == 1) {
@@ -134,6 +138,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Bagel")) {
                                 if (h.getInvCount(i) == 2) {
@@ -141,6 +146,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 2;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             }
                         }
@@ -196,6 +202,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Egg")) {
                                 if (h.getInvCount(i) == 1) {
@@ -203,6 +210,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Cheese")) {
                                 if (h.getInvCount(i) == 1) {
@@ -210,6 +218,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Bagel")) {
                                 if (h.getInvCount(i) == 2) {
@@ -217,6 +226,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 2;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             }
                         }
@@ -283,6 +293,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Egg")) {
                                 if (h.getInvCount(i) == 3) {
@@ -290,6 +301,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 3;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Cheese")) {
                                 if (h.getInvCount(i) == 3) {
@@ -297,6 +309,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 3;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Bagel")) {
                                 if (h.getInvCount(i) == 6) {
@@ -304,6 +317,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 6;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Sausage")) {
                                 if (h.getInvCount(i) == 1) {
@@ -311,6 +325,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             } else if (h.getInvItem(i).equals("Bacon")) {
                                 if (h.getInvCount(i) == 1) {
@@ -318,6 +333,7 @@ public class CraftingTable {
                                     h.replaceInvCount(i,0);
                                 } else {
                                     int tempCount = h.getInvCount(i) - 1;
+                                    h.replaceInvCount(i,tempCount);
                                 }
                             }
                         }
@@ -369,7 +385,7 @@ public class CraftingTable {
         System.out.println("\nCrafting table:");
         for (int row = 0; row < 5; row++) { // prints  crafting table
             // For row 0...
-            System.out.println(""); // Hit enter
+            System.out.println(); // Hit enter
             for (int col = 0; col < 3; col++) {
                 // Individual values in 2d Array
                 System.out.print(table[row][col] + " ");

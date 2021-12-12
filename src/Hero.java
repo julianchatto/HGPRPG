@@ -122,14 +122,6 @@ public class Hero {
         this.name = name;
     }
 
-    public String[] getInventory(int i) {
-        return inventory;
-    }
-
-    public void setInventory(String[] inventory) {
-        this.inventory = inventory;
-    }
-
     public int getCoins() {
         return coins;
     }
@@ -154,24 +146,15 @@ public class Hero {
         this.magicPowerType = magicPowerType;
     }
 
-    public int[] getInventoryCount() {
-        return inventoryCount;
-    }
-
-    public void setInventoryCount(int[] inventoryCount) {
-        this.inventoryCount = inventoryCount;
-    }
-
     @Override
     public String toString() {
         return name+"'s Stats:" +
                 "\nName: " + getName() +
                 "\nHP: " + health +
-                 "\nmagic power: " + magicPowerType +
-                "\ninventory:" + Arrays.toString(inventory) +
-                "\ncoins:" + coins +
-                "\nlevel:" + level
-                ;
+                "\nMagic power: " + magicPowerType +
+                "\nInventory:" + Arrays.toString(inventory) +
+                "\nCoins:" + coins +
+                "\nLevel:" + level;
     }
 
     public String toStringInventory() {

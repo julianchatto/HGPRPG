@@ -72,49 +72,65 @@ public class World {
 
                 switch (userInput) {
                     case 1: // attack
-                        //attacking(h,e1);
-                        if (h.getHealth() <= 0) {
-                            System.out.println("You are already dead. You must heal first!");
-                            battleOn = false;
-                        } else {
-                            h.attack(e1);
-                            System.out.println("You attacked the enemy");
-                            if (e1.getHealth() <= 0) { //enemy dies
-                                System.out.println("Enemy health: 0");
-                                System.out.println("You won!");
-                                System.out.println("That enemy dropped some righteous loot");
-                                h.setCoins(h.getCoins() + (h.getLevel() * 100));
-                                System.out.println("You now have " + h.getCoins() + " dabloons...CHA CHING $$$");
-                                h.setLevel(h.getLevel() + 1);
-                                System.out.println("You also leveled up! level: " + h.getLevel());
-                                battleOn = false;
-                                int drop = q.nextInt(4)+1;
-                                if (drop==1){
-                                    if (e1.getType().equals("Sausage")){
-                                        System.out.println("The enemy dropped some Sausage!!");
+                        boolean attacking = true;
+                        while (attacking) {
+                            System.out.println("How would you like to attack?\n1. Normal\n2. Use a breaky");
+                            userInput = bScan.nextInt();
+                            switch (userInput) {
+                                case 1:
+                                    if (h.getHealth() <= 0) {
+                                        System.out.println("You are already dead. You must heal first!");
+                                        battleOn = false;
+                                    } else {
+                                        h.attack(e1);
+                                        System.out.println("You attacked the enemy");
+                                        if (e1.getHealth() <= 0) { //enemy dies
+                                            System.out.println("Enemy health: 0");
+                                            System.out.println("You won!");
+                                            System.out.println("That enemy dropped some righteous loot");
+                                            h.setCoins(h.getCoins() + (h.getLevel() * 100));
+                                            System.out.println("You now have " + h.getCoins() + " dabloons...CHA CHING $$$");
+                                            h.setLevel(h.getLevel() + 1);
+                                            System.out.println("You also leveled up! level: " + h.getLevel());
+                                            battleOn = false;
+                                            int drop = q.nextInt(4)+1;
+                                            if (drop==1){
+                                                if (e1.getType().equals("Sausage")){
+                                                    System.out.println("The enemy dropped some Sausage!!");
 
-                                        //add sausage to inventory
-                                    } else if (e1.getType().equals("Pork Roll")){
-                                        //add pork roll to inventory
-                                        System.out.println("The enemy dropped some Pork Roll!!");
-                                    }else if (e1.getType().equals("Bacon")){
-                                        System.out.println("The enemy dropped some Bacon!!");
-                                        //add bacon to your inventory
+                                                    //add sausage to inventory
+                                                } else if (e1.getType().equals("Pork Roll")){
+                                                    //add pork roll to inventory
+                                                    System.out.println("The enemy dropped some Pork Roll!!");
+                                                }else if (e1.getType().equals("Bacon")){
+                                                    System.out.println("The enemy dropped some Bacon!!");
+                                                    //add bacon to your inventory
+                                                }
+                                            }
+
+                                            e1.setHealth(50 * h.getLevel());
+                                        } else {
+                                            System.out.println("Enemy health:" + e1.getHealth());
+                                            System.out.println("Now the enemy is attacking you!");
+                                            e1.attack(h);
+                                            if (h.getHealth() <= 0) {
+                                                System.out.println("you died :(");
+                                                h.setHealth(100);
+                                                battleOn = false;
+                                            } else {
+                                                System.out.println("Your health: " + h.getHealth());
+                                            }
+                                        }
                                     }
-                                }
+                                    attacking = false;
+                                    break;
+                                case 2:
 
-                                e1.setHealth(50 * h.getLevel());
-                            } else {
-                                System.out.println("Enemy health:" + e1.getHealth());
-                                System.out.println("Now the enemy is attacking you!");
-                                e1.attack(h);
-                                if (h.getHealth() <= 0) {
-                                    System.out.println("you died :(");
-                                    h.setHealth(100);
-                                    battleOn = false;
-                                } else {
-                                    System.out.println("Your health: " + h.getHealth());
-                                }
+                                    attacking = false;
+                                    break;
+                                default:
+                                    System.out.println("Invalid Input, try again.");
+                                    break;
                             }
                         }
                         break;
@@ -145,7 +161,7 @@ public class World {
 
                 }
             }//Gremlin Encounter
-        }else{
+        } else {
             if (haveBrekky && studented){
                 System.out.println("A student is snoring loudly and blocking your way");
                 System.out.println("He looks like he needs the ingredients Sausage, Egg, and Cheese breaky, maybe if you give him one he will help you out");
@@ -380,12 +396,12 @@ public class World {
                 System.out.print(map[row][col] + " ");
             }
         }
-        System.out.println("You look around the world and need to decide where to look for a heal potion. However," +
-                "you only have 5 moves!\n\n Make sure to choose carefully. ");
+        System.out.println("\nYou look around the world and need to decide where to look for a heal potion. However," +
+                "you only have 5 moves!\n\nMake sure to choose carefully. ");
 
         while (moves < 5) {
 
-            System.out.println("What direction would you like to move?");
+            System.out.println("\nWhat direction would you like to move?");
             System.out.println("1. Left\n2. Right\n3. Up\n4.Down");
             int userInput = bScan.nextInt();
 
@@ -432,7 +448,7 @@ public class World {
                     }
                 }
 
-                System.out.println("You found the hidden heal potion! Head back to the heal menu if you'd like to use it now.");
+                System.out.println("\nYou found a Regular Heal Potion! Head back to the heal menu if you'd like to use it now.");
                 moves = 5;
 
             }
