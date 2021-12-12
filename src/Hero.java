@@ -18,10 +18,10 @@ public class Hero {
         this.coins = 0;
         this.level = 1;
         this.magicPowerType = "Fire";
-        this.inventory[0] = "Empty";
-        this.inventory[1] = "Empty";
-        this.inventory[2] = "Empty";
-        this.inventory[3] = "Empty";
+        this.inventory[0] = "Pork Roll";
+        this.inventory[1] = "Egg";
+        this.inventory[2] = "Cheese";
+        this.inventory[3] = "Bagel";
         this.inventory[4] = "Empty";
         this.inventory[5] = "Empty";
         this.inventory[6] = "Empty";
@@ -30,10 +30,10 @@ public class Hero {
         this.inventory[9] = "Empty";
         this.inventory[10] = "Empty";
         this.inventory[11] = "Empty";
-        this.inventoryCount[0] = 0;
-        this.inventoryCount[1] = 0;
-        this.inventoryCount[2] = 0;
-        this.inventoryCount[3] = 0;
+        this.inventoryCount[0] = 1;
+        this.inventoryCount[1] = 1;
+        this.inventoryCount[2] = 1;
+        this.inventoryCount[3] = 2;
         this.inventoryCount[4] = 0;
         this.inventoryCount[5] = 0;
         this.inventoryCount[6] = 0;
@@ -175,10 +175,10 @@ public class Hero {
     }
 
     public String toStringInventory() {
-        System.out.println("Your inventory: " + Arrays.toString(inventory));
-        System.out.print(inventory[0] + " count: " + inventoryCount[0]);
-        for (int i = 1; i < 12; i++) {
-            System.out.print("; " + inventory[i] + " count: " + inventoryCount[i]);
+        System.out.println("\n");
+        for (int i = 0; i < 12; i++) {
+            System.out.println(i+1 + ": " + inventory[i] + ", Count: " + inventoryCount[i]);
+
         }
         return "";
     }

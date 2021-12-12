@@ -1,4 +1,4 @@
-import jdk.swing.interop.SwingInterOpUtils;
+
 
 import java.util.Scanner;
 
@@ -7,6 +7,7 @@ public class CraftingTable {
         World w1 = new World();
         Scanner bScan = new Scanner(System.in);
         boolean craftInProg = true;
+        boolean isStud = w1.isStudented();
 
         String[][] table = {{"|  |  ", "|  |  ", "|  |  "},
                             {"|  |  ", "|  |  ", "|  |  "},
@@ -15,76 +16,256 @@ public class CraftingTable {
                             {"|  |  ", "|  |  ", "|  |  "}};
 
         printTable(table);
-        if (w1.isStudented()) {
-            System.out.println("What would you like to craft?\n1. Bacon Egg N'Cheese\n2. Sausage Egg N'Cheese\n3. Pork Roll Egg N'Cheese\n4. Mega Breaky");
-        } else {
-            System.out.println("What would you like to craft?\n1. Bacon Egg N'Cheese\n2. Sausage Egg N'Cheese\n3. Pork Roll Egg N'Cheese");
+        while (craftInProg) {
+            System.out.println("\nWhat would you like to craft?\n1. Bacon Egg N'Cheese\n2. Sausage Egg N'Cheese\n3. Pork Roll Egg N'Cheese\n4. Cancel");
+
+            int userInput = bScan.nextInt();
+            switch (userInput) {
+                case 1:
+                    int counter = 0;
+                    for (int i = 0; i < 12; i++) {
+                        if (h.getInvItem(i).equals("Bacon")) {
+                            counter++;
+                        } else if (h.getInvItem(i).equals("Egg")) {
+                            counter++;
+                        } else if (h.getInvItem(i).equals("Cheese")) {
+                            counter++;
+                        } else if (h.getInvItem(i).equals("Bagel")) {
+                            if (h.getInvCount(i) == 2) {
+                                counter++;
+                            }
+                        }
+                    }
+                    if (counter == 4) {
+                        for (int i = 0; i < 12; i++) {
+                            if (h.getInvItem(i).equals("Bacon")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Egg")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Cheese")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Bagel")) {
+                                if (h.getInvCount(i) == 2) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 2;
+                                }
+                            }
+                        }
+                        table[0][1] = "Bagel";
+                        table[1][1] = "Bacon";
+                        table[2][1] = "Egg";
+                        table[3][1] = "Cheese";
+                        table[4][1] = "Bagel";
+                        printTable(table);
+                        int test = 0;
+                        for (int i = 0; i < 12; i++) {
+                            if (h.getInvItem(i).equals("Bacon Egg N'Cheese")) {
+                                int tcount = h.getInvCount(i) + 1;
+                                h.replaceInvCount(i,tcount);
+                                test++;
+                            }
+                        }
+                        if (test == 0) {
+                            for (int i = 0; i < 12; i++) {
+                                if (h.getInvItem(i).equals("Empty")) {
+                                    h.replaceInvItem(i,"Bacon Egg N'Cheese");
+                                    h.replaceInvCount(i,1);
+                                    test++;
+                                    i = 13;
+                                }
+                            }
+                        }
+                        System.out.println("A Bacon Egg N'Cheese has been added to your inventory");
+                    }  else {
+                        System.out.println("You do not have the ingredients for a Bacon Egg N'Cheese");
+                    }
+                    break;
+                case 2:
+                    int counter2 = 0;
+                    for (int i = 0; i < 8; i++) {
+                        if (h.getInvItem(i).equals("Sausage")) {
+                            counter2++;
+                        } else if (h.getInvItem(i).equals("Egg")) {
+                            counter2++;
+                        } else if (h.getInvItem(i).equals("Cheese")) {
+                            counter2++;
+                        } else if (h.getInvItem(i).equals("Bagel")) {
+                            if (h.getInvCount(i) == 2) {
+                                counter2++;
+                            }
+                        }
+                    }
+                    if (counter2 == 4) {
+                        for (int i = 0; i < 12; i++) {
+                            if (h.getInvItem(i).equals("Sausage")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Egg")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Cheese")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Bagel")) {
+                                if (h.getInvCount(i) == 2) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 2;
+                                }
+                            }
+                        }
+                        table[0][1] = "Bagel";
+                        table[1][1] = "Pork Roll";
+                        table[2][1] = "Egg";
+                        table[3][1] = "Cheese";
+                        table[4][1] = "Bagel";
+                        printTable(table);
+                        int test = 0;
+                        for (int i = 0; i < 12; i++) {
+                            if (h.getInvItem(i).equals("Sausage Egg N'Cheese")) {
+                                int tCount = h.getInvCount(i) + 1;
+                                h.replaceInvCount(i,tCount);
+                                test++;
+                            }
+                        }
+                        if (test == 0) {
+                            for (int i = 0; i < 12; i++) {
+                                if (h.getInvItem(i).equals("Empty")) {
+                                    h.replaceInvItem(i,"Sausage Egg N'Cheese");
+                                    h.replaceInvCount(i,1);
+                                    test++;
+                                    i = 13;
+                                }
+                            }
+                        }
+                        System.out.println("A Sausage Egg N'Cheese has been added to your inventory");
+                    }  else {
+                        System.out.println("You do not have the ingredients for a Sausage Egg N'Cheese");
+                    }
+                    break;
+                case 3:
+                    int counter3 = 0;
+                    for (int i = 0; i < 8; i++) {
+                        if (h.getInvItem(i).equals("Pork Roll")) {
+                            counter3++;
+                        } else if (h.getInvItem(i).equals("Egg")) {
+                            counter3++;
+                        } else if (h.getInvItem(i).equals("Cheese")) {
+                            counter3++;
+                        } else if (h.getInvItem(i).equals("Bagel")) {
+                            if (h.getInvCount(i) == 2) {
+                                counter3++;
+                            }
+                        }
+                    }
+                    if (counter3 == 4) {
+                        for (int i = 0; i < 12; i++) {
+                            if (h.getInvItem(i).equals("Pork Roll")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Egg")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Cheese")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Bagel")) {
+                                if (h.getInvCount(i) == 2) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 2;
+                                }
+                            }
+                        }
+                        table[0][1] = "Bagel";
+                        table[1][1] = "Pork Roll";
+                        table[2][1] = "Egg";
+                        table[3][1] = "Cheese";
+                        table[4][1] = "Bagel";
+                        printTable(table);
+                        int test = 0;
+                        for (int i = 0; i < 12; i++) {
+                            if (h.getInvItem(i).equals("Pork Roll Egg N'Cheese")) {
+                                int tCount = h.getInvCount(i) + 1;
+                                h.replaceInvCount(i,tCount);
+                                test++;
+                            }
+                        }
+                        if (test == 0) {
+                            for (int i = 0; i < 12; i++) {
+                                if (h.getInvItem(i).equals("Empty")) {
+                                    h.replaceInvItem(i,"Pork Roll Egg N'Cheese");
+                                    h.replaceInvCount(i,1);
+                                    test++;
+                                    i = 13;
+                                }
+                            }
+                        }
+                        System.out.println("A Pork Roll Egg N'Cheese has been added to your inventory");
+                    }  else {
+                        System.out.println("You do not have the ingredients for a Pork Roll Egg N'Cheese");
+                    }
+                    break;
+                case 4:
+                    craftInProg = false;
+                    break;
+                case 7:
+
+                    craftInProg = false;
+                    break;
+                default:
+                    System.out.println("Invalid Input, try again");
+                    break;
+            }
         }
-        int userInput = bScan.nextInt();
-        switch (userInput) {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            default:
-                break;
-        }
-
-
-//        while (craftInProg) {
-//            System.out.println("What would you like to place in the inventory?\nBagel");
-//            String userInput = bScan.next();
-//            boolean craftInProgCol = true;
-//            boolean craftInProgRow = true;
-//            int craftCol = 0;
-//            int craftRow = 0;
-//            if ((userInput != "Bagel") || (userInput != "Egg")  || (userInput != "Sausage") || (userInput != "Egg")) {
-//                System.out.println("That cannot be placed in the crafting table!");
-//            } else {
-//                for (int i = 0; i < 8; i++) {
-//                    if (h.getInvItem(i).equals(userInput)) {
-//                        while (craftInProgCol) {
-//                            System.out.println("Where would you like to place the " + userInput + " (x-coordinate)?");
-//                            craftCol = bScan.nextInt();
-//                            if ((craftCol != 0) || (craftCol != 1) || (craftCol != 2)){
-//                                System.out.println("Not a correct input. Try again.");
-//                            } else {
-//                                craftInProgCol = false;
-//                            }
-//                        }
-//                        while (craftInProgRow) {
-//                            System.out.println("Where would you like to place the " + userInput + " (y-coordinate)?");
-//                            craftRow = bScan.nextInt();
-//                            if ((craftRow != 0) || (craftRow != 1) || (craftRow != 2) || (craftRow != 3) || (craftRow != 4)){
-//                                System.out.println("Not a correct input. Try again.");
-//                            } else {
-//                                craftInProgRow = false;
-//                            }
-//                        }
-//                    }
-//                    int tempCount = h.getInvCount(i) - 1;
-//                    h.replaceInvCount(i, tempCount);
-//                    if (tempCount == 0) {
-//                        h.replaceInvItem(i, "Empty");
-//                    }
-//                    i = 9;
-//                }
-//                table[craftRow][craftCol] = userInput;
-//                printTable(table);
-//            }
-//            crafted(h);
-//        }
-
-
-
     }
+
     public static void printTable(String[][] table) {
         System.out.println("\nCrafting table:");
-        for (int row = 0; row < 3; row++) { // prints  crafting table
+        for (int row = 0; row < 5; row++) { // prints  crafting table
             // For row 0...
             System.out.println(""); // Hit enter
             for (int col = 0; col < 3; col++) {
@@ -92,8 +273,5 @@ public class CraftingTable {
                 System.out.print(table[row][col] + " ");
             }
         }
-    }
-    public static void crafted(Hero h) {
-
     }
 }

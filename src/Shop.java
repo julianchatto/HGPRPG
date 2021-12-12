@@ -49,18 +49,18 @@ public class Shop {
                                     int potionCount1 = 0;
                                     for (int i = 0; i < 12; i++) { // adds item to inventory
                                         if (h.getInvItem(i).equals(items[item1])) {
-                                            int tempCount = h.getInvCount(i) + 1;
+                                            int tempCount = h.getInvCount(i) + userInput;
                                             h.replaceInvCount(i, tempCount);
                                             potionCount1 = 1;
-                                            i=13;
+                                            i = 13;
                                         }
                                     }
                                     if (potionCount1 == 0) {
                                         for (int i = 0; i < 12; i++) { // adds item to inventory
                                             if (h.getInvItem(i).equals("Empty")) {
                                                 h.replaceInvItem(i, items[item1]);
-                                                h.replaceInvCount(i, 1);
-                                                i=13;
+                                                h.replaceInvCount(i, userInput);
+                                                i = 13;
                                             }
                                         }
                                     }
@@ -110,18 +110,18 @@ public class Shop {
                                     int potionCount1 = 0;
                                     for (int i = 0; i < 12; i++) { // adds item to inventory
                                         if (h.getInvItem(i).equals(items[item2])) {
-                                            int tempCount = h.getInvCount(i) + 1;
+                                            int tempCount = h.getInvCount(i) + userInput;
                                             h.replaceInvCount(i, tempCount);
                                             potionCount1 = 1;
-                                            i=13;
+                                            i = 13;
                                         }
                                     }
                                     if (potionCount1 == 0) {
                                         for (int i = 0; i < 12; i++) { // adds item to inventory
                                             if (h.getInvItem(i).equals("Empty")) {
                                                 h.replaceInvItem(i, items[item2]);
-                                                h.replaceInvCount(i, 1);
-                                                i=13;
+                                                h.replaceInvCount(i, userInput);
+                                                i = 13;
                                             }
                                         }
                                     }
@@ -170,18 +170,18 @@ public class Shop {
                                     int potionCount1 = 0;
                                     for (int i = 0; i < 12; i++) { // adds item to inventory
                                         if (h.getInvItem(i).equals(items[item3])) {
-                                            int tempCount = h.getInvCount(i) + 1;
+                                            int tempCount = h.getInvCount(i) + userInput;
                                             h.replaceInvCount(i, tempCount);
                                             potionCount1 = 1;
-                                            i=9;
+                                            i = 13;
                                         }
                                     }
                                     if (potionCount1 == 0) {
-                                        for (int i = 0; i < 13; i++) { // adds item to inventory
+                                        for (int i = 0; i < 12; i++) { // adds item to inventory
                                             if (h.getInvItem(i).equals("Empty")) {
                                                 h.replaceInvItem(i, items[item3]);
-                                                h.replaceInvCount(i, 1);
-                                                i=9;
+                                                h.replaceInvCount(i, userInput);
+                                                i= 13;
                                             }
                                         }
                                     }

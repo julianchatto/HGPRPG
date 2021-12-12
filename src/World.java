@@ -2,12 +2,15 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class World {
-    private int healCount = 0;
-    private boolean studented = true;
+    private int healCount;
+    private boolean studented;
 
 
     // Attributes
-    World() {}
+    World() {
+        this.studented = true;
+        healCount = 0;
+    }
 
     public boolean isStudented() {
         return studented;
@@ -35,11 +38,11 @@ public class World {
         int counter = 0;
         //Check for sausage egg and cheese in inventory and if they have it set haveBrekky to true
         for (int i = 0; i < 8; i++) {
-            if (h.getInvItem(i) == "Sausage") {
+            if (h.getInvItem(i).equals("Sausage")) {
                 counter++;
-            } else if (h.getInvItem(i) == "Egg") {
+            } else if (h.getInvItem(i).equals("Egg")) {
                 counter++;
-            } else if (h.getInvItem(i) == "Cheese") {
+            } else if (h.getInvItem(i).equals("Cheese")) {
                 counter++;
             }
         }
@@ -168,7 +171,8 @@ public class World {
                     h.setCoins(h.getCoins()+1000);
                     System.out.println("He gave you 1000 big ones $$$");
                     System.out.println("He also gave you a scroll that says recipe for mega brekky:");
-                    System.out.println("3 Bagels + 3 Cheese + Every Meat makes a great breakfast for taking down CEOs");
+                    System.out.println("6 Bagels + 3 Cheese + Every Meat makes a great breakfast for taking down CEOs");
+                    System.out.println("Make sure to press 7 in the crafting table to make it!!!!!!");
                     studented = false;
 
                 }else{
