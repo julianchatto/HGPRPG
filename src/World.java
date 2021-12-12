@@ -12,13 +12,6 @@ public class World {
         healCount = 0;
     }
 
-    public boolean isStudented() {
-        return studented;
-    }
-
-    public void setStudented(boolean studented) {
-        this.studented = studented;
-    }
 
     public int getHealCount() {
         return healCount;
@@ -93,18 +86,69 @@ public class World {
                                             h.setLevel(h.getLevel() + 1);
                                             System.out.println("You also leveled up! level: " + h.getLevel());
                                             battleOn = false;
-                                            int drop = q.nextInt(4)+1;
-                                            if (drop==1){
-                                                if (e1.getType().equals("Sausage")){
+                                            int drop = q.nextInt(4) + 1;
+                                            if (drop == 1) {
+                                                if (e1.getType().equals("Sausage")) {
                                                     System.out.println("The enemy dropped some Sausage!!");
-
+                                                    int counts = 0;
+                                                    for (int i = 0; i < 12; i++) {
+                                                        if (h.getInvItem(i).equals("Sausage")) {
+                                                            int tempS = h.getInvCount(i) + 1;
+                                                            h.replaceInvCount(i, tempS);
+                                                            counts++;
+                                                        }
+                                                    }
+                                                    if (counts == 0) {
+                                                        for (int i = 0; i < 12; i++) {
+                                                            if (h.getInvItem(i).equals("Empty")) {
+                                                                h.replaceInvItem(i, "Sausage");
+                                                                h.replaceInvCount(i, 1);
+                                                                i = 13;
+                                                            }
+                                                        }
+                                                    }
                                                     //add sausage to inventory
-                                                } else if (e1.getType().equals("Pork Roll")){
-                                                    //add pork roll to inventory
+                                                } else if (e1.getType().equals("Pork Roll")) {
                                                     System.out.println("The enemy dropped some Pork Roll!!");
-                                                }else if (e1.getType().equals("Bacon")){
+                                                    //add pork roll to inventory
+                                                    int counts = 0;
+                                                    for (int i = 0; i < 12; i++) {
+                                                        if (h.getInvItem(i).equals("Sausage")) {
+                                                            int tempS = h.getInvCount(i) + 1;
+                                                            h.replaceInvCount(i, tempS);
+                                                            counts++;
+                                                        }
+                                                    }
+                                                    if (counts == 0) {
+                                                        for (int i = 0; i < 12; i++) {
+                                                            if (h.getInvItem(i).equals("Empty")) {
+                                                                h.replaceInvItem(i, "Pork Roll");
+                                                                h.replaceInvCount(i, 1);
+                                                                i = 13;
+                                                            }
+                                                        }
+                                                    }
+
+                                                } else if (e1.getType().equals("Bacon")) {
                                                     System.out.println("The enemy dropped some Bacon!!");
                                                     //add bacon to your inventory
+                                                    int counts = 0;
+                                                    for (int i = 0; i < 12; i++) {
+                                                        if (h.getInvItem(i).equals("Bacon")) {
+                                                            int tempS = h.getInvCount(i) + 1;
+                                                            h.replaceInvCount(i, tempS);
+                                                            counts++;
+                                                        }
+                                                    }
+                                                    if (counts == 0) {
+                                                        for (int i = 0; i < 12; i++) {
+                                                            if (h.getInvItem(i).equals("Empty")) {
+                                                                h.replaceInvItem(i, "Bacon");
+                                                                h.replaceInvCount(i, 1);
+                                                                i = 13;
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
 
@@ -125,15 +169,244 @@ public class World {
                                     attacking = false;
                                     break;
                                 case 2:
+                                    boolean breakyTF = false;
+                                    for (int i = 0; i < 12; i++) { // checks if user has heal potion
+                                        if (h.getInvItem(i).equals("Bacon Egg N'Cheese")) {
+                                            breakyTF = true;
+                                        } else if (h.getInvItem(i).equals("Sausage Egg N'Cheese")) {
+                                            breakyTF = true;
+                                        } else if (h.getInvItem(i).equals("Pork Roll Egg N'Cheese")) {
+                                            breakyTF = true;
+                                        }
+                                    }
+                                    if (breakyTF) {
+                                        boolean brekkyDam = true;
 
+                                        while (brekkyDam) { // to choose what potion user wants to use
+
+                                            System.out.println("Which breaky would you like to use?");
+                                            System.out.println("1. Bacon Egg N'Cheese");
+                                            System.out.println("2. Sausage Egg N'Cheese");
+                                            System.out.println("3. Pork Roll Egg N'Cheese");
+                                            System.out.println("4. Cancel");
+                                            userInput = bScan.nextInt();
+
+                                            switch (userInput) {
+                                                case 1: // Regular heal potion
+                                                    int oPCount = 0;
+                                                    for (int i = 0; i < 12; i++) { // adds health to hero
+                                                        if (h.getInvItem(i).equals("Bacon Egg N'Cheese")) {
+                                                            oPCount++;
+                                                            if (e1.getType().equals("Bacon")) {
+                                                                if (h.getMagicPowerType().equals("Bacon")) {
+                                                                    int tempH = e1.getHealth() - 60;
+                                                                    e1.setHealth(tempH);
+                                                                } else {
+                                                                    int tempH = e1.getHealth() - 40;
+                                                                    e1.setHealth(tempH);
+                                                                }
+                                                            } else if (e1.getType().equals("Sausage")){
+                                                                int tempH = e1.getHealth() - 10;
+                                                                e1.setHealth(tempH);
+                                                            } else {
+                                                                int tempH = e1.getHealth() - 20;
+                                                                e1.setHealth(tempH);
+                                                            }
+                                                            if (h.getInvCount(i) == 1) {
+                                                                h.replaceInvItem(i, "Empty");
+                                                                h.replaceInvCount(i, 0);
+                                                            } else {
+                                                                int tempC = h.getInvCount(i) - 1;
+                                                                h.replaceInvCount(i,tempC);
+                                                            }
+                                                            i = 13;
+
+                                                            System.out.println("Bacon Egg N'Cheese used!\n");
+                                                            System.out.println("Enemy health is: " + e1.getHealth());
+                                                        }
+                                                    }
+                                                    if (oPCount == 0) {
+                                                        System.out.println("You do not have a Bacon Egg N'Cheese!");
+                                                    }
+                                                    brekkyDam = false;
+                                                case 2:
+                                                    int oPCount2 = 0;
+                                                    for (int i = 0; i < 12; i++) { // adds health to hero
+                                                        if (h.getInvItem(i).equals("Sausage Egg N'Cheese")) {
+                                                            oPCount2++;
+                                                            if (e1.getType().equals("Sausage")) {
+                                                                if (h.getMagicPowerType().equals("Sausage")) {
+                                                                    int tempH = e1.getHealth() - 60;
+                                                                    e1.setHealth(tempH);
+                                                                } else {
+                                                                    int tempH = e1.getHealth() - 40;
+                                                                    e1.setHealth(tempH);
+                                                                }
+                                                            } else  if (e1.getType().equals("Pork Roll")){
+                                                                int tempH = e1.getHealth() - 10;
+                                                                e1.setHealth(tempH);
+                                                            } else {
+                                                                int tempH = e1.getHealth() - 20;
+                                                                e1.setHealth(tempH);
+                                                            }
+                                                            if (h.getInvCount(i) == 1) {
+                                                                h.replaceInvItem(i, "Empty");
+                                                                h.replaceInvCount(i, 0);
+                                                            } else {
+                                                                int tempC = h.getInvCount(i) - 1;
+                                                                h.replaceInvCount(i,tempC);
+                                                            }
+                                                            i = 13;
+
+                                                            System.out.println("Sausage Egg N'Cheese used!\n");
+                                                            System.out.println("Enemy health is: " + e1.getHealth());
+                                                        }
+                                                    }
+                                                    if (oPCount2 == 0) {
+                                                        System.out.println("You do not have a Sausage Egg N'Cheese!");
+                                                    }
+                                                    brekkyDam = false;
+                                                    break;
+                                                case 3:
+                                                    int oPCount3 = 0;
+                                                    for (int i = 0; i < 12; i++) { // adds health to hero
+                                                        if (h.getInvItem(i).equals("Pork Roll Egg N'Cheese")) {
+                                                            oPCount3++;
+                                                            if (e1.getType().equals("Pork Roll")) {
+                                                                if (h.getMagicPowerType().equals("Pork Roll")) {
+                                                                    int tempH = e1.getHealth() - 60;
+                                                                    e1.setHealth(tempH);
+                                                                } else {
+                                                                    int tempH = e1.getHealth() - 40;
+                                                                    e1.setHealth(tempH);
+                                                                }
+                                                            } else if (e1.getType().equals("Bacon")){
+                                                                int tempH = e1.getHealth() - 10;
+                                                                e1.setHealth(tempH);
+                                                            } else {
+                                                                int tempH = e1.getHealth() - 20;
+                                                                e1.setHealth(tempH);
+                                                            }
+                                                            if (h.getInvCount(i) == 1) {
+                                                                h.replaceInvItem(i, "Empty");
+                                                                h.replaceInvCount(i, 0);
+                                                            } else {
+                                                                int tempC = h.getInvCount(i) - 1;
+                                                                h.replaceInvCount(i,tempC);
+                                                            }
+                                                            i = 13;
+
+                                                            System.out.println("Pork Roll Egg N'Cheese used!\n");
+                                                            System.out.println("Enemy health is: " + e1.getHealth());
+                                                        }
+                                                    }
+                                                    if (oPCount3 == 0) {
+                                                        System.out.println("You do not have a Pork Roll Egg N'Cheese!");
+                                                    }
+                                                    brekkyDam = false;
+                                                    break;
+                                                case 4:
+                                                    brekkyDam = false;
+                                                    break;
+                                                default:
+                                                    System.out.println("Invalid input, try again");
+                                                    break;
+                                            }
+                                        }
+                                        if (e1.getHealth() <= 0) { //enemy dies
+                                            System.out.println("Enemy health: 0");
+                                            System.out.println("You won!");
+                                            System.out.println("That enemy dropped some righteous loot");
+                                            h.setCoins(h.getCoins() + (h.getLevel() * 100));
+                                            System.out.println("You now have " + h.getCoins() + " dabloons...CHA CHING $$$");
+                                            h.setLevel(h.getLevel() + 1);
+                                            System.out.println("You also leveled up! level: " + h.getLevel());
+                                            battleOn = false;
+                                            int drop = q.nextInt(4) + 1;
+                                            if (drop == 1) {
+                                                if (e1.getType().equals("Sausage")) {
+                                                    System.out.println("The enemy dropped some Sausage!!");
+                                                    int counts = 0;
+                                                    for (int i = 0; i < 12; i++) {
+                                                        if (h.getInvItem(i).equals("Sausage")) {
+                                                            int tempS = h.getInvCount(i) + 1;
+                                                            h.replaceInvCount(i, tempS);
+                                                            counts++;
+                                                        }
+                                                    }
+                                                    if (counts == 0) {
+                                                        for (int i = 0; i < 12; i++) {
+                                                            if (h.getInvItem(i).equals("Empty")) {
+                                                                h.replaceInvItem(i, "Sausage");
+                                                                h.replaceInvCount(i, 1);
+                                                                i = 13;
+                                                            }
+                                                        }
+                                                    }
+                                                    //add sausage to inventory
+                                                } else if (e1.getType().equals("Pork Roll")) {
+                                                    System.out.println("The enemy dropped some Pork Roll!!");
+                                                    //add pork roll to inventory
+                                                    int counts = 0;
+                                                    for (int i = 0; i < 12; i++) {
+                                                        if (h.getInvItem(i).equals("Sausage")) {
+                                                            int tempS = h.getInvCount(i) + 1;
+                                                            h.replaceInvCount(i, tempS);
+                                                            counts++;
+                                                        }
+                                                    }
+                                                    if (counts == 0) {
+                                                        for (int i = 0; i < 12; i++) {
+                                                            if (h.getInvItem(i).equals("Empty")) {
+                                                                h.replaceInvItem(i, "Pork Roll");
+                                                                h.replaceInvCount(i, 1);
+                                                                i = 13;
+                                                            }
+                                                        }
+                                                    }
+
+                                                } else if (e1.getType().equals("Bacon")) {
+                                                    System.out.println("The enemy dropped some Bacon!!");
+                                                    //add bacon to your inventory
+                                                    int counts = 0;
+                                                    for (int i = 0; i < 12; i++) {
+                                                        if (h.getInvItem(i).equals("Bacon")) {
+                                                            int tempS = h.getInvCount(i) + 1;
+                                                            h.replaceInvCount(i, tempS);
+                                                            counts++;
+                                                        }
+                                                    }
+                                                    if (counts == 0) {
+                                                        for (int i = 0; i < 12; i++) {
+                                                            if (h.getInvItem(i).equals("Empty")) {
+                                                                h.replaceInvItem(i, "Bacon");
+                                                                h.replaceInvCount(i, 1);
+                                                                i = 13;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            e1.setHealth(50 * h.getLevel());
+                                        } else {
+                                            System.out.println("Now the enemy is attacking you!");
+                                            e1.attack(h);
+                                            if (h.getHealth() <= 0) {
+                                                System.out.println("you died :(");
+                                                h.setHealth(100);
+                                                battleOn = false;
+                                            } else {
+                                                System.out.println("Your health: " + h.getHealth());
+                                            }
+                                        }
+                                    }
                                     attacking = false;
-                                    break;
                                 default:
-                                    System.out.println("Invalid Input, try again.");
+                                    System.out.println("Invalid input, try again");
                                     break;
                             }
                         }
-                        break;
                     case 2: // heal
                         healing(h);
                         break;
@@ -145,20 +418,18 @@ public class World {
                                 System.out.println("the gremlin wont stop chasing you");
                                 h.setHealth(h.getHealth() - 10);
                                 System.out.println("your health:" + h.getHealth());
-                                break;
                             } else {
                                 System.out.println("You ran away...phew");
                                 battleOn = false;
-                                break;
                             }
                         } else {
                             System.out.println("You ran away");
                             battleOn = false;
-                            break;
                         }
+                        break;
                     default:
                         System.out.println("Wrong Input");
-
+                        break;
                 }
             }//Gremlin Encounter
         } else {
@@ -173,7 +444,7 @@ public class World {
                     System.out.println("You gave the student a brekky.");
                     //Sausage Egg and Cheese is deleted from your inventory
                     for (int i = 0; i < 8; i++) {
-                        if ((h.getInvItem(i) == "Sausage") || (h.getInvItem(i) == "Cheese") || (h.getInvItem(i) == "Egg")) {
+                        if ((h.getInvItem(i).equals("Sausage")) || (h.getInvItem(i).equals("Cheese")) || (h.getInvItem(i).equals("Egg"))) {
                             if (h.getInvCount(i) == 1) {
                                 h.replaceInvItem(i, "Empty");
                                 h.replaceInvCount(i, 0);
@@ -200,7 +471,7 @@ public class World {
                     System.out.println("Scroll:");
                     for (int row = 0; row < 5; row++) { // prints  crafting table
                         // For row 0...
-                        System.out.println(""); // Hit enter
+                        System.out.println(); // Hit enter
                         for (int col = 0; col < 3; col++) {
                             // Individual values in 2d Array
                             System.out.print(table[row][col] + " ");
@@ -373,13 +644,13 @@ public class World {
         // sets location for hidden potion in the column
         if (mapColumn>30) {
             potionLocCol = 2;
-        } else if (mapColumn <= 30 && mapColumn > 5) {
+        } else if (mapColumn < 30 && mapColumn > 5) {
             potionLocCol = 1;
         }
         // sets location for hidden potion in the row
         if (mapRow>30) {
             potionLocRow = 2;
-        } else if (mapRow <= 30 && mapRow > 5) {
+        } else if (mapRow < 30 && mapRow > 5) {
             potionLocRow = 1;
         }
         // sets location to 2,2 if both are originally 0,0
@@ -390,7 +661,7 @@ public class World {
 
         for (int row = 0; row < 3; row++) { // prints map
             // For row 0...
-            System.out.println(""); // Hit enter
+            System.out.println(); // Hit enter
             for (int col = 0; col < 3; col++) {
                 // Individual values in 2d Array
                 System.out.print(map[row][col] + " ");
@@ -402,7 +673,7 @@ public class World {
         while (moves < 5) {
 
             System.out.println("\nWhat direction would you like to move?");
-            System.out.println("1. Left\n2. Right\n3. Up\n4.Down");
+            System.out.println("1. Left\n2. Right\n3. Up\n4. Down");
             int userInput = bScan.nextInt();
 
             switch (userInput) {
@@ -483,7 +754,7 @@ public class World {
 
         for (int row = 0; row < 3; row++) { // prints map
             // For row 0...
-            System.out.println(""); // Hit enter
+            System.out.println(); // Hit enter
             for (int col = 0; col < 3; col++) {
                 // Individual values in 2d Array
                 System.out.print(m[row][col] + " ");
@@ -516,7 +787,7 @@ public class World {
         }
         for (int row = 0; row < 3; row++) { // prints map
             // For row 0...
-            System.out.println(""); // Hit enter
+            System.out.println(); // Hit enter
             for (int col = 0; col < 3; col++) {
                 // Individual values in 2d Array
                 System.out.print(m[row][col] + " ");
@@ -549,7 +820,7 @@ public class World {
         }
         for (int row = 0; row < 3; row++) {  // prints map
             // For row 0...
-            System.out.println(""); // Hit enter
+            System.out.println(); // Hit enter
             for (int col = 0; col < 3; col++) {
                 // Individual values in 2d Array
                 System.out.print(m[row][col] + " ");
@@ -582,7 +853,7 @@ public class World {
         }
         for (int row = 0; row < 3; row++) { // pritns map
             // For row 0...
-            System.out.println(""); // Hit enter
+            System.out.println(); // Hit enter
             for (int col = 0; col < 3; col++) {
                 // Individual values in 2d Array
                 System.out.print(m[row][col] + " ");

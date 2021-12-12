@@ -1,5 +1,5 @@
-import java.util.Random;
 import java.util.Scanner;
+
 public class GameRunner {
     public static void main(String[] args) {
         // Game objects and characters
