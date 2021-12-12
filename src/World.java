@@ -170,9 +170,27 @@ public class World {
                     System.out.println("*student wakes up* Good looks Brotendo. Take this");
                     h.setCoins(h.getCoins()+1000);
                     System.out.println("He gave you 1000 big ones $$$");
-                    System.out.println("He also gave you a scroll that says recipe for mega brekky:");
-                    System.out.println("6 Bagels + 3 Cheese + Every Meat makes a great breakfast for taking down CEOs");
-                    System.out.println("Make sure to press 7 in the crafting table to make it!!!!!!");
+                    System.out.println("He also gave you a scroll that says the recipe for mega brekky:");
+                    String[][] table = {{"|  |  ", "|  |  ", "|  |  "},
+                            {"|  |  ", "|  |  ", "|  |  "},
+                            {"|  |  ", "|  |  ", "|  |  "},
+                            {"|  |  ", "|  |  ", "|  |  "},
+                            {"|  |  ", "|  |  ", "|  |  "}};
+                    table[0][0] = "Bagel"; table[0][1] = "Bagel"; table[0][2] = "Bagel";
+                    table[1][0] = "Sausage"; table[1][1] = "Pork Roll"; table[1][2] = "Bacon";
+                    table[2][0] = "Egg"; table[2][1] = "Egg"; table[2][2] = "Egg";
+                    table[3][0] = "Cheese"; table[3][1] = "Cheese"; table[3][2] = "Cheese";
+                    table[4][0] = "Bagel"; table[4][1] = "Bagel"; table[4][2] = "Bagel";
+                    System.out.println("Scroll:");
+                    for (int row = 0; row < 5; row++) { // prints  crafting table
+                        // For row 0...
+                        System.out.println(""); // Hit enter
+                        for (int col = 0; col < 3; col++) {
+                            // Individual values in 2d Array
+                            System.out.print(table[row][col] + " ");
+                        }
+                    }
+                    System.out.println("\n\nMake sure to press 7 in the crafting table to make it!!!!!!");
                     studented = false;
 
                 }else{

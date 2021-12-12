@@ -92,7 +92,7 @@ public class CraftingTable {
                                 }
                             }
                         }
-                        System.out.println("A Bacon Egg N'Cheese has been added to your inventory");
+                        System.out.println("\nA Bacon Egg N'Cheese has been added to your inventory");
                     }  else {
                         System.out.println("You do not have the ingredients for a Bacon Egg N'Cheese");
                     }
@@ -168,7 +168,7 @@ public class CraftingTable {
                                 }
                             }
                         }
-                        System.out.println("A Sausage Egg N'Cheese has been added to your inventory");
+                        System.out.println("\nA Sausage Egg N'Cheese has been added to your inventory");
                     }  else {
                         System.out.println("You do not have the ingredients for a Sausage Egg N'Cheese");
                     }
@@ -244,16 +244,118 @@ public class CraftingTable {
                                 }
                             }
                         }
-                        System.out.println("A Pork Roll Egg N'Cheese has been added to your inventory");
+                        System.out.println("\nA Pork Roll Egg N'Cheese has been added to your inventory");
                     }  else {
                         System.out.println("You do not have the ingredients for a Pork Roll Egg N'Cheese");
                     }
                     break;
-                case 4:
+                case 4: // Cancel
                     craftInProg = false;
                     break;
-                case 7:
-
+                case 7: // Mega brek
+                    int counter4 = 0;
+                    for (int i = 0; i < 8; i++) {
+                        if (h.getInvItem(i).equals("Pork Roll")) {
+                            counter4++;
+                        } else if (h.getInvItem(i).equals("Egg")) {
+                            if (h.getInvCount(i) == 3) {
+                                counter4++;
+                            }
+                        } else if (h.getInvItem(i).equals("Cheese")) {
+                            if (h.getInvCount(i) == 3) {
+                                counter4++;
+                            }
+                        } else if (h.getInvItem(i).equals("Bagel")) {
+                            if (h.getInvCount(i) == 6) {
+                                counter4++;
+                            }
+                        } else if (h.getInvItem(i).equals("Sausage")) {
+                            counter4++;
+                        } else if (h.getInvItem(i).equals("Bacon")) {
+                            counter4++;
+                        }
+                    }
+                    if (counter4 == 6) {
+                        for (int i = 0; i < 12; i++) {
+                            if (h.getInvItem(i).equals("Pork Roll")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Egg")) {
+                                if (h.getInvCount(i) == 3) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 3;
+                                }
+                            } else if (h.getInvItem(i).equals("Cheese")) {
+                                if (h.getInvCount(i) == 3) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 3;
+                                }
+                            } else if (h.getInvItem(i).equals("Bagel")) {
+                                if (h.getInvCount(i) == 6) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 6;
+                                }
+                            } else if (h.getInvItem(i).equals("Sausage")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            } else if (h.getInvItem(i).equals("Bacon")) {
+                                if (h.getInvCount(i) == 1) {
+                                    h.replaceInvItem(i,"Empty");
+                                    h.replaceInvCount(i,0);
+                                } else {
+                                    int tempCount = h.getInvCount(i) - 1;
+                                }
+                            }
+                        }
+                        // Fills table
+                        table[0][0] = "Bagel"; table[0][1] = "Bagel"; table[0][2] = "Bagel";
+                        table[1][0] = "Sausage"; table[1][1] = "Pork Roll"; table[1][2] = "Bacon";
+                        table[2][0] = "Egg"; table[2][1] = "Egg"; table[2][2] = "Egg";
+                        table[3][0] = "Cheese"; table[3][1] = "Cheese"; table[3][2] = "Cheese";
+                        table[4][0] = "Bagel"; table[4][1] = "Bagel"; table[4][2] = "Bagel";
+                        printTable(table); // prints table
+                        // Empty table (except for middle col since it will always be replaced no matter craft)
+                        table[0][0] = "|  |  "; table[0][2] = "|  |  ";
+                        table[1][0] = "|  |  "; table[1][2] = "|  |  ";
+                        table[2][0] = "|  |  "; table[2][2] = "|  |  ";
+                        table[3][0] = "|  |  "; table[3][2] = "|  |  ";
+                        table[4][0] = "|  |  "; table[4][2] = "|  |  ";
+                        int test = 0;
+                        for (int i = 0; i < 12; i++) {
+                            if (h.getInvItem(i).equals("Mega Brekky")) {
+                                int tCount = h.getInvCount(i) + 1;
+                                h.replaceInvCount(i,tCount);
+                                test++;
+                            }
+                        }
+                        if (test == 0) {
+                            for (int i = 0; i < 12; i++) {
+                                if (h.getInvItem(i).equals("Empty")) {
+                                    h.replaceInvItem(i,"Mega Brekky");
+                                    h.replaceInvCount(i,1);
+                                    test++;
+                                    i = 13;
+                                }
+                            }
+                        }
+                        System.out.println("\nA Pork Roll Egg N'Cheese has been added to your inventory");
+                    }  else {
+                        System.out.println("You do not have the ingredients for a Mega Breaky");
+                    }
                     craftInProg = false;
                     break;
                 default:

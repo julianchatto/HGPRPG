@@ -25,13 +25,13 @@ public class Enemy {
             h.setHealth(h.getHealth() - (attackPower*2*h.getLevel()));
             System.out.println("THEY HIT A CRITICAL STRIKE!!...darn");
         }else{
-            if (type.equals("Sausage")&& h.getMagicPowerType().equals("Bacon Beast")){
+            if (type.equals("Sausage") && h.getMagicPowerType().equals("Bacon Beast")){
                 System.out.println("The Gremlin hit a super effective Magic Strike");
                 h.setHealth(h.getHealth()-((attackPower+30)*h.getLevel()*2));
-            }else if (type.equals("Pork Roll")&& h.getMagicPowerType().equals("Sausage Slammer")){
+            }else if (type.equals("Pork Roll") && h.getMagicPowerType().equals("Sausage Slammer")){
                 System.out.println("The Gremlin hit a super effective Magic Strike");
                 h.setHealth(h.getHealth()-((attackPower+30)*h.getLevel()*2));
-            }else if (type.equals("Bacon")&& h.getMagicPowerType().equals("Pork Roll Pounder")){
+            }else if (type.equals("Bacon") && h.getMagicPowerType().equals("Pork Roll Pounder")){
                 System.out.println("The Gremlin hit a super effective Magic Strike");
                 h.setHealth(h.getHealth()-((attackPower+30)*h.getLevel()*2));
             }else{
