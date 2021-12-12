@@ -70,11 +70,11 @@ public class CraftingTable {
                                 }
                             }
                         }
-                        table[0][1] = "Bagel";
-                        table[1][1] = "Bacon";
-                        table[2][1] = "Egg";
-                        table[3][1] = "Cheese";
-                        table[4][1] = "Bagel";
+                        table[0][1] = "| Bagel |  ";
+                        table[1][1] = "| Bacon |  ";
+                        table[2][1] = "| Egg |  ";
+                        table[3][1] = "| Cheese |  ";
+                        table[4][1] = "| Bagel |  ";
                         printTable(table);
                         int test = 0;
                         for (int i = 0; i < 12; i++) {
@@ -150,11 +150,11 @@ public class CraftingTable {
                                 }
                             }
                         }
-                        table[0][1] = "Bagel";
-                        table[1][1] = "Pork Roll";
-                        table[2][1] = "Egg";
-                        table[3][1] = "Cheese";
-                        table[4][1] = "Bagel";
+                        table[0][1] = "| Bagel |  ";
+                        table[1][1] = "| Sausage |  ";
+                        table[2][1] = "| Egg |  ";
+                        table[3][1] = "| Cheese |  ";
+                        table[4][1] = "| Bagel |  ";
                         printTable(table);
                         int test = 0;
                         for (int i = 0; i < 12; i++) {
@@ -230,11 +230,11 @@ public class CraftingTable {
                                 }
                             }
                         }
-                        table[0][1] = "Bagel";
-                        table[1][1] = "Pork Roll";
-                        table[2][1] = "Egg";
-                        table[3][1] = "Cheese";
-                        table[4][1] = "Bagel";
+                        table[0][1] = "| Bagel |  ";
+                        table[1][1] = "| Pork Roll |  ";
+                        table[2][1] = "| Egg |  ";
+                        table[3][1] = "| Cheese |  ";
+                        table[4][1] = "| Bagel |  ";
                         printTable(table);
                         int test = 0;
                         for (int i = 0; i < 12; i++) {
@@ -338,11 +338,11 @@ public class CraftingTable {
                             }
                         }
                         // Fills table
-                        table[0][0] = "Bagel"; table[0][1] = "Bagel"; table[0][2] = "Bagel";
-                        table[1][0] = "Sausage"; table[1][1] = "Pork Roll"; table[1][2] = "Bacon";
-                        table[2][0] = "Egg"; table[2][1] = "Egg"; table[2][2] = "Egg";
-                        table[3][0] = "Cheese"; table[3][1] = "Cheese"; table[3][2] = "Cheese";
-                        table[4][0] = "Bagel"; table[4][1] = "Bagel"; table[4][2] = "Bagel";
+                        table[0][0] = "| Bagel |  "; table[0][1] = "| Bagel |  "; table[0][2] = "| Bagel |  ";
+                        table[1][0] = "| Sausage |  "; table[1][1] = "| Pork Roll |  "; table[1][2] = "| Bacon |  ";
+                        table[2][0] = "| Egg |  "; table[2][1] = "| Egg |  "; table[2][2] = "| Egg |  ";
+                        table[3][0] = "| Cheese |  "; table[3][1] = "| Cheese |  "; table[3][2] = "| Cheese |  ";
+                        table[4][0] = "| Bagel |  "; table[4][1] = "| Bagel |  "; table[4][2] = "| Bagel |  ";
                         printTable(table); // prints table
                         // Empty table (except for middle col since it will always be replaced no matter craft)
                         table[0][0] = "|  |  "; table[0][2] = "|  |  ";

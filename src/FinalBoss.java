@@ -56,10 +56,28 @@ public class FinalBoss {
                     }
                     break;
                 case 2: // heal
+                    w.healing(h);
                     break;
                 case 3: // run away
-                    System.out.println("Wrong Input");
-
+                    Random r = new Random();//40% you cannot get away and the gremlin attacks you
+                    if (h.getHealth() > 10) { //can't die while running away bc that's lame
+                        int esc = r.nextInt(10) + 1;
+                        if (esc <= 4) {
+                            System.out.println("the Aramark CEO wont stop chasing you");
+                            h.setHealth(h.getHealth() - 10);
+                            System.out.println("your health:" + h.getHealth());
+                        } else {
+                            System.out.println("You ran away...phew");
+                            bossing = false;
+                        }
+                    } else {
+                        System.out.println("You ran away");
+                        bossing = false;
+                    }
+                    break;
+                default:
+                    System.out.println("Wrong Input, try again");
+                    break;
             }
         }
     }

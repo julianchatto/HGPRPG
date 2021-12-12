@@ -68,8 +68,8 @@ public class World {
                         boolean attacking = true;
                         while (attacking) {
                             System.out.println("How would you like to attack?\n1. Normal\n2. Use a breaky");
-                            userInput = bScan.nextInt();
-                            switch (userInput) {
+                            int userInput2 = bScan.nextInt();
+                            switch (userInput2) {
                                 case 1:
                                     if (h.getHealth() <= 0) {
                                         System.out.println("You are already dead. You must heal first!");
@@ -154,8 +154,8 @@ public class World {
 
                                             e1.setHealth(50 * h.getLevel());
                                         } else {
-                                            System.out.println("Enemy health:" + e1.getHealth());
-                                            System.out.println("Now the enemy is attacking you!");
+                                            System.out.println("\nEnemy health: " + e1.getHealth());
+                                            System.out.println("\nNow the enemy is attacking you!");
                                             e1.attack(h);
                                             if (h.getHealth() <= 0) {
                                                 System.out.println("you died :(");
@@ -192,7 +192,7 @@ public class World {
                                             userInput = bScan.nextInt();
 
                                             switch (userInput) {
-                                                case 1: // Regular heal potion
+                                                case 1: // Bacon
                                                     int oPCount = 0;
                                                     for (int i = 0; i < 12; i++) { // adds health to hero
                                                         if (h.getInvItem(i).equals("Bacon Egg N'Cheese")) {
@@ -400,13 +400,17 @@ public class World {
                                                 System.out.println("Your health: " + h.getHealth());
                                             }
                                         }
+                                    } else {
+                                        System.out.println("\nYou do not have any breakys\n");
                                     }
                                     attacking = false;
+                                    break;
                                 default:
                                     System.out.println("Invalid input, try again");
                                     break;
                             }
                         }
+                        break;
                     case 2: // heal
                         healing(h);
                         break;
@@ -435,13 +439,13 @@ public class World {
         } else {
             if (haveBrekky && studented){
                 System.out.println("A student is snoring loudly and blocking your way");
-                System.out.println("He looks like he needs the ingredients Sausage, Egg, and Cheese breaky, maybe if you give him one he will help you out");
+                System.out.println("He looks like he needs the a Sausage, Egg, and Cheese maybe if you give him one he will help you out");
                 System.out.println("Would you like to help him?");
                 System.out.println("1. Yes\n2. No");
                 help = bScan.nextInt();
                 if (help==1){//Helping the student
                     System.out.println("zzzzzzzzzzz...I really need a brekky...zzzzzzzzzzzzz");
-                    System.out.println("You gave the student a brekky.");
+                    System.out.println("You gave the student the three ingredients.");
                     //Sausage Egg and Cheese is deleted from your inventory
                     for (int i = 0; i < 8; i++) {
                         if ((h.getInvItem(i).equals("Sausage")) || (h.getInvItem(i).equals("Cheese")) || (h.getInvItem(i).equals("Egg"))) {
@@ -455,7 +459,8 @@ public class World {
                         }
                     }
                     System.out.println("*student wakes up* Good looks Brotendo. Take this");
-                    h.setCoins(h.getCoins()+1000);
+                    int tempCoin = h.getCoins()+1000;
+                    h.setCoins(tempCoin);
                     System.out.println("He gave you 1000 big ones $$$");
                     System.out.println("He also gave you a scroll that says the recipe for mega brekky:");
                     String[][] table = {{"|  |  ", "|  |  ", "|  |  "},
@@ -534,38 +539,39 @@ public class World {
 
                             switch (userInput) {
                                 case 1: // Regular heal potion
-                                    int oPCount = 0;
-                                    for (int i = 0; i < 12; i++) { // adds health to hero
-                                        if (h.getInvItem(i).equals("Regular Heal Potion")) {
-                                            if (h.getHealth() < 70) {
-                                                int tempH = h.getHealth() + 30;
-                                                h.setHealth(tempH);
-                                            } else {
-                                                h.setHealth(100);
-                                            }
-                                            if (h.getInvCount(i) == 1) {
-                                                h.replaceInvItem(i, "Empty");
-                                                h.replaceInvCount(i,0);
-                                            } else {
-                                                int tempCount = h.getInvCount(i) - 1;
-                                                h.replaceInvCount(i, tempCount);
-                                            }
-                                            oPCount++;
-                                            System.out.println("Regular Heal Potion used!\n");
-                                            System.out.println("Your current health is: " + h.getHealth());
-                                            System.out.println("Would you like to use another one?\n1. Yes\n2. No");
-                                            userInput = bScan.nextInt();
+                                    boolean rhpIng = true;
+                                    while (rhpIng) {
+                                        int oPCount = 0;
+                                        for (int i = 0; i < 12; i++) { // adds health to hero
+                                            if (h.getInvItem(i).equals("Regular Heal Potion")) {
+                                                if (h.getHealth() < 70) {
+                                                    int tempH = h.getHealth() + 30;
+                                                    h.setHealth(tempH);
+                                                } else {
+                                                    h.setHealth(100);
+                                                }
+                                                if (h.getInvCount(i) == 1) {
+                                                    h.replaceInvItem(i, "Empty");
+                                                    h.replaceInvCount(i,0);
+                                                } else {
+                                                    int tempCount = h.getInvCount(i) - 1;
+                                                    h.replaceInvCount(i, tempCount);
+                                                }
+                                                oPCount++;
+                                                System.out.println("Regular Heal Potion used!\n");
+                                                System.out.println("Your current health is: " + h.getHealth());
+                                                System.out.println("\nWould you like to use another one?\n1. Yes\n2. No");
+                                                userInput = bScan.nextInt();
+                                                if (userInput == 2) {
+                                                    rhpIng = false;
+                                                }
 
-                                            if (userInput == 1) {
-                                                i = 0;
-                                            } else {
-                                                i = 13;
                                             }
-
                                         }
-                                    }
-                                    if (oPCount == 0) {
-                                        System.out.println("You do not have a Regular Heal Potion");
+                                        if (oPCount == 0) {
+                                            System.out.println("You do not have a Regular Heal Potion");
+                                            rhpIng = false;
+                                        }
                                     }
                                     potionHeal = false;
                                     break;
