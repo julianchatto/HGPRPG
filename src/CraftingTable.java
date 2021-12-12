@@ -29,7 +29,7 @@ public class CraftingTable {
                         } else if (h.getInvItem(i).equals("Cheese")) {
                             counter++;
                         } else if (h.getInvItem(i).equals("Bagel")) {
-                            if (h.getInvCount(i) == 2) {
+                            if (h.getInvCount(i) >= 2) {
                                 counter++;
                             }
                         }
@@ -109,7 +109,7 @@ public class CraftingTable {
                         } else if (h.getInvItem(i).equals("Cheese")) {
                             counter2++;
                         } else if (h.getInvItem(i).equals("Bagel")) {
-                            if (h.getInvCount(i) == 2) {
+                            if (h.getInvCount(i) >= 2) {
                                 counter2++;
                             }
                         }
@@ -189,7 +189,7 @@ public class CraftingTable {
                         } else if (h.getInvItem(i).equals("Cheese")) {
                             counter3++;
                         } else if (h.getInvItem(i).equals("Bagel")) {
-                            if (h.getInvCount(i) == 2) {
+                            if (h.getInvCount(i) >= 2) {
                                 counter3++;
                             }
                         }
@@ -268,15 +268,15 @@ public class CraftingTable {
                         if (h.getInvItem(i).equals("Pork Roll")) {
                             counter4++;
                         } else if (h.getInvItem(i).equals("Egg")) {
-                            if (h.getInvCount(i) == 3) {
+                            if (h.getInvCount(i) >= 3) {
                                 counter4++;
                             }
                         } else if (h.getInvItem(i).equals("Cheese")) {
-                            if (h.getInvCount(i) == 3) {
+                            if (h.getInvCount(i) >= 3) {
                                 counter4++;
                             }
                         } else if (h.getInvItem(i).equals("Bagel")) {
-                            if (h.getInvCount(i) == 6) {
+                            if (h.getInvCount(i) >= 6) {
                                 counter4++;
                             }
                         } else if (h.getInvItem(i).equals("Sausage")) {
@@ -368,7 +368,7 @@ public class CraftingTable {
                                 }
                             }
                         }
-                        System.out.println("\nA Pork Roll Egg N'Cheese has been added to your inventory");
+                        System.out.println("\nA Mega Brekky has been added to your inventory");
                     }  else {
                         System.out.println("You do not have the ingredients for a Mega Breaky");
                     }

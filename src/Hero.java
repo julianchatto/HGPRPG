@@ -13,10 +13,10 @@ public class Hero {
 
     // Constructor
     Hero() {
-        this.health = 100;
+        this.health = 1000;
         this.name = "Petcaugh";
         this.coins = 0;
-        this.level = 1;
+        this.level = 6;
         this.magicPowerType = "Fire";
         this.inventory[0] = "Empty";
         this.inventory[1] = "Empty";
@@ -88,7 +88,7 @@ public class Hero {
         }
     }
 
-    void attackFB(FinalBoss fB) { // e becomes e1, or e2, or e3
+    void attackFB(FBcharacteristics fB) { // e becomes e1, or e2, or e3
         Random r = new Random();
         // 20% of the time it is a CRITICAL HIT, 2 * AP
         int rand = r.nextInt(15)+1;

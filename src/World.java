@@ -229,6 +229,7 @@ public class World {
                                                         System.out.println("You do not have a Bacon Egg N'Cheese!");
                                                     }
                                                     brekkyDam = false;
+                                                    break;
                                                 case 2:
                                                     int oPCount2 = 0;
                                                     for (int i = 0; i < 12; i++) { // adds health to hero
