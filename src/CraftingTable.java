@@ -103,7 +103,7 @@ public class CraftingTable {
                     break;
                 case 2:
                     int counter2 = 0;
-                    for (int i = 0; i < 8; i++) { // checks for materials
+                    for (int i = 0; i < 12; i++) { // checks for materials
                         if (h.getInvItem(i).equals("Sausage")) {
                             counter2++;
                         } else if (h.getInvItem(i).equals("Egg")) {
@@ -186,7 +186,7 @@ public class CraftingTable {
                     break;
                 case 3:
                     int counter3 = 0;
-                    for (int i = 0; i < 8; i++) { // checks for materials
+                    for (int i = 0; i < 12; i++) { // checks for materials
                         if (h.getInvItem(i).equals("Pork Roll")) {
                             counter3++;
                         } else if (h.getInvItem(i).equals("Egg")) {
@@ -272,7 +272,7 @@ public class CraftingTable {
                     break;
                 case 7: // Mega brek
                     int counter4 = 0;
-                    for (int i = 0; i < 8; i++) { // checks for materials
+                    for (int i = 0; i < 12; i++) { // checks for materials
                         if (h.getInvItem(i).equals("Pork Roll")) {
                             counter4++;
                         } else if (h.getInvItem(i).equals("Egg")) {

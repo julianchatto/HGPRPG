@@ -18,9 +18,9 @@ public class Hero {
         this.coins = 0;
         this.level = 1;
         this.magicPowerType = "Fire";
-        this.inventory[0] = "Empty";
-        this.inventory[1] = "Empty";
-        this.inventory[2] = "Empty";
+        this.inventory[0] = "Sausage";
+        this.inventory[1] = "Egg";
+        this.inventory[2] = "Cheese";
         this.inventory[3] = "Empty";
         this.inventory[4] = "Empty";
         this.inventory[5] = "Empty";
@@ -30,9 +30,9 @@ public class Hero {
         this.inventory[9] = "Empty";
         this.inventory[10] = "Empty";
         this.inventory[11] = "Empty";
-        this.inventoryCount[0] = 0;
-        this.inventoryCount[1] = 0;
-        this.inventoryCount[2] = 0;
+        this.inventoryCount[0] = 1;
+        this.inventoryCount[1] = 1;
+        this.inventoryCount[2] = 1;
         this.inventoryCount[3] = 0;
         this.inventoryCount[4] = 0;
         this.inventoryCount[5] = 0;

@@ -10,6 +10,7 @@ public class FinalBoss {
         boolean bossing = true;
         int userInput;
         Scanner s = new Scanner(System.in);
+
         while(bossing){
             System.out.println("\nThe CEO stands in your path...");
             System.out.println("Choose an option(1-3)");
@@ -17,6 +18,7 @@ public class FinalBoss {
             System.out.println("2. Heal");
             System.out.println("3. Run Away");
             userInput = s.nextInt();
+
             switch (userInput) {
                 case 1: // attack
                     boolean attacking = true;
@@ -24,12 +26,13 @@ public class FinalBoss {
                         System.out.println("How would you like to attack?\n1. Normal\n2. Use a breaky");
                         int userInput2 = s.nextInt();
                         switch (userInput2) {
-                            case 1:
+                            case 1: // normal
                                 if (h.getHealth() <= 0) {
                                     System.out.println("You are already dead. You must heal first!");
                                     bossing = false;
                                 } else {
-                                    h.attackFB(fB1);
+                                    h.attackFB(fB1); // hero attacks
+
                                     if (fB1.getHealth() <= 0) { //enemy dies
                                         System.out.println("\nAramark CEO health: 0");
                                         System.out.println("\nYou won!");
@@ -40,22 +43,22 @@ public class FinalBoss {
                                         System.out.println("You also leveled up! level: " + h.getLevel());
                                         h.setHealth(2147483647);
                                         bossing = false;
-                                    } else {
+                                    } else { // CEO alive
                                         System.out.println("\nAramark CEO Health: " + fB1.getHealth());
                                         System.out.println("\nNow the enemy is attacking you!");
                                         fB1.attackFB(h);
-                                        if (h.getHealth() <= 0) {
+                                        if (h.getHealth() <= 0) { // hero dead
                                             System.out.println("you died :(");
                                             h.setHealth(100);
                                             bossing = false;
-                                        } else {
+                                        } else { // hero still alive
                                             System.out.println("Your health: " + h.getHealth());
                                         }
                                     }
                                 }
                                 attacking = false;
                                 break;
-                            case 2:
+                            case 2: // breakky
                                 boolean breakyTF = false;
                                 for (int i = 0; i < 12; i++) { // checks if user has heal potion
                                     if (h.getInvItem(i).equals("Bacon Egg N'Cheese")) {
@@ -68,6 +71,7 @@ public class FinalBoss {
                                         breakyTF = true;
                                     }
                                 }
+                                // has breaky
                                 if (breakyTF) {
                                     boolean brekkyDam = true;
 
@@ -156,7 +160,7 @@ public class FinalBoss {
                                                 }
                                                 brekkyDam = false;
                                                 break;
-                                            case 4:
+                                            case 4: // Mega brekky
                                                 int oPCount4 = 0;
 
                                                 for (int i = 0; i < 12; i++) { // adds health to hero
@@ -181,7 +185,7 @@ public class FinalBoss {
                                                 }
                                                 brekkyDam = false;
                                                 break;
-                                            case 5:
+                                            case 5: // cancel
                                                 brekkyDam = false;
                                                 break;
                                             default:
@@ -199,18 +203,18 @@ public class FinalBoss {
                                         System.out.println("You also leveled up! level: " + h.getLevel());
                                         h.setHealth(2147483647);
                                         bossing = false;
-                                    } else {
+                                    } else { // CEO attacks
                                         System.out.println("Now the Aramark CEO is attacking you!");
                                         fB1.attackFB(h);
-                                        if (h.getHealth() <= 0) {
+                                        if (h.getHealth() <= 0) { // hero dead
                                             System.out.println("\nyou died :(");
                                             h.setHealth(100);
                                             bossing = false;
-                                        } else {
+                                        } else { // hero alive
                                             System.out.println("\nYour health: " + h.getHealth());
                                         }
                                     }
-                                } else {
+                                } else { // no breakys
                                     System.out.println("\nYou do not have any breakys\n");
                                 }
                                 attacking = false;
