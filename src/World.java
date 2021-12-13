@@ -511,7 +511,7 @@ public class World {
             System.out.println("How would you like to heal?");
             System.out.println("1. Use a potion.");
             System.out.println("2. Search for a hidden heal potion.");
-            System.out.println("3. No");
+            System.out.println("3. Cancel");
             int userInput = bScan.nextInt();
 
             switch (userInput) {
