@@ -544,12 +544,9 @@ public class World {
                                         int oPCount = 0;
                                         for (int i = 0; i < 12; i++) { // adds health to hero
                                             if (h.getInvItem(i).equals("Regular Heal Potion")) {
-                                                if (h.getHealth() < 70) {
-                                                    int tempH = h.getHealth() + 30;
-                                                    h.setHealth(tempH);
-                                                } else {
-                                                    h.setHealth(100);
-                                                }
+                                                int tempH = h.getHealth() + 30;
+                                                h.setHealth(tempH);
+
                                                 if (h.getInvCount(i) == 1) {
                                                     h.replaceInvItem(i, "Empty");
                                                     h.replaceInvCount(i,0);
