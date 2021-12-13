@@ -158,7 +158,7 @@ public class World {
                                             e1.attack(h);
                                             if (h.getHealth() <= 0) {
                                                 System.out.println("you died :(");
-                                                h.setHealth(100);
+                                                h.setHealth(100*h.getLevel());
                                                 battleOn = false;
                                             } else {
                                                 System.out.println("Your health: " + h.getHealth());
@@ -394,7 +394,7 @@ public class World {
                                             e1.attack(h);
                                             if (h.getHealth() <= 0) {
                                                 System.out.println("you died :(");
-                                                h.setHealth(100);
+                                                h.setHealth(100*h.getLevel());
                                                 battleOn = false;
                                             } else {
                                                 System.out.println("Your health: " + h.getHealth());
