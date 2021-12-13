@@ -26,7 +26,8 @@ public class Shop {
         System.out.println("\nWelcome to the shop!");
         // Shop
         while (shopping) {
-            System.out.println("\nWhat would you like to buy?\n");
+            System.out.println("\nYour current coins: " + h.getCoins());
+            System.out.println("What would you like to buy?\n");
             System.out.println("1. " + items[item1] + ". Price: " + prices[item1] + ". Stock: " + stock[item1] + ".");
             System.out.println("2. " + items[item2] + ". Price: " + prices[item2] + ". Stock: " + stock[item2] + ".");
             System.out.println("3. " + items[item3] + ". Price: " + prices[item3] + ". Stock: " + stock[item3] + ".");
