@@ -183,7 +183,7 @@ public class World {
 
                                         while (brekkyDam) { // to choose what potion user wants to use
 
-                                            System.out.println("Which breaky would you like to use?");
+                                            System.out.println("Which brekky would you like to use?");
                                             System.out.println("1. Bacon Egg N'Cheese");
                                             System.out.println("2. Sausage Egg N'Cheese");
                                             System.out.println("3. Pork Roll Egg N'Cheese");
@@ -401,7 +401,7 @@ public class World {
                                             }
                                         }
                                     } else {
-                                        System.out.println("\nYou do not have any breakys\n");
+                                        System.out.println("\nYou do not have any brekkys\n");
                                     }
                                     attacking = false;
                                     break;
@@ -439,7 +439,7 @@ public class World {
         } else {
             if (haveBrekky && studented){
                 System.out.println("A student is snoring loudly and blocking your way");
-                System.out.println("He looks like he needs the a Sausage, Egg, and Cheese maybe if you give him one he will help you out.");
+                System.out.println("He looks like he needs a Sausage, Egg, and Cheese maybe if you give him one he will help you out.");
                 System.out.println("His information is vital to defeating the final boss!");
                 System.out.println("Would you like to help him?");
                 System.out.println("1. Yes\n2. No");
@@ -463,7 +463,7 @@ public class World {
                     int tempCoin = h.getCoins()+1000;
                     h.setCoins(tempCoin);
                     System.out.println("He gave you 1000 big ones $$$");
-                    System.out.println("He also gave you a scroll that says the recipe for mega brekky:");
+                    System.out.println("He also gave you a scroll that says the recipe for Mega Brekky:");
                     String[][] table = {{"|  |  ", "|  |  ", "|  |  "},
                             {"|  |  ", "|  |  ", "|  |  "},
                             {"|  |  ", "|  |  ", "|  |  "},
