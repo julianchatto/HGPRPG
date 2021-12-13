@@ -9,7 +9,7 @@ public class Shop {
         Scanner bScan = new Scanner(System.in);
         int userInput;
         String[] items = {"Bagel", "Egg", "Cheese", "Sausage", "OP Heal Potion", "Regular Heal Potion", "Bacon", "Pork Roll"};
-        int[] prices = {10, 13, 13, 15, 1050, 300, 15, 15};
+        int[] prices = {20, 33, 33, 25, 1050, 300, 25, 25};
         int item1 = 0; int item2 = 0; int item3 = 0;
         boolean shopping = true;
 
