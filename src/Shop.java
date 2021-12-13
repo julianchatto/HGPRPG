@@ -2,14 +2,14 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Shop {
-    private int[] stock = {9, 9, 9, 9, 9, 9, 9, 9};
+    private int[] stock = {100, 100, 100, 100, 100, 100, 100, 100};
     Shop() {}
 
     void goShop(Hero h) {
         Scanner bScan = new Scanner(System.in);
         int userInput;
         String[] items = {"Bagel", "Egg", "Cheese", "Sausage", "OP Heal Potion", "Regular Heal Potion", "Bacon", "Pork Roll"};
-        int[] prices = {10, 5, 3, 7, 1000, 100, 7, 7};
+        int[] prices = {10, 13, 13, 15, 1050, 300, 15, 15};
         int item1 = 0; int item2 = 0; int item3 = 0;
         boolean shopping = true;
 
