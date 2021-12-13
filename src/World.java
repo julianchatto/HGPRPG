@@ -67,7 +67,7 @@ public class World {
                     case 1: // attack
                         boolean attacking = true;
                         while (attacking) {
-                            System.out.println("How would you like to attack?\n1. Normal\n2. Use a breaky");
+                            System.out.println("How would you like to attack?\n1. Normal\n2. Use a brekky");
                             int userInput2 = bScan.nextInt();
                             switch (userInput2) {
                                 case 1:
