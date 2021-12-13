@@ -326,6 +326,7 @@ public class World {
                                             if (drop == 1) {
                                                 if (e1.getType().equals("Sausage")) {
                                                     System.out.println("The enemy dropped some Sausage!!");
+                                                    System.out.println("Try roaming the world with some 1 sausage, 1 egg, and 1 cheese. Maybe it could unlock some secrets.");
                                                     int counts = 0;
                                                     for (int i = 0; i < 12; i++) {
                                                         if (h.getInvItem(i).equals("Sausage")) {
