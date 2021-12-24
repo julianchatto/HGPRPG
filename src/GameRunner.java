@@ -11,7 +11,7 @@ public class GameRunner {
         CraftingTable cT = new CraftingTable();
         Scanner scan = new Scanner(System.in);
         boolean gameOn = true;
-        System.out.println("Welcome to the HGP RPG! What's your name?");
+        System.out.println("Welcome to the Quest for the Brekky! What's your name?");
         String heroName = scan.nextLine();
         h.setName(heroName);
         boolean magicPowering = true;
@@ -42,7 +42,7 @@ public class GameRunner {
 
         // main menu loop
         while (gameOn) {
-            System.out.println("Choose an option (1-5):\n");
+            System.out.println("Choose an option (1-7):\n");
             System.out.println("1. Roam the World");
             System.out.println("2. Check hero stats");
             System.out.println("3. View Inventory");
